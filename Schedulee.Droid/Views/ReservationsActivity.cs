@@ -9,7 +9,7 @@ using Android.Views;
 
 namespace Schedulee.Droid.Views
 {
-    [Activity(Label = "Schedulee", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class ReservationsActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         protected override void OnCreate(Bundle savedInstanceState)
