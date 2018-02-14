@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 
 namespace Schedulee.UI.Tests.Base
 {
-    public class BaseIntegrationTestSteps
+    public class BaseTestSteps
     {
         protected IDependencyContainer Container { get; private set; }
 

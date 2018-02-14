@@ -67,7 +67,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\BaseIntegrationTestSteps.cs" />
+    <Compile Include="Base\BaseCollectionIntegrationTestSteps.cs" />
+    <Compile Include="Base\BaseTestSteps.cs" />
+    <Compile Include="Base\ItemCollectionScreen.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemCollectionScreen.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ItemCollectionScreenIntegrationTestSteps.cs" />
+    <Compile Include="Base\LoadableScreen.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoadableScreen.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Base\LoadableScreenIntegrationTestSteps.cs" />
+    <Compile Include="Base\SaveableScreen.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaveableScreen.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Base\SaveableScreenIntegrationTestSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Implementation\MockDialogService.cs" />
   </ItemGroup>
@@ -83,6 +102,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Base\ItemCollectionScreen.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ItemCollectionScreen.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Base\LoadableScreen.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoadableScreen.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Base\SaveableScreen.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SaveableScreen.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
