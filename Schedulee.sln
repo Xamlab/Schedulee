@@ -5,6 +5,16 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedulee.Droid", "Schedulee.Droid\Schedulee.Droid.csproj", "{1053D7B9-C282-4466-A174-BE598F260A58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedulee.Core", "Schedulee.Core\Schedulee.Core.csproj", "{D959FF50-8773-4C74-A753-FC8075F854B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedulee.UI", "Schedulee.UI\Schedulee.UI.csproj", "{7AC93D73-2016-44B2-B0F2-7D90945CA8B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BFC36EEA-DCC4-4F3D-ACFA-05000A4AFEFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedulee.Core.Tests", "Tests\Schedulee.Core.Tests\Schedulee.Core.Tests.csproj", "{1D8D5293-AAB0-42B8-8783-8BEC1150AEF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedulee.UI.Tests", "Tests\Schedulee.UI.Tests\Schedulee.UI.Tests.csproj", "{DDAD70EE-B39F-4B36-AFE9-0F061A43567E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,9 +27,29 @@ Global
 		{1053D7B9-C282-4466-A174-BE598F260A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1053D7B9-C282-4466-A174-BE598F260A58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1053D7B9-C282-4466-A174-BE598F260A58}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D959FF50-8773-4C74-A753-FC8075F854B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D959FF50-8773-4C74-A753-FC8075F854B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D959FF50-8773-4C74-A753-FC8075F854B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D959FF50-8773-4C74-A753-FC8075F854B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC93D73-2016-44B2-B0F2-7D90945CA8B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC93D73-2016-44B2-B0F2-7D90945CA8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC93D73-2016-44B2-B0F2-7D90945CA8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC93D73-2016-44B2-B0F2-7D90945CA8B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8D5293-AAB0-42B8-8783-8BEC1150AEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8D5293-AAB0-42B8-8783-8BEC1150AEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8D5293-AAB0-42B8-8783-8BEC1150AEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8D5293-AAB0-42B8-8783-8BEC1150AEF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDAD70EE-B39F-4B36-AFE9-0F061A43567E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDAD70EE-B39F-4B36-AFE9-0F061A43567E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDAD70EE-B39F-4B36-AFE9-0F061A43567E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDAD70EE-B39F-4B36-AFE9-0F061A43567E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1D8D5293-AAB0-42B8-8783-8BEC1150AEF1} = {BFC36EEA-DCC4-4F3D-ACFA-05000A4AFEFA}
+		{DDAD70EE-B39F-4B36-AFE9-0F061A43567E} = {BFC36EEA-DCC4-4F3D-ACFA-05000A4AFEFA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DAD4796B-B341-4420-9A58-2A18BBD17D08}
