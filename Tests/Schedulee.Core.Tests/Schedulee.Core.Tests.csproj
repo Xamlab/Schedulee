@@ -43,7 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Schedulee.Core\Schedulee.Core.csproj">
+    <ProjectReference Include="..\..\Schedulee.Core\Schedulee.Core.csproj">
       <Project>{d959ff50-8773-4c74-a753-fc8075f854b5}</Project>
       <Name>Schedulee.Core</Name>
     </ProjectReference>
