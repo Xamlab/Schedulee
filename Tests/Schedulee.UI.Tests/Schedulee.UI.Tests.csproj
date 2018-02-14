@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator">
+      <HintPath>..\..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.7.4.0\lib\net45\FluentValidation.dll</HintPath>
     </Reference>
@@ -40,8 +44,9 @@
       <HintPath>..\packages\Grace.6.3.1\lib\net45\Grace.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
@@ -72,11 +77,11 @@
     <Compile Include="Services\Implementation\MockDialogService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Schedulee.Core\Schedulee.Core.csproj">
+    <ProjectReference Include="..\..\Schedulee.Core\Schedulee.Core.csproj">
       <Project>{d959ff50-8773-4c74-a753-fc8075f854b5}</Project>
       <Name>Schedulee.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Schedulee.UI\Schedulee.UI.csproj">
+    <ProjectReference Include="..\..\Schedulee.UI\Schedulee.UI.csproj">
       <Project>{7ac93d73-2016-44b2-b0f2-7d90945ca8b5}</Project>
       <Name>Schedulee.UI</Name>
     </ProjectReference>
