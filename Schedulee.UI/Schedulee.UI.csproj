@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grace" Version="6.3.1" />
+    <PackageReference Include="PropertyChanged.Fody" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Schedulee.Core\Schedulee.Core.csproj" />
   </ItemGroup>
 

@@ -11,7 +11,7 @@
 
 [assembly: global::Android.Runtime.ResourceDesignerAttribute("Schedulee.Droid.Resource", IsApplication=true)]
 
-namespace Schedulee.Droid
+namespace Schedulee.Droid.Resources
 {
 	
 	
