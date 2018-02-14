@@ -1,7 +1,5 @@
 ﻿using Android.App;
-using Android.Widget;
 using Android.OS;
-using Schedulee.Droid.Resources;
 
 namespace Schedulee.Droid
 {
@@ -17,4 +15,3 @@ namespace Schedulee.Droid
         }
     }
 }
-
