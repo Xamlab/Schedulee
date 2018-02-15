@@ -1,4 +1,6 @@
 ﻿using Schedulee.Core.DI;
+using Schedulee.UI.ViewModels.Authentication;
+using Schedulee.UI.ViewModels.Authentication.Implementation;
 
 namespace Schedulee.UI
 {
@@ -6,6 +8,7 @@ namespace Schedulee.UI
     {
         public static IDependencyContainer RegisterUIDependencies(this IDependencyContainer container)
         {
+            container.Register<ILoginViewModel, LoginViewModel>();
             return container;
         }
     }

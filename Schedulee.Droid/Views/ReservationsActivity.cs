@@ -8,7 +8,7 @@ using Android.Views;
 
 namespace Schedulee.Droid.Views
 {
-    [Activity(Label = "Schedule", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class ReservationsActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         private DrawerLayout _drawerLayout;

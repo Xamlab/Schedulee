@@ -2,7 +2,9 @@
 using Schedulee.Core;
 using Schedulee.Core.DI;
 using Schedulee.Core.DI.Implementation;
+using Schedulee.Droid.Services.Implementation;
 using Schedulee.UI;
+using Schedulee.UI.Services;
 
 namespace Schedulee.Droid
 {
@@ -22,6 +24,7 @@ namespace Schedulee.Droid
 
         public static IDependencyContainer RegisterDroidDependencies(this IDependencyContainer container)
         {
+            container.Register<IDialogService, DialogService>();
             return container;
         }
     }
