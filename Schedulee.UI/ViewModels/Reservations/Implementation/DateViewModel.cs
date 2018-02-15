@@ -9,7 +9,7 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
     {
         public IEnumerable<Reservation> Reservations { get; internal set; }
         public DateTime Date { get; internal set; }
-        public string Month { get; internal set; }
+        public string DayOfWeek { get; internal set; }
         public string Day { get; internal set; }
     }
 }

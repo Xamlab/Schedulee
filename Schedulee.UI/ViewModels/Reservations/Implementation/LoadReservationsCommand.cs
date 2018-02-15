@@ -12,9 +12,11 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
     {
         private readonly ReservationsViewModel _viewModel;
         private readonly IApiClient _apiClient;
+        private readonly ITimeProvider _timeProvider;
 
-        public LoadReservationsCommand(ReservationsViewModel viewModel, IApiClient apiClient) : base(viewModel)
+        public LoadReservationsCommand(ReservationsViewModel viewModel, IApiClient apiClient, ITimeProvider timeProvider) : base(viewModel)
         {
+            _timeProvider = timeProvider;
             _apiClient = apiClient;
             _viewModel = viewModel;
         }
@@ -28,7 +30,7 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
                 return;
             }
 
-            var now = DateTimeOffset.Now;
+            var now = _timeProvider.DateTimeOffsetNow;
             //Go back to the beginning of the month
             var start = new DateTime(now.Year, now.Month, 1, 0, 0, 0);
             var end = start.AddMonths(1);
@@ -39,17 +41,17 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
                 start = start.AddDays(1);
             }
 
-            _viewModel.Items = month.Join(reservations,
-                                          date => date,
-                                          reservation => reservation.Start.Date,
-                                          (date, reservation) => new {Date = date, Reservation = reservation})
-                                    .GroupBy(result => result.Date)
+
+            _viewModel.Items = month.GroupJoin(reservations,
+                                               date => date,
+                                               reservation => reservation.Start.Date,
+                                               (date, reservation) => new { Date = date, Reservations = reservation })
                                     .Select(grouping => new DateViewModel
                                                         {
-                                                            Date = grouping.Key,
-                                                            Reservations = grouping.Select(g => g.Reservation).ToList(),
-                                                            Month = grouping.Key.ToString("MMM"),
-                                                            Day = grouping.Key.Day.ToString()
+                                                            Date = grouping.Date,
+                                                            Reservations = grouping.Reservations?.ToList(),
+                                                            DayOfWeek = grouping.Date.ToString("ddd"),
+                                                            Day = grouping.Date.Day.ToString()
                                                         });
         }
     }
