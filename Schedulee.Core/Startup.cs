@@ -15,6 +15,7 @@ namespace Schedulee.Core
             container.Register<IApiClient, FirebaseApiClient>();
             container.RegisterSingleton<IAuthenticationManager, AuthenticationManager>();
             container.Register<IConfigurationProvider, DevelopmentConfigurationProvider>();
+            container.Register<ITimeProvider, TimeProvider>();
             return container;
         }
     }

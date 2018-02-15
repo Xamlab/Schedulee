@@ -2,7 +2,6 @@
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
-using Android.Support.V7.App;
 using Android.Text;
 using Android.Views;
 using Android.Widget;
@@ -12,6 +11,7 @@ using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Models;
 using Schedulee.Droid.Controls;
 using Schedulee.Droid.Services.Implementation;
+using Schedulee.Droid.Views.Base;
 using Schedulee.UI.Resources.Strings.Authentication;
 using Schedulee.UI.ViewModels.Authentication;
 
@@ -20,7 +20,7 @@ namespace Schedulee.Droid.Views.Authentication
     [Activity(Label = "Login",
         Theme = "@style/AppTheme.NoActionBar",
         MainLauncher = false)]
-    public class LoginActivity : AppCompatActivity
+    public class LoginActivity : BaseActivity
     {
         private EntryView _emailEntry;
         private EntryView _passwordEntry;
@@ -36,7 +36,7 @@ namespace Schedulee.Droid.Views.Authentication
                             WindowManagerFlags.Fullscreen);
 
             SetContentView(Resource.Layout.activity_login);
-            _viewModel = ServiceLocater.Instance.Resolve<ILoginViewModel>();
+            BindingContext = _viewModel = ServiceLocater.Instance.Resolve<ILoginViewModel>();
             _viewModel.LoginCompleted += ViewModelOnLoginCompleted;
             _emailEntry = FindViewById<EntryView>(Resource.Id.login_email_entry);
             _emailEntry.Entry.InputType = InputTypes.TextVariationEmailAddress | InputTypes.ClassText;
@@ -63,6 +63,9 @@ namespace Schedulee.Droid.Views.Authentication
             _passwordEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
             _loginButton = FindViewById<Button>(Resource.Id.login_button);
             _loginButton.SetCommand(nameof(Button.Click), _viewModel.SaveCommand);
+
+            this.SetBinding(() => _viewModel.IsSaving, () => IsLoading, BindingMode.OneWay);
+            LoadingMessage = Strings.LoggingIn;
         }
 
         public override void OnBackPressed()

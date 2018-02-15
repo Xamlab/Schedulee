@@ -193,6 +193,7 @@
     <Compile Include="Services\Implementation\SecureStorageService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Authentication\LoginActivity.cs" />
+    <Compile Include="Views\Base\BaseActivity.cs" />
     <Compile Include="Views\Base\BaseAuthRequiredActivity.cs" />
     <Compile Include="Views\Main\SplashActivity.cs" />
     <Compile Include="Views\Reservations\ReservationsActivity.cs" />
