@@ -63,12 +63,15 @@ namespace Schedulee.Core.Services.Implementation
             //If we don't populate the current user information
             if(currentUser == null)
             {
+                //As we don't have create user method, we'll need to manually set user properties to some default values
                 currentUser = new Models.User
                               {
                                   Id = result.User.LocalId,
                                   Email = result.User.Email,
                                   FirstName = "John",
-                                  LastName = "Smith"
+                                  LastName = "Smith",
+                                  Location = "Kongeleveien 29, 35055 Krokstadelva",
+                                  SetTravelTime = 30
                               };
                 await _client.Child("users").Child(currentUser.Id).PutAsync(currentUser);
             }
@@ -88,6 +91,20 @@ namespace Schedulee.Core.Services.Implementation
             if(user == null) return null;
             var reservations = await _client.Child("reservations").Child(user.Id).OnceAsync<List<Reservation>>();
             return reservations?.Select(reservation => reservation.Object).First();
+        }
+
+        public async Task SaveAccountAsync(string firstName, string lastName, string location, int setTimeInterval, CancellationToken token = default(CancellationToken))
+        {
+            var user = _secureSettings.GetAccount()?.User;
+            if(user == null) throw new UnauthorizedAccessException();
+            await _client.Child("users").Child(user.Id).PutAsync(new Models.User
+                                                                 {
+                                                                     Id = user.Id,
+                                                                     FirstName = firstName,
+                                                                     LastName = lastName,
+                                                                     Location = location,
+                                                                     SetTravelTime = setTimeInterval
+                                                                 });
         }
 
         public async Task BootstrapDataAsync(Models.User user, CancellationToken token = default(CancellationToken))
