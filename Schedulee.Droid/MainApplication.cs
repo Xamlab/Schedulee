@@ -1,5 +1,5 @@
 using System;
-
+using Acr.UserDialogs;
 using Android.App;
 using Android.OS;
 using Android.Runtime;
@@ -22,6 +22,7 @@ namespace Schedulee.Droid
         {
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
+            UserDialogs.Init(() => CrossCurrentActivity.Current.Activity);
             //A great place to initialize Xamarin.Insights and Dependency Services!
             _container = Startup.SetupContainer();
         }

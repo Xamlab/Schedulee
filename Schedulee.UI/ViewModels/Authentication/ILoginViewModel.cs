@@ -1,4 +1,6 @@
-﻿using Schedulee.UI.ViewModels.Base;
+﻿using System;
+using Schedulee.Core.Models;
+using Schedulee.UI.ViewModels.Base;
 
 namespace Schedulee.UI.ViewModels.Authentication
 {
@@ -6,5 +8,6 @@ namespace Schedulee.UI.ViewModels.Authentication
     {
         string Email { get; set; }
         string Password { get; set; }
+        event EventHandler<Token> LoginCompleted;
     }
 }
