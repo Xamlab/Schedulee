@@ -41,6 +41,9 @@ namespace Schedulee.Droid.Views.Authentication
             _emailEntry = FindViewById<EntryView>(Resource.Id.login_email_entry);
             _emailEntry.Entry.InputType = InputTypes.TextVariationEmailAddress | InputTypes.ClassText;
             _emailEntry.Entry.SetTextColor(Color.White);
+            _emailEntry.Entry.SetBackgroundResource(Resource.Drawable.edit_text_default);
+            
+
             _emailEntry.BindingContext = _viewModel;
             _emailEntry.ValidationIds = new[] {nameof(ILoginViewModel.Email)};
             _emailEntry.Title = Strings.Email;
@@ -48,10 +51,12 @@ namespace Schedulee.Droid.Views.Authentication
             _emailEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
             this.SetBinding(() => _viewModel.Email, () => _emailEntry.Entry.Text, BindingMode.TwoWay);
 
+            
             _passwordEntry = FindViewById<EntryView>(Resource.Id.login_password_entry);
             _passwordEntry.PasswordVisibilityToggleEnabled = true;
             _passwordEntry.Entry.InputType = InputTypes.TextVariationPassword | InputTypes.ClassText;
             _passwordEntry.Entry.SetTextColor(Color.White);
+            _passwordEntry.Entry.SetBackgroundResource(Resource.Drawable.edit_text_default);
             _passwordEntry.BindingContext = _viewModel;
             _passwordEntry.ValidationIds = new[] {nameof(ILoginViewModel.Password)};
             _passwordEntry.Title = Strings.Password;
@@ -60,6 +65,10 @@ namespace Schedulee.Droid.Views.Authentication
             _passwordEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
             _loginButton = FindViewById<Button>(Resource.Id.login_button);
             _loginButton.SetCommand(nameof(Button.Click), _viewModel.SaveCommand);
+
+
+            
+            
         }
 
         public override void OnBackPressed()
