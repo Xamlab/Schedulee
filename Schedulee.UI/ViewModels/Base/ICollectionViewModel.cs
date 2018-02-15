@@ -2,8 +2,8 @@
 
 namespace Schedulee.UI.ViewModels.Base
 {
-    public interface ICollectionViewModel<out T> : ILoadableViewModel
+    public interface ICollectionViewModel<T> : ILoadableViewModel
     {
-        IEnumerable<T> Items { get; }
+        IList<T> Items { get; }
     }
 }
