@@ -12,12 +12,12 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <TextView
-      android:id="@+id/menu_header_person_status_text"
+      android:id="@+id/menu_header_person_role_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Employee"
-        android:textColor="@color/text"
+        android:textColor="@color/subTitle"
         android:textSize="13dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adrian Sam"
-        android:textColor="@color/text"
+        android:textColor="@color/title"
         android:textSize="25dp"/>
 
 </LinearLayout>
