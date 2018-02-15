@@ -14,6 +14,7 @@ namespace Schedulee.Core.Services.Implementation
         {
             _configuration = configuration;
         }
+
         public async Task<Token> LoginAsync(string username, string password, CancellationToken token = default(CancellationToken))
         {
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(_configuration.FirebaseApiKey));

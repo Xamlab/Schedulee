@@ -1,5 +1,4 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Support.V7.App;
@@ -52,7 +51,6 @@ namespace Schedulee.Droid.Views.Authentication
 
         public override void OnBackPressed()
         {
-            
         }
 
         private void ViewModelOnLoginCompleted(object sender, Token token)

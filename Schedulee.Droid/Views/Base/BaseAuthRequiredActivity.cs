@@ -3,7 +3,6 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Support.V7.App;
-using Android.Widget;
 using Newtonsoft.Json;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Extensions.PubSub;
@@ -26,7 +25,7 @@ namespace Schedulee.Droid.Views.Base
             base.OnCreate(savedInstanceState);
             AuthManager = ServiceLocater.Instance.Resolve<IAuthenticationManager>();
             SecureSettings = ServiceLocater.Instance.Resolve<ISecureSettingsManager>();
-            if (AuthManager.State != SessionState.LoggedIn)
+            if(AuthManager.State != SessionState.LoggedIn)
             {
                 AuthManager.SignIn();
             }
@@ -57,7 +56,6 @@ namespace Schedulee.Droid.Views.Base
 
         protected virtual void UpdateUser()
         {
-            
         }
 
         protected virtual void OnSessionStateChanged(SessionStateChangedMessage sessionStateChangedMessage)

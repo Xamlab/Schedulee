@@ -45,6 +45,7 @@ namespace Schedulee.Droid.Views.Reservations
                     authManager.SignOut();
                     break;
             }
+
             return true;
         }
 
