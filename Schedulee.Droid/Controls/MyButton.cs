@@ -6,7 +6,6 @@ using Android.Widget;
 
 namespace Schedulee.Droid.Controls
 {
-
     [Register("schedulee.droid.controls.MyButton")]
     public class MyButton : Button
     {

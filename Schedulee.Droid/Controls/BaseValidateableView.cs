@@ -31,7 +31,6 @@ namespace Schedulee.Droid.Controls
         {
         }
 
-
         public string[] ValidationIds { get; set; }
 
         private IList _errors;
@@ -61,6 +60,7 @@ namespace Schedulee.Droid.Controls
             {
                 _validationContext.ErrorsChanged += OnErrorsChanged;
             }
+
             base.OnBindingContextChanged();
         }
 
@@ -84,6 +84,7 @@ namespace Schedulee.Droid.Controls
                     builder.Append(Environment.NewLine);
                     builder.Append(error.ToString());
                 }
+
                 Error = builder.ToString();
             }
             else Error = "";

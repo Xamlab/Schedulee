@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.OS;
-using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Droid.Controls;

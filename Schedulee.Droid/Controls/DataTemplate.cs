@@ -14,9 +14,9 @@ namespace Schedulee.Droid.Controls
             LoadTemplate = loadTemplate ?? throw new ArgumentNullException(nameof(loadTemplate));
         }
 
-		public Func<Context, object> LoadTemplate { get; set; }
+        public Func<Context, object> LoadTemplate { get; set; }
 
-		public object CreateContent(Context context)
+        public object CreateContent(Context context)
         {
             if(LoadTemplate == null)
                 throw new InvalidOperationException("LoadTemplate should not be null");

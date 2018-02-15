@@ -1,5 +1,4 @@
-﻿using System;
-using PropertyChanged;
+﻿using PropertyChanged;
 using Schedulee.UI.Services;
 using Schedulee.UI.ViewModels.Base;
 using Schedulee.UI.ViewModels.Base.Implementation;

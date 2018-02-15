@@ -17,7 +17,7 @@ namespace Schedulee.Droid.Controls
         public BindableTextInputLayout(Context context) : base(context)
         {
         }
-         
+
         public BindableTextInputLayout(Context context, IAttributeSet attrs) : base(context, attrs)
         {
         }

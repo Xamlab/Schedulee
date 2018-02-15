@@ -14,10 +14,8 @@ namespace Schedulee.Droid.Controls
         {
             Root = new LinearLayout(context)
                    {
-                       Orientation = Orientation.Vertical,
-                       
+                       Orientation = Orientation.Vertical
                    };
-
 
             var layoutParams = new LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
             AddView(Root, 0, layoutParams);

@@ -2,6 +2,7 @@
 using Schedulee.UI.Resources.Strings.Authentication;
 using Schedulee.UI.ViewModels.Base.Implementation;
 using CommonStrings = Schedulee.UI.Resources.Strings.Common.Strings;
+
 namespace Schedulee.UI.ViewModels.Authentication.Implementation
 {
     internal class LoginValidator : BaseViewModelValidator<LoginViewModel>
