@@ -22,8 +22,8 @@ namespace Schedulee.UI.ViewModels.Authentication.Implementation
         public IAsyncCommand SaveCommand { get; }
         public IStaleMonitor StaleMonitor { get; }
         public IViewModelValidator Validator { get; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string Email { get; set; } = "test@xamlab.com";
+        public string Password { get; set; } = "test1234";
         public event EventHandler<Token> LoginCompleted;
         public bool IsSaving { get; set; }
         public bool DidSave { get; set; }

@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SampleReservations.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SampleReservations.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FirebaseAuthentication.net" Version="3.0.6" />
     <PackageReference Include="FirebaseDatabase.net" Version="3.3.2" />
     <PackageReference Include="Grace" Version="6.3.1" />
