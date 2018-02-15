@@ -1392,44 +1392,44 @@ namespace Schedulee.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0b004b
-			public const int abc_background_cache_hint_selector_material_dark = 2131427403;
-			
-			// aapt resource value: 0x7f0b004c
-			public const int abc_background_cache_hint_selector_material_light = 2131427404;
-			
 			// aapt resource value: 0x7f0b004d
-			public const int abc_btn_colored_borderless_text_material = 2131427405;
+			public const int abc_background_cache_hint_selector_material_dark = 2131427405;
 			
 			// aapt resource value: 0x7f0b004e
-			public const int abc_btn_colored_text_material = 2131427406;
+			public const int abc_background_cache_hint_selector_material_light = 2131427406;
 			
 			// aapt resource value: 0x7f0b004f
-			public const int abc_color_highlight_material = 2131427407;
+			public const int abc_btn_colored_borderless_text_material = 2131427407;
 			
 			// aapt resource value: 0x7f0b0050
-			public const int abc_hint_foreground_material_dark = 2131427408;
+			public const int abc_btn_colored_text_material = 2131427408;
 			
 			// aapt resource value: 0x7f0b0051
-			public const int abc_hint_foreground_material_light = 2131427409;
+			public const int abc_color_highlight_material = 2131427409;
+			
+			// aapt resource value: 0x7f0b0052
+			public const int abc_hint_foreground_material_dark = 2131427410;
+			
+			// aapt resource value: 0x7f0b0053
+			public const int abc_hint_foreground_material_light = 2131427411;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int abc_input_method_navigation_guard = 2131427328;
 			
-			// aapt resource value: 0x7f0b0052
-			public const int abc_primary_text_disable_only_material_dark = 2131427410;
-			
-			// aapt resource value: 0x7f0b0053
-			public const int abc_primary_text_disable_only_material_light = 2131427411;
-			
 			// aapt resource value: 0x7f0b0054
-			public const int abc_primary_text_material_dark = 2131427412;
+			public const int abc_primary_text_disable_only_material_dark = 2131427412;
 			
 			// aapt resource value: 0x7f0b0055
-			public const int abc_primary_text_material_light = 2131427413;
+			public const int abc_primary_text_disable_only_material_light = 2131427413;
 			
 			// aapt resource value: 0x7f0b0056
-			public const int abc_search_url_text = 2131427414;
+			public const int abc_primary_text_material_dark = 2131427414;
+			
+			// aapt resource value: 0x7f0b0057
+			public const int abc_primary_text_material_light = 2131427415;
+			
+			// aapt resource value: 0x7f0b0058
+			public const int abc_search_url_text = 2131427416;
 			
 			// aapt resource value: 0x7f0b0001
 			public const int abc_search_url_text_normal = 2131427329;
@@ -1440,29 +1440,29 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f0b0003
 			public const int abc_search_url_text_selected = 2131427331;
 			
-			// aapt resource value: 0x7f0b0057
-			public const int abc_secondary_text_material_dark = 2131427415;
-			
-			// aapt resource value: 0x7f0b0058
-			public const int abc_secondary_text_material_light = 2131427416;
-			
 			// aapt resource value: 0x7f0b0059
-			public const int abc_tint_btn_checkable = 2131427417;
+			public const int abc_secondary_text_material_dark = 2131427417;
 			
 			// aapt resource value: 0x7f0b005a
-			public const int abc_tint_default = 2131427418;
+			public const int abc_secondary_text_material_light = 2131427418;
 			
 			// aapt resource value: 0x7f0b005b
-			public const int abc_tint_edittext = 2131427419;
+			public const int abc_tint_btn_checkable = 2131427419;
 			
 			// aapt resource value: 0x7f0b005c
-			public const int abc_tint_seek_thumb = 2131427420;
+			public const int abc_tint_default = 2131427420;
 			
 			// aapt resource value: 0x7f0b005d
-			public const int abc_tint_spinner = 2131427421;
+			public const int abc_tint_edittext = 2131427421;
 			
 			// aapt resource value: 0x7f0b005e
-			public const int abc_tint_switch_track = 2131427422;
+			public const int abc_tint_seek_thumb = 2131427422;
+			
+			// aapt resource value: 0x7f0b005f
+			public const int abc_tint_spinner = 2131427423;
+			
+			// aapt resource value: 0x7f0b0060
+			public const int abc_tint_switch_track = 2131427424;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int accent_material_dark = 2131427332;
@@ -1518,8 +1518,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f0b003c
 			public const int design_bottom_navigation_shadow_color = 2131427388;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int design_error = 2131427423;
+			// aapt resource value: 0x7f0b0061
+			public const int design_error = 2131427425;
 			
 			// aapt resource value: 0x7f0b003d
 			public const int design_fab_shadow_end_color = 2131427389;
@@ -1545,8 +1545,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f0b0044
 			public const int design_snackbar_background_color = 2131427396;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int design_tint_password_toggle = 2131427424;
+			// aapt resource value: 0x7f0b0062
+			public const int design_tint_password_toggle = 2131427426;
 			
 			// aapt resource value: 0x7f0b0012
 			public const int dim_foreground_disabled_material_dark = 2131427346;
@@ -1662,23 +1662,29 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f0b0034
 			public const int secondary_text_disabled_material_light = 2131427380;
 			
+			// aapt resource value: 0x7f0b004c
+			public const int subTitle = 2131427404;
+			
 			// aapt resource value: 0x7f0b0035
 			public const int switch_thumb_disabled_material_dark = 2131427381;
 			
 			// aapt resource value: 0x7f0b0036
 			public const int switch_thumb_disabled_material_light = 2131427382;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int switch_thumb_material_dark = 2131427425;
+			// aapt resource value: 0x7f0b0063
+			public const int switch_thumb_material_dark = 2131427427;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int switch_thumb_material_light = 2131427426;
+			// aapt resource value: 0x7f0b0064
+			public const int switch_thumb_material_light = 2131427428;
 			
 			// aapt resource value: 0x7f0b0037
 			public const int switch_thumb_normal_material_dark = 2131427383;
 			
 			// aapt resource value: 0x7f0b0038
 			public const int switch_thumb_normal_material_light = 2131427384;
+			
+			// aapt resource value: 0x7f0b004b
+			public const int title = 2131427403;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int tooltip_background_dark = 2131427385;
@@ -2447,26 +2453,26 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f020083
-			public const int avd_hide_password_1 = 2130837635;
-			
-			// aapt resource value: 0x7f020084
-			public const int avd_hide_password_2 = 2130837636;
-			
 			// aapt resource value: 0x7f020085
-			public const int avd_hide_password_3 = 2130837637;
+			public const int avd_hide_password_1 = 2130837637;
+			
+			// aapt resource value: 0x7f020086
+			public const int avd_hide_password_2 = 2130837638;
+			
+			// aapt resource value: 0x7f020087
+			public const int avd_hide_password_3 = 2130837639;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f020086
-			public const int avd_show_password_1 = 2130837638;
-			
-			// aapt resource value: 0x7f020087
-			public const int avd_show_password_2 = 2130837639;
-			
 			// aapt resource value: 0x7f020088
-			public const int avd_show_password_3 = 2130837640;
+			public const int avd_show_password_1 = 2130837640;
+			
+			// aapt resource value: 0x7f020089
+			public const int avd_show_password_2 = 2130837641;
+			
+			// aapt resource value: 0x7f02008a
+			public const int avd_show_password_3 = 2130837642;
 			
 			// aapt resource value: 0x7f020056
 			public const int background_login = 2130837590;
@@ -2481,52 +2487,52 @@ namespace Schedulee.Droid
 			public const int cleaning = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int clock = 2130837594;
+			public const int contact = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int contact = 2130837595;
+			public const int contact_small = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int contact_small = 2130837596;
+			public const int design_bottom_navigation_item_background = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int design_bottom_navigation_item_background = 2130837597;
+			public const int design_fab_background = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int design_fab_background = 2130837598;
+			public const int design_ic_visibility = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int design_ic_visibility = 2130837599;
+			public const int design_ic_visibility_off = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int design_ic_visibility_off = 2130837600;
+			public const int design_password_eye = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int design_password_eye = 2130837601;
+			public const int design_snackbar_background = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int design_snackbar_background = 2130837602;
+			public const int garbage = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int garbage = 2130837603;
+			public const int home = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int home = 2130837604;
+			public const int ic_errorstatus = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int ic_errorstatus = 2130837605;
+			public const int ic_successstatus = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int ic_successstatus = 2130837606;
+			public const int instalinger = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int innstalinger = 2130837607;
+			public const int iron = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int iron = 2130837608;
+			public const int loggut = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int loggut = 2130837609;
+			public const int logout = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
 			public const int minus = 2130837610;
@@ -2564,11 +2570,11 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f020075
 			public const int notification_icon_background = 2130837621;
 			
-			// aapt resource value: 0x7f020081
-			public const int notification_template_icon_bg = 2130837633;
+			// aapt resource value: 0x7f020083
+			public const int notification_template_icon_bg = 2130837635;
 			
-			// aapt resource value: 0x7f020082
-			public const int notification_template_icon_low_bg = 2130837634;
+			// aapt resource value: 0x7f020084
+			public const int notification_template_icon_low_bg = 2130837636;
 			
 			// aapt resource value: 0x7f020076
 			public const int notification_tile_bg = 2130837622;
@@ -2583,25 +2589,31 @@ namespace Schedulee.Droid
 			public const int plus = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int reservationer = 2130837626;
+			public const int reservations = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int roundedbg = 2130837627;
+			public const int rounded_clock = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int roundedbgdark = 2130837628;
+			public const int roundedbg = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int telephone = 2130837629;
+			public const int roundedbgdark = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int tooltip_frame_dark = 2130837630;
+			public const int settings = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int tooltip_frame_light = 2130837631;
+			public const int telephone = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int window = 2130837632;
+			public const int tooltip_frame_dark = 2130837632;
+			
+			// aapt resource value: 0x7f020081
+			public const int tooltip_frame_light = 2130837633;
+			
+			// aapt resource value: 0x7f020082
+			public const int window = 2130837634;
 			
 			static Drawable()
 			{
@@ -2634,8 +2646,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070036
 			public const int SYM = 2131165238;
 			
-			// aapt resource value: 0x7f0700ab
-			public const int action0 = 2131165355;
+			// aapt resource value: 0x7f0700ac
+			public const int action0 = 2131165356;
 			
 			// aapt resource value: 0x7f070082
 			public const int action_bar = 2131165314;
@@ -2658,17 +2670,17 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070060
 			public const int action_bar_title = 2131165280;
 			
-			// aapt resource value: 0x7f0700a8
-			public const int action_container = 2131165352;
+			// aapt resource value: 0x7f0700a9
+			public const int action_container = 2131165353;
 			
 			// aapt resource value: 0x7f070083
 			public const int action_context_bar = 2131165315;
 			
-			// aapt resource value: 0x7f0700af
-			public const int action_divider = 2131165359;
+			// aapt resource value: 0x7f0700b0
+			public const int action_divider = 2131165360;
 			
-			// aapt resource value: 0x7f0700a9
-			public const int action_image = 2131165353;
+			// aapt resource value: 0x7f0700aa
+			public const int action_image = 2131165354;
 			
 			// aapt resource value: 0x7f070003
 			public const int action_menu_divider = 2131165187;
@@ -2685,11 +2697,11 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070062
 			public const int action_mode_close_button = 2131165282;
 			
-			// aapt resource value: 0x7f0700aa
-			public const int action_text = 2131165354;
+			// aapt resource value: 0x7f0700ab
+			public const int action_text = 2131165355;
 			
-			// aapt resource value: 0x7f0700b8
-			public const int actions = 2131165368;
+			// aapt resource value: 0x7f0700b9
+			public const int actions = 2131165369;
 			
 			// aapt resource value: 0x7f070063
 			public const int activity_chooser_view_content = 2131165283;
@@ -2712,8 +2724,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070043
 			public const int auto = 2131165251;
 			
-			// aapt resource value: 0x7f0700bf
-			public const int availability = 2131165375;
+			// aapt resource value: 0x7f0700c0
+			public const int availability = 2131165376;
 			
 			// aapt resource value: 0x7f07005a
 			public const int basic = 2131165274;
@@ -2730,8 +2742,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070069
 			public const int buttonPanel = 2131165289;
 			
-			// aapt resource value: 0x7f0700ac
-			public const int cancel_action = 2131165356;
+			// aapt resource value: 0x7f0700ad
+			public const int cancel_action = 2131165357;
 			
 			// aapt resource value: 0x7f070044
 			public const int center = 2131165252;
@@ -2748,8 +2760,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070079
 			public const int checkbox = 2131165305;
 			
-			// aapt resource value: 0x7f0700b4
-			public const int chronometer = 2131165364;
+			// aapt resource value: 0x7f0700b5
+			public const int chronometer = 2131165365;
 			
 			// aapt resource value: 0x7f07004d
 			public const int clip_horizontal = 2131165261;
@@ -2811,8 +2823,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f07002f
 			public const int end = 2131165231;
 			
-			// aapt resource value: 0x7f0700ba
-			public const int end_padder = 2131165370;
+			// aapt resource value: 0x7f0700bb
+			public const int end_padder = 2131165371;
 			
 			// aapt resource value: 0x7f07003e
 			public const int enterAlways = 2131165246;
@@ -2856,8 +2868,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070068
 			public const int icon = 2131165288;
 			
-			// aapt resource value: 0x7f0700b9
-			public const int icon_group = 2131165369;
+			// aapt resource value: 0x7f0700ba
+			public const int icon_group = 2131165370;
 			
 			// aapt resource value: 0x7f070039
 			public const int ifRoom = 2131165241;
@@ -2865,8 +2877,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070065
 			public const int image = 2131165285;
 			
-			// aapt resource value: 0x7f0700b5
-			public const int info = 2131165365;
+			// aapt resource value: 0x7f0700b6
+			public const int info = 2131165366;
 			
 			// aapt resource value: 0x7f07005f
 			public const int italic = 2131165279;
@@ -2901,17 +2913,23 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f0700a6
 			public const int loadingProgressWheel = 2131165350;
 			
-			// aapt resource value: 0x7f0700c1
-			public const int logout = 2131165377;
+			// aapt resource value: 0x7f0700c2
+			public const int logout = 2131165378;
 			
-			// aapt resource value: 0x7f0700bd
-			public const int masked = 2131165373;
+			// aapt resource value: 0x7f0700be
+			public const int masked = 2131165374;
 			
-			// aapt resource value: 0x7f0700ae
-			public const int media_actions = 2131165358;
+			// aapt resource value: 0x7f0700af
+			public const int media_actions = 2131165359;
 			
-			// aapt resource value: 0x7f0700bb
-			public const int message = 2131165371;
+			// aapt resource value: 0x7f0700a8
+			public const int menu_header_name_text = 2131165352;
+			
+			// aapt resource value: 0x7f0700a7
+			public const int menu_header_person_role_text = 2131165351;
+			
+			// aapt resource value: 0x7f0700bc
+			public const int message = 2131165372;
 			
 			// aapt resource value: 0x7f070030
 			public const int middle = 2131165232;
@@ -2937,14 +2955,14 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f07001d
 			public const int normal = 2131165213;
 			
-			// aapt resource value: 0x7f0700b7
-			public const int notification_background = 2131165367;
+			// aapt resource value: 0x7f0700b8
+			public const int notification_background = 2131165368;
+			
+			// aapt resource value: 0x7f0700b2
+			public const int notification_main_column = 2131165362;
 			
 			// aapt resource value: 0x7f0700b1
-			public const int notification_main_column = 2131165361;
-			
-			// aapt resource value: 0x7f0700b0
-			public const int notification_main_column_container = 2131165360;
+			public const int notification_main_column_container = 2131165361;
 			
 			// aapt resource value: 0x7f070058
 			public const int packed = 2131165272;
@@ -2973,17 +2991,17 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f07007b
 			public const int radio = 2131165307;
 			
-			// aapt resource value: 0x7f0700be
-			public const int reservations = 2131165374;
+			// aapt resource value: 0x7f0700bf
+			public const int reservations = 2131165375;
 			
 			// aapt resource value: 0x7f070049
 			public const int right = 2131165257;
 			
-			// aapt resource value: 0x7f0700b6
-			public const int right_icon = 2131165366;
+			// aapt resource value: 0x7f0700b7
+			public const int right_icon = 2131165367;
 			
-			// aapt resource value: 0x7f0700b2
-			public const int right_side = 2131165362;
+			// aapt resource value: 0x7f0700b3
+			public const int right_side = 2131165363;
 			
 			// aapt resource value: 0x7f07000c
 			public const int save_image_matrix = 2131165196;
@@ -3045,8 +3063,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070090
 			public const int select_dialog_listview = 2131165328;
 			
-			// aapt resource value: 0x7f0700c0
-			public const int settings = 2131165376;
+			// aapt resource value: 0x7f0700c1
+			public const int settings = 2131165377;
 			
 			// aapt resource value: 0x7f07007a
 			public const int shortcut = 2131165306;
@@ -3096,8 +3114,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f07004a
 			public const int start = 2131165258;
 			
-			// aapt resource value: 0x7f0700ad
-			public const int status_bar_latest_event_content = 2131165357;
+			// aapt resource value: 0x7f0700ae
+			public const int status_bar_latest_event_content = 2131165358;
 			
 			// aapt resource value: 0x7f07007c
 			public const int submenuarrow = 2131165308;
@@ -3120,9 +3138,6 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f07006f
 			public const int textSpacerNoTitle = 2131165295;
 			
-			// aapt resource value: 0x7f0700a7
-			public const int textView = 2131165351;
-			
 			// aapt resource value: 0x7f0700a4
 			public const int textViewStatus = 2131165348;
 			
@@ -3135,8 +3150,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070015
 			public const int textinput_error = 2131165205;
 			
-			// aapt resource value: 0x7f0700b3
-			public const int time = 2131165363;
+			// aapt resource value: 0x7f0700b4
+			public const int time = 2131165364;
 			
 			// aapt resource value: 0x7f07001b
 			public const int title = 2131165211;
@@ -3186,8 +3201,8 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f070016
 			public const int view_offset_helper = 2131165206;
 			
-			// aapt resource value: 0x7f0700bc
-			public const int visible = 2131165372;
+			// aapt resource value: 0x7f0700bd
+			public const int visible = 2131165373;
 			
 			// aapt resource value: 0x7f07003b
 			public const int withText = 2131165243;
