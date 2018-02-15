@@ -1,9 +1,12 @@
-﻿using Grace.DependencyInjection;
+﻿using System.Linq;
+using Grace.DependencyInjection;
 using Schedulee.Core;
 using Schedulee.Core.DI;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.UI.Services;
 using Schedulee.UI.Tests.Services.Implementation;
+using Schedulee.UI.ViewModels.Base;
+using Shouldly;
 using TechTalk.SpecFlow;
 
 namespace Schedulee.UI.Tests.Base
@@ -39,6 +42,15 @@ namespace Schedulee.UI.Tests.Base
 
         protected virtual void ConfigureServices()
         {
+        }
+
+        protected void CheckValidationError(IViewModelValidator validator, string property, string expectedMessage)
+        {
+            var stringError = validator.GetErrorsInString(property)
+                                       .FirstOrDefault(error => error == expectedMessage);
+
+            stringError.ShouldNotBeNull();
+            DialogService.DialogMessage.Contains(stringError).ShouldBeTrue();
         }
     }
 }

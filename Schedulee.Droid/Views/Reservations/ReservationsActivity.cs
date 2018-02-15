@@ -3,11 +3,12 @@ using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
-using Android.Support.V7.Widget;
 using Android.Views;
+using Android.Widget;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Droid.Views.Base;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Schedulee.Droid.Views.Reservations
 {
@@ -15,6 +16,7 @@ namespace Schedulee.Droid.Views.Reservations
     public class ReservationsActivity : BaseAuthRequiredActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         private DrawerLayout _drawerLayout;
+        private TextView _userName;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -43,7 +45,22 @@ namespace Schedulee.Droid.Views.Reservations
                     authManager.SignOut();
                     break;
             }
+
             return true;
+        }
+
+        protected override void UpdateUser()
+        {
+            base.UpdateUser();
+            if(_userName == null)
+            {
+                var headerView = FindViewById<NavigationView>(Resource.Id.nav_view).GetHeaderView(0);
+                _userName = headerView.FindViewById<TextView>(Resource.Id.menu_header_name_text);
+            }
+
+            var account = SecureSettings.GetAccount();
+            //_userName.Text = account == null ? "" : $"{account.User.FirstName} {account.User.LastName}";
+            _userName.Text = account == null ? "" : $"{account.User.Email}";
         }
     }
 }

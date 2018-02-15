@@ -2,9 +2,6 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
-using Schedulee.Core.DI.Implementation;
-using Schedulee.Core.Managers;
-using Schedulee.Droid.Views.Authentication;
 using Schedulee.Droid.Views.Reservations;
 
 namespace Schedulee.Droid.Views.Main
@@ -19,7 +16,7 @@ namespace Schedulee.Droid.Views.Main
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-           StartActivity(typeof(ReservationsActivity));
+            StartActivity(typeof(ReservationsActivity));
 
             Finish();
         }

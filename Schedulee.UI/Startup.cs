@@ -10,7 +10,7 @@ namespace Schedulee.UI
     {
         public static IDependencyContainer RegisterUIDependencies(this IDependencyContainer container)
         {
-            container.Register<ISecureSettingsManager, SecureSettingsManager>();
+            container.RegisterSingleton<ISecureSettingsManager, SecureSettingsManager>();
             container.Register<ILoginViewModel, LoginViewModel>();
             return container;
         }
