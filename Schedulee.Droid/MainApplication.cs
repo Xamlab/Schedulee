@@ -5,7 +5,9 @@ using Android.OS;
 using Android.Runtime;
 using Plugin.CurrentActivity;
 using Schedulee.Core.DI;
+using Schedulee.Core.Extensions.PubSub;
 using Schedulee.Core.Managers;
+using Schedulee.Core.Messages;
 
 namespace Schedulee.Droid
 {
@@ -14,6 +16,8 @@ namespace Schedulee.Droid
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
         private IDependencyContainer _container;
+        private IAuthenticationManager _authManager;
+
         public MainApplication(IntPtr handle, JniHandleOwnership transer)
           :base(handle, transer)
         {
@@ -26,8 +30,17 @@ namespace Schedulee.Droid
             UserDialogs.Init(() => CrossCurrentActivity.Current.Activity);
             //A great place to initialize Xamarin.Insights and Dependency Services!
             _container = Startup.SetupContainer();
-            var authManager = _container.Resolve<IAuthenticationManager>();
-            authManager.RestoreSession();
+            _authManager = _container.Resolve<IAuthenticationManager>();
+            _authManager.RestoreSession();
+            this.Subscribe<SessionStateChangedMessage>(OnSessionStateChanged);
+        }
+
+        private void OnSessionStateChanged(SessionStateChangedMessage state)
+        {
+            if(state.State == SessionState.LoggedOut)
+            {
+                _authManager.SignIn();
+            }
         }
 
         public override void OnTerminate()

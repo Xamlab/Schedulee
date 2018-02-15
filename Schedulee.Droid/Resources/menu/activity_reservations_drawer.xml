@@ -5,19 +5,19 @@
 
   <group android:checkableBehavior="single">
     <item
-      android:id="@+id/reservations"
+      android:id="@+id/main_menu_reservations"
       android:icon="@drawable/reservations"
       android:title="Reservations" />
     <item
-      android:id="@+id/availability"
+      android:id="@+id/main_menu_availability"
       android:icon="@drawable/rounded_clock"
       android:title="Set Availability" />
     <item
-      android:id="@+id/settings"
+      android:id="@+id/main_menu_settings"
       android:icon="@drawable/settings"
       android:title="Settings" />
     <item
-      android:id="@+id/logout"
+      android:id="@+id/main_menu_logout"
       android:icon="@drawable/logout"
       android:title="Logout" />
   </group>

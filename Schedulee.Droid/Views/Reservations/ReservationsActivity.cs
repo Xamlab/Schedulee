@@ -5,6 +5,8 @@ using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Views;
+using Schedulee.Core.DI.Implementation;
+using Schedulee.Core.Managers;
 using Schedulee.Droid.Views.Base;
 
 namespace Schedulee.Droid.Views.Reservations
@@ -33,6 +35,14 @@ namespace Schedulee.Droid.Views.Reservations
 
         public bool OnNavigationItemSelected(IMenuItem menuItem)
         {
+            var id = menuItem.ItemId;
+            switch(id)
+            {
+                case Resource.Id.main_menu_logout:
+                    var authManager = ServiceLocater.Instance.Resolve<IAuthenticationManager>();
+                    authManager.SignOut();
+                    break;
+            }
             return true;
         }
     }
