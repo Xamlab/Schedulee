@@ -19,6 +19,7 @@ namespace Schedulee.Droid.Views.Reservations
         private DrawerLayout _drawerLayout;
         private TextView _userName;
         private IReservationsViewModel _viewModel;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

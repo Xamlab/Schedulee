@@ -41,11 +41,10 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
                 start = start.AddDays(1);
             }
 
-
             _viewModel.Items = month.GroupJoin(reservations,
                                                date => date,
                                                reservation => reservation.Start.Date,
-                                               (date, reservation) => new { Date = date, Reservations = reservation })
+                                               (date, reservation) => new {Date = date, Reservations = reservation})
                                     .Select(grouping => new DateViewModel
                                                         {
                                                             Date = grouping.Date,

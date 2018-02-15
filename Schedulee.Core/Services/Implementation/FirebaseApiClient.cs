@@ -9,9 +9,7 @@ using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Database.Query;
 using Newtonsoft.Json;
-using Schedulee.Core.Extensions.PubSub;
 using Schedulee.Core.Managers;
-using Schedulee.Core.Messages;
 using Schedulee.Core.Models;
 using Schedulee.Core.Providers;
 using User = Firebase.Auth.User;
@@ -38,7 +36,6 @@ namespace Schedulee.Core.Services.Implementation
                                                                 });
             _firebaseAuthProvider = new FirebaseAuthProvider(new FirebaseConfig(configuration.FirebaseApiKey));
         }
-
 
         public async Task<Token> LoginAsync(string username, string password, CancellationToken token = default(CancellationToken))
         {
@@ -96,7 +93,7 @@ namespace Schedulee.Core.Services.Implementation
         public async Task BootstrapDataAsync(Models.User user, CancellationToken token = default(CancellationToken))
         {
             var reservation = await _client.Child("reservations").Child(user.Id).OnceSingleAsync<Reservation>();
-            if (reservation == null)
+            if(reservation == null)
             {
                 var sampleReservations = GetSampleReservations();
                 await _client.Child("reservations").Child(user.Id).PostAsync(sampleReservations);

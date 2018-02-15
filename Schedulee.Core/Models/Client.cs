@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Schedulee.Core.Models
+﻿namespace Schedulee.Core.Models
 {
     public class Client
     {
