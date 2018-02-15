@@ -1,15 +1,15 @@
 ﻿using System;
 using Android.Content;
 using Android.Runtime;
+using Android.Support.Design.Widget;
 using Android.Util;
 using Android.Views;
-using Android.Widget;
 
 namespace Schedulee.Droid.Controls
 {
     public class EntryView : BaseValidateableView
     {
-        public EditText Entry { get; set; }
+        public TextInputEditText Entry { get; private set; }
 
         private string _title;
 
@@ -44,8 +44,7 @@ namespace Schedulee.Droid.Controls
 
         private void Initialize(Context context)
         {
-            Entry = new EditText(context);
-            //Entry.SetBackgroundResource(Resource.Drawable.editText_border_background);
+            Entry = new TextInputEditText(context);
             AddView(Entry, new LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent));
         }
 

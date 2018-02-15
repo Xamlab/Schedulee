@@ -6,7 +6,7 @@
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorAccent">@color/white</item>
   </style>
 
   <style name="AppTheme.NoActionBar">
@@ -23,4 +23,15 @@
 		<item name="windowActionBar">false</item>
 		<item name="windowNoTitle">true</item>
 	</style>
+
+  <style name="ErrorTextStyle" parent="TextAppearance.AppCompat">
+    <item name="android:textSize">12sp</item>
+    <item name="android:textColor">@color/errorText</item>
+  </style>
+  
+  <style name="HintTextStyle" parent="TextAppearance.AppCompat">
+    <item name="android:textSize">18sp</item>
+    <item name="android:textColor">@color/hintText</item>
+  </style>
+  
 </resources>
