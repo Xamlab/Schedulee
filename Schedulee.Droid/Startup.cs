@@ -25,6 +25,7 @@ namespace Schedulee.Droid
         public static IDependencyContainer RegisterDroidDependencies(this IDependencyContainer container)
         {
             container.Register<IDialogService, DialogService>();
+            container.Register<ISecureStorageService, SecureStorageService>();
             return container;
         }
     }

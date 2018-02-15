@@ -189,6 +189,7 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Implementation\DialogService.cs" />
+    <Compile Include="Services\Implementation\SecureStorageService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\LoginActivity.cs" />
     <Compile Include="Views\ReservationsActivity.cs" />
