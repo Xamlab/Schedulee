@@ -59,8 +59,7 @@ namespace Schedulee.Droid.Views.Reservations
             }
 
             var account = SecureSettings.GetAccount();
-            //_userName.Text = account == null ? "" : $"{account.User.FirstName} {account.User.LastName}";
-            _userName.Text = account == null ? "" : $"{account.User.Email}";
+            _userName.Text = account == null ? "" : $"{account.User.FirstName} {account.User.LastName}";
         }
     }
 }
