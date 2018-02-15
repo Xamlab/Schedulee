@@ -176,7 +176,6 @@
       <DependentUpon>AuthenticationManager.feature</DependentUpon>
     </Compile>
     <Compile Include="Managers\AuthenticationManagerTestSteps.cs" />
-    <Compile Include="Managers\MockAuthenticationService.cs" />
     <Compile Include="Managers\MockSecureSettingsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
