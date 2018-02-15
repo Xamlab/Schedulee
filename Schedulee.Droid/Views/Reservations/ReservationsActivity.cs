@@ -12,6 +12,8 @@ namespace Schedulee.Droid.Views.Reservations
     [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class ReservationsActivity : BaseAuthRequiredActivity, NavigationView.IOnNavigationItemSelectedListener
     {
+        private DrawerLayout _drawerLayout;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -19,10 +21,10 @@ namespace Schedulee.Droid.Views.Reservations
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
-            DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_close);
-            drawer.AddDrawerListener(toggle);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, _drawerLayout, toolbar, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_close);
+            _drawerLayout.AddDrawerListener(toggle);
             toggle.SyncState();
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
