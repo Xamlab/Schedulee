@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Runtime;
 using Plugin.CurrentActivity;
 using Schedulee.Core.DI;
+using Schedulee.Core.Managers;
 
 namespace Schedulee.Droid
 {
@@ -25,6 +26,8 @@ namespace Schedulee.Droid
             UserDialogs.Init(() => CrossCurrentActivity.Current.Activity);
             //A great place to initialize Xamarin.Insights and Dependency Services!
             _container = Startup.SetupContainer();
+            var authManager = _container.Resolve<IAuthenticationManager>();
+            authManager.RestoreSession();
         }
 
         public override void OnTerminate()

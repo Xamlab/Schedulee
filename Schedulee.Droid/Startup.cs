@@ -2,6 +2,7 @@
 using Schedulee.Core;
 using Schedulee.Core.DI;
 using Schedulee.Core.DI.Implementation;
+using Schedulee.Core.Services;
 using Schedulee.Droid.Services.Implementation;
 using Schedulee.UI;
 using Schedulee.UI.Services;
@@ -26,6 +27,7 @@ namespace Schedulee.Droid
         {
             container.Register<IDialogService, DialogService>();
             container.Register<ISecureStorageService, SecureStorageService>();
+            container.Register<IAuthenticationService, AuthenticationService>();
             return container;
         }
     }

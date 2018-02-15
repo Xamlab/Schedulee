@@ -4565,6 +4565,9 @@ namespace Schedulee.Droid
 			// aapt resource value: 0x7f090178
 			public const int Theme_Design_NoActionBar = 2131296632;
 			
+			// aapt resource value: 0x7f09018e
+			public const int Theme_Splash = 2131296654;
+			
 			// aapt resource value: 0x7f090111
 			public const int ThemeOverlay_AppCompat = 2131296529;
 			

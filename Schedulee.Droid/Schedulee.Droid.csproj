@@ -188,11 +188,14 @@
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Implementation\AuthenticationService.cs" />
     <Compile Include="Services\Implementation\DialogService.cs" />
     <Compile Include="Services\Implementation\SecureStorageService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Views\LoginActivity.cs" />
-    <Compile Include="Views\ReservationsActivity.cs" />
+    <Compile Include="Views\Authentication\LoginActivity.cs" />
+    <Compile Include="Views\Base\BaseAuthRequiredActivity.cs" />
+    <Compile Include="Views\Main\SplashActivity.cs" />
+    <Compile Include="Views\Reservations\ReservationsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

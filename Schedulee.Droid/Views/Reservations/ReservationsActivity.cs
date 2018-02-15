@@ -5,11 +5,12 @@ using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Views;
+using Schedulee.Droid.Views.Base;
 
-namespace Schedulee.Droid.Views
+namespace Schedulee.Droid.Views.Reservations
 {
     [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
-    public class ReservationsActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
+    public class ReservationsActivity : BaseAuthRequiredActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
