@@ -5,9 +5,11 @@ using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Droid.Views.Base;
+using Schedulee.UI.Resources.Strings.Reservations;
 using Schedulee.UI.ViewModels.Reservations;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
@@ -23,7 +25,7 @@ namespace Schedulee.Droid.Views.Reservations
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            _viewModel = ServiceLocater.Instance.Resolve<IReservationsViewModel>();
+            BindingContext = _viewModel = ServiceLocater.Instance.Resolve<IReservationsViewModel>();
 
             SetContentView(Resource.Layout.activity_reservations);
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -37,6 +39,8 @@ namespace Schedulee.Droid.Views.Reservations
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
+            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
+            LoadingMessage = Strings.Loading;
         }
 
         protected override void OnResume()
