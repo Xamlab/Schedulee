@@ -8,6 +8,7 @@ using Android.Widget;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Droid.Views.Base;
+using Schedulee.UI.ViewModels.Reservations;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Schedulee.Droid.Views.Reservations
@@ -17,10 +18,12 @@ namespace Schedulee.Droid.Views.Reservations
     {
         private DrawerLayout _drawerLayout;
         private TextView _userName;
-
+        private IReservationsViewModel _viewModel;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            _viewModel = ServiceLocater.Instance.Resolve<IReservationsViewModel>();
+
             SetContentView(Resource.Layout.activity_reservations);
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
@@ -33,6 +36,12 @@ namespace Schedulee.Droid.Views.Reservations
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            _viewModel.LoadCommand.Execute(null);
         }
 
         public bool OnNavigationItemSelected(IMenuItem menuItem)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -84,13 +85,21 @@ namespace Schedulee.Core.Services.Implementation
             return resultToken;
         }
 
+        public async Task<IEnumerable<Reservation>> FetchReservationsAsync(CancellationToken token = default(CancellationToken))
+        {
+            var user = _secureSettings.GetAccount()?.User;
+            if(user == null) return null;
+            var reservations = await _client.Child("reservations").Child(user.Id).OnceAsync<List<Reservation>>();
+            return reservations?.Select(reservation => reservation.Object).First();
+        }
+
         public async Task BootstrapDataAsync(Models.User user, CancellationToken token = default(CancellationToken))
         {
             var reservation = await _client.Child("reservations").Child(user.Id).OnceSingleAsync<Reservation>();
             if (reservation == null)
             {
                 var sampleReservations = GetSampleReservations();
-                await _client.Child("reservations").Child(user.Id).PutAsync(sampleReservations);
+                await _client.Child("reservations").Child(user.Id).PostAsync(sampleReservations);
             }
         }
 
