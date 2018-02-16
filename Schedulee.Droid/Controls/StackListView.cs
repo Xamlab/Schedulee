@@ -11,7 +11,8 @@ namespace Schedulee.Droid.Controls
     public class StackListView<T> : LimitedItemsView<T>
         where T : INotifyPropertyChanged
     {
-        private LinearLayout Root { get; set; }
+        private LayoutParams _layoutParams;
+        public LinearLayout Root { get; set; }
 
         public StackListView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
@@ -39,7 +40,13 @@ namespace Schedulee.Droid.Controls
 
         public override void AddChildView(View view, int index)
         {
+            view.LayoutParameters = GetViewLayoutParametersAtIndex(index);
             Root.AddView(view, index);
+        }
+
+        protected virtual LayoutParams GetViewLayoutParametersAtIndex(int index)
+        {
+            return new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
         }
 
         public override void RemoveChildView(int index)
@@ -50,8 +57,8 @@ namespace Schedulee.Droid.Controls
         protected override void Clear()
         {
             base.Clear();
+            var layoutParams = Root.LayoutParameters;
             Root.RemoveAllViews();
-            var layoutParams = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
             AddView(Root, 0, layoutParams);
         }
 
@@ -62,8 +69,8 @@ namespace Schedulee.Droid.Controls
                        Orientation = Orientation.Vertical
                    };
 
-            var layoutParams = new LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
-            AddView(Root, 0, layoutParams);
+            _layoutParams = new LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+            AddView(Root, 0, _layoutParams);
         }
     }
 }

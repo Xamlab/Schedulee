@@ -9,8 +9,6 @@ namespace Schedulee.Droid.Views.Availability
 {
     public class AvailabilitiesView : StackListView<IAvailabilityViewModel>
     {
-        private ISetAvailabilityViewModel _viewModel;
-
         public AvailabilitiesView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
         }
@@ -40,15 +38,5 @@ namespace Schedulee.Droid.Views.Availability
             Itemtemplate = new DataTemplate(ctx => new AvailabilityView(ctx));
             ItemClickable = true;
         }
-
-        //protected override void OnBindingContextChanged()
-        //{
-        //    base.OnBindingContextChanged();
-        //    if (BindingContext == null || !(BindingContext is ISetAvailabilityViewModel viewModel)) return;
-
-        //    _viewModel = viewModel;
-        //    this.SetBinding(() => _viewModel.Items, () => Items, BindingMode.OneWay)
-        //        .ConvertSourceToTarget(list => list as IEnumerable<IAvailabilityViewModel>);
-        //}
     }
 }

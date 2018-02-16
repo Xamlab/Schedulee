@@ -7,11 +7,16 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 		<LinearLayout
+			android:orientation="vertical"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
 			<schedulee.droid.views.availability.AvailabilitiesView
 				android:id="@+id/set_availability_availabilities_view"
 				android:layout_margin="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"/>
+		  <schedulee.droid.views.availability.DaysOfWeekView
+				android:id="@+id/set_availability_days_of_week_view"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"/>
 		</LinearLayout>

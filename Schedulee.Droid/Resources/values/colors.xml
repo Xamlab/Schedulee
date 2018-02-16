@@ -11,5 +11,7 @@
   <color name="hintText">#ABBDC3</color>
   <color name="background">#2DB3AE</color>
   <color name="separator">#B2B2B2</color>
+  <color name="selected_button_color">#87C735</color>
+  <color name="deselected_button_color">#F1F1F1</color>
 </resources>
 

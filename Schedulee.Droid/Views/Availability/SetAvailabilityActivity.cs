@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -16,6 +17,7 @@ namespace Schedulee.Droid.Views.Availability
     {
         private ISetAvailabilityViewModel _viewModel;
         private AvailabilitiesView _availabilities;
+        private DaysOfWeekView _daysOfWeek;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,6 +31,13 @@ namespace Schedulee.Droid.Views.Availability
             _availabilities.BindingContext = _viewModel;
             this.SetBinding(() => _viewModel.Items, () => _availabilities.Items, BindingMode.OneWay)
                 .ConvertSourceToTarget(list => list as IEnumerable<IAvailabilityViewModel>);
+
+            _daysOfWeek = FindViewById<DaysOfWeekView>(Resource.Id.set_availability_days_of_week_view);
+            _daysOfWeek.BindingContext = _viewModel;
+            this.SetBinding(() => _viewModel.DaysOfWeek, () => _daysOfWeek.Items, BindingMode.OneWay)
+                .ConvertSourceToTarget(list => list as IEnumerable<IDayOfWeekViewModel>);
+            _daysOfWeek.ItemClicked += DaysOfWeekOnItemClicked;
+
             this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.Loading;
         }
@@ -36,13 +45,27 @@ namespace Schedulee.Droid.Views.Availability
         protected override void OnResume()
         {
             base.OnResume();
-            if(!_viewModel.IsLoaded) _viewModel.LoadCommand.Execute(null);
+            Load();
+        }
+
+        private async void Load()
+        {
+            if(!_viewModel.IsLoaded)
+            {
+                await _viewModel.LoadCommand.ExecuteAsync(null);
+                _viewModel.AddTimeAvailableCommand.Execute(null);
+            }
         }
 
         public override bool NavigateUpTo(Intent upIntent)
         {
             Finish();
             return true;
+        }
+
+        private void DaysOfWeekOnItemClicked(object sender, EventArgs eventArgs)
+        {
+            _viewModel.ToggleDayCommand.Execute(sender);
         }
     }
 }

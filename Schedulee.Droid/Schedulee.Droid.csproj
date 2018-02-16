@@ -196,14 +196,16 @@
     <Compile Include="Services\Implementation\SecureStorageService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Authentication\LoginActivity.cs" />
+    <Compile Include="Views\Availability\DayOfWeekView.cs" />
+    <Compile Include="Views\Availability\DaysOfWeekView.cs" />
     <Compile Include="Views\Availability\AvailabilityView.cs" />
-    <Compile Include="Views\Availability\SetAvailabilityActivity.cs" />
     <Compile Include="Views\Availability\AvailabilitiesView.cs" />
     <Compile Include="Views\Base\BaseActivity.cs" />
     <Compile Include="Views\Base\BaseAuthRequiredActivity.cs" />
     <Compile Include="Views\Main\SplashActivity.cs" />
     <Compile Include="Views\Reservations\ReservationDetailActivity.cs" />
     <Compile Include="Views\Reservations\ReservationsActivity.cs" />
+    <Compile Include="Views\Availability\SetAvailabilityActivity.cs" />
     <Compile Include="Views\Settings\SettingsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -593,6 +595,33 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\reservation_detail_layout.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\button_shape_background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\button_shape.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\button_shape_deselected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\button_shape_selected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\button_text_color.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\day_of_week_button_layout.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\check_mark_deselected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\check_mark_selected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\check_mark_background.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
