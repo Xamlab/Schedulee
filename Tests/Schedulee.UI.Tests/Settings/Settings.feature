@@ -2,7 +2,7 @@
 	
 Scenario: Initial loading of settings page
 	Given I am logged in as
-		| FirstName | LastName | Email               | ProfilePictureUrl   | Location          | SetTravelTime |
+		| FirstName | LastName | Email               | ProfilePictureUrl                          | Location          | SetTravelTime |
 		| John      | Smith    | john.smith@mail.com | http://some.url.com?image=jhon.smith.image | New York, 31, USA | 20            |
 	And I have navigated to settings page
 	Then I should see the user data populated correctly

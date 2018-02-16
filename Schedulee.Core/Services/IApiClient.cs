@@ -11,5 +11,6 @@ namespace Schedulee.Core.Services
         Task<IEnumerable<Reservation>> FetchReservationsAsync(CancellationToken token = default(CancellationToken));
         Task<IEnumerable<UserAvailablity>> FetchUserAvailablities(CancellationToken token = default(CancellationToken));
         Task SaveAccountAsync(string firstName, string lastName, string location, int setTimeInterval, CancellationToken token = default(CancellationToken));
+        Task CreateAvailabilityAsync(UserAvailablity availablity, CancellationToken token = default(CancellationToken));
     }
 }

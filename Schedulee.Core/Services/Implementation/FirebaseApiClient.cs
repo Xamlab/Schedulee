@@ -88,17 +88,17 @@ namespace Schedulee.Core.Services.Implementation
         public async Task<IEnumerable<Reservation>> FetchReservationsAsync(CancellationToken token = default(CancellationToken))
         {
             var user = _secureSettings.GetAccount()?.User;
-            if(user == null) return null;
-            var reservations = await _client.Child("reservations").Child(user.Id).OnceAsync<List<Reservation>>();
-            return reservations?.Select(reservation => reservation.Object).First();
+            if(user == null) throw new UnauthorizedAccessException();
+            var reservations = await _client.Child("reservations").Child(user.Id).OnceAsync<Reservation>();
+            return reservations?.Select(reservation => reservation.Object).ToList();
         }
 
-        public  async Task<IEnumerable<UserAvailablity>> FetchUserAvailablities(CancellationToken token = default(CancellationToken))
+        public async Task<IEnumerable<UserAvailablity>> FetchUserAvailablities(CancellationToken token = default(CancellationToken))
         {
             var user = _secureSettings.GetAccount()?.User;
-            if (user == null) return null;
-            var availabilities = await _client.Child("availablities").Child(user.Id).OnceAsync<List<UserAvailablity>>();
-            return availabilities?.Select(reservation => reservation.Object).First();
+            if(user == null) throw new UnauthorizedAccessException();
+            var availabilities = await _client.Child("availablities").Child(user.Id).OnceAsync<UserAvailablity>();
+            return availabilities?.Select(reservation => reservation.Object).ToList();
         }
 
         public async Task SaveAccountAsync(string firstName, string lastName, string location, int setTimeInterval, CancellationToken token = default(CancellationToken))
@@ -116,20 +116,33 @@ namespace Schedulee.Core.Services.Implementation
                                                                  });
         }
 
-        public async Task BootstrapDataAsync(Models.User user, CancellationToken token = default(CancellationToken))
+        public async Task CreateAvailabilityAsync(UserAvailablity availablity, CancellationToken token = default(CancellationToken))
+        {
+            var user = _secureSettings.GetAccount()?.User;
+            if(user == null) throw new UnauthorizedAccessException();
+            await _client.Child("availablities").Child(user.Id).PostAsync(availablity);
+        }
+
+        private async Task BootstrapDataAsync(Models.User user, CancellationToken token = default(CancellationToken))
         {
             var reservation = await _client.Child("reservations").Child(user.Id).OnceSingleAsync<Reservation>();
             if(reservation == null)
             {
                 var sampleReservations = GetSampleReservations();
-                await _client.Child("reservations").Child(user.Id).PostAsync(sampleReservations);
+                foreach(var sampleReservation in sampleReservations)
+                {
+                    await _client.Child("reservations").Child(user.Id).PostAsync(sampleReservation);
+                }
             }
 
             var availablities = await _client.Child("availablities").Child(user.Id).OnceSingleAsync<UserAvailablity>();
             if(availablities == null)
             {
                 var sampleAvailablities = GetSampleAvailabilities();
-                await _client.Child("availablities").Child(user.Id).PostAsync(sampleAvailablities);
+                foreach(var availablity in sampleAvailablities)
+                {
+                    await _client.Child("availablities").Child(user.Id).PostAsync(availablity);
+                }
             }
         }
 
