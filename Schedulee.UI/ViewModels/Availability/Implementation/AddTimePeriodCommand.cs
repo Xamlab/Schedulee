@@ -23,7 +23,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
                                       {
                                           Start = timePeriod.Start,
                                           End = timePeriod.End,
-                                          FormattedTimePeriod = $"{timePeriod.Start:hh:mm} - {timePeriod.End:hh:mm}"
+                                          FormattedTimePeriod = $"{timePeriod.Start:HH:mm} - {timePeriod.End:HH:mm}"
                                       });
         }
     }

@@ -168,7 +168,7 @@ namespace Schedulee.Droid.Views.Reservations
             var name = holder.FindCachedViewById<TextView>(Resource.Id.reservation_client_name_text);
             var ratePerHour = holder.FindCachedViewById<TextView>(Resource.Id.reservation_rate_per_hour_text);
 
-            startTime.Text = reservation.Start.ToString("hh:mm");
+            startTime.Text = reservation.Start.ToString("HH:mm");
             name.Text = $"{reservation.Client.FirstName} {reservation.Client.LastName}";
             ratePerHour.Text = $"{reservation.RatePerHour:C}";
         }
