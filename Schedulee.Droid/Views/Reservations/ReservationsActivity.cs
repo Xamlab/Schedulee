@@ -73,7 +73,6 @@ namespace Schedulee.Droid.Views.Reservations
             await _viewModel.LoadCommand.ExecuteAsync(null);
             _reservationsHeaderAdapter = _viewModel.Items.GetRecyclerAdapter(BindHeaderViewHolder, Resource.Layout.reservation_date_layout);
             _reservationsHeaderRecyclerView.SetAdapter(_reservationsHeaderAdapter);
-            
         }
 
         private void BindHeaderViewHolder(CachingViewHolder holder, IDateViewModel viewModel, int position)
@@ -150,7 +149,7 @@ namespace Schedulee.Droid.Views.Reservations
                 var emptyMessageText = FindViewById<TextView>(Resource.Id.reservation_content_empty_message_text);
                 var anyData = _viewModel.SelectedDate?.Reservations?.Any() == true;
                 emptyMessageText.Visibility = anyData ? ViewStates.Gone : ViewStates.Visible;
-                if (_viewModel.SelectedDate != null && anyData)
+                if(_viewModel.SelectedDate != null && anyData)
                 {
                     _reservationsContentAdapter = _viewModel.SelectedDate.Reservations.GetRecyclerAdapter(BindViewHolder, Resource.Layout.reservation_content_layout);
                     _reservationsContentRecyclerView.SetAdapter(_reservationsContentAdapter);

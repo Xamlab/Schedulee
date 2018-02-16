@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Schedulee.Core.Extensions;
-using Schedulee.Core.Models;
 using Schedulee.Core.Services;
-using Schedulee.UI.Resources.Strings.Availability;
 using Schedulee.UI.ViewModels.Base.Implementation;
 
 namespace Schedulee.UI.ViewModels.Availability.Implementation
@@ -14,7 +11,6 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
     {
         private readonly SetAvailabilityViewModel _viewModel;
         private readonly IApiClient _apiClient;
-        
 
         public LoadUserAvailabilitiesCommand(SetAvailabilityViewModel viewModel, IApiClient apiClient) : base(viewModel)
         {

@@ -30,7 +30,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
 
         public override async Task ExecuteAsync(object param, CancellationToken token = default(CancellationToken))
         {
-            if (!_viewModel.IsAddingAvailableTimePeriod)
+            if(!_viewModel.IsAddingAvailableTimePeriod)
             {
                 await _dialogService.ShowNotificationAsync(Strings.NoAddTimeAvailableStarted, CommonStrings.Ok);
                 return;
