@@ -1,4 +1,5 @@
-﻿using PropertyChanged;
+﻿using System.Windows.Input;
+using PropertyChanged;
 using Schedulee.Core.Services;
 using Schedulee.UI.ViewModels.Base.Implementation;
 
@@ -10,8 +11,10 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
         public ReservationsViewModel(IApiClient apiClient, ITimeProvider timeProvider)
         {
             LoadCommand = new LoadReservationsCommand(this, apiClient, timeProvider);
+            SelectDateCommand = new SelectDateCommand(this);
         }
 
-        public IDateViewModel SelectedDate { get; set; }
+        public ICommand SelectDateCommand { get; }
+        public IDateViewModel SelectedDate { get; internal set; }
     }
 }

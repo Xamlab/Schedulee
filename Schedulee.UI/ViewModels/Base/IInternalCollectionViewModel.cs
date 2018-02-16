@@ -4,6 +4,6 @@ namespace Schedulee.UI.ViewModels.Base
 {
     internal interface IInternalCollectionViewModel<T> : ICollectionViewModel<T>
     {
-        new IEnumerable<T> Items { get; set; }
+        new IList<T> Items { get; set; }
     }
 }

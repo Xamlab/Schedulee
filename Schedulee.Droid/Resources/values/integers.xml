@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <integer name="date_selection_key">101</integer>
+</resources>
