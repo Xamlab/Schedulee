@@ -20,6 +20,7 @@ namespace Schedulee.UI
             container.Register<ILoginViewModel, LoginViewModel>();
             container.Register<IReservationsViewModel, ReservationsViewModel>();
             container.Register<ISettingsViewModel, SettingsViewModel>();
+            container.Register<IReservationDetailsViewModel, ReservationDetailsViewModel>();
             container.Register<ISetAvailabilityViewModel, SetAvailabilityViewModel>();
             return container;
         }

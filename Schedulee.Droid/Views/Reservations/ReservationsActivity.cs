@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Android.App;
+using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
@@ -10,6 +11,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
+using Newtonsoft.Json;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Core.Models;
@@ -22,7 +24,9 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 namespace Schedulee.Droid.Views.Reservations
 {
     [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar")]
-    public class ReservationsActivity : BaseAuthRequiredActivity, NavigationView.IOnNavigationItemSelectedListener, View.IOnClickListener
+    public class ReservationsActivity : BaseAuthRequiredActivity,
+                                        NavigationView.IOnNavigationItemSelectedListener,
+                                        View.IOnClickListener
     {
         private DrawerLayout _drawerLayout;
         private TextView _userName;
@@ -35,7 +39,8 @@ namespace Schedulee.Droid.Views.Reservations
         private RecyclerView _reservationsContentRecyclerView;
         private ObservableRecyclerAdapter<Reservation, CachingViewHolder> _reservationsContentAdapter;
         private LinearLayoutManager _reservationsContentLayoutManager;
-        private TextView _emptyMessageText;
+
+        public const string ReservationDetailKey = "ReservationDetailKey";
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -167,9 +172,26 @@ namespace Schedulee.Droid.Views.Reservations
             var name = holder.FindCachedViewById<TextView>(Resource.Id.reservation_client_name_text);
             var ratePerHour = holder.FindCachedViewById<TextView>(Resource.Id.reservation_rate_per_hour_text);
 
+            holder.ItemView.SetTag(Resource.Integer.reservation_selection_key, position);
+            holder.ItemView.Click += ReservationClicked;
             startTime.Text = reservation.Start.ToString("HH:mm");
             name.Text = $"{reservation.Client.FirstName} {reservation.Client.LastName}";
             ratePerHour.Text = $"{reservation.RatePerHour:C}";
+        }
+
+        private void ReservationClicked(object sender, System.EventArgs e)
+        {
+            if(sender is View view)
+            {
+                var index = (int) view.GetTag(Resource.Integer.reservation_selection_key);
+                var reservation = _viewModel.SelectedDate.Reservations[index];
+
+                var reservationJson = JsonConvert.SerializeObject(reservation);
+                var intent = new Intent(this, typeof(ReservationDetailActivity));
+                intent.PutExtra(ReservationDetailKey, reservationJson);
+
+                StartActivity(intent);
+            }
         }
     }
 }
