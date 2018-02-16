@@ -24,6 +24,7 @@ namespace Schedulee.UI.ViewModels.Base.Implementation
 
         public override async Task ExecuteAsync(object param, CancellationToken token = default(CancellationToken))
         {
+            var canExecute = CanExecute(null);
             SetCanExecute(false);
             _viewModel.SavingFailureMessage = null;
 
@@ -50,7 +51,7 @@ namespace Schedulee.UI.ViewModels.Base.Implementation
             finally
             {
                 _viewModel.IsSaving = false;
-                SetCanExecute(true);
+                SetCanExecute(canExecute);
             }
         }
 

@@ -31,11 +31,11 @@ Scenario Outline: Settings stale properties
 	When I modify '<field>' with '<value>'
 	Then When I try to dismiss the screen I should see a warning notifying if I would like to discard pending changes
 	Examples:
-		| field         | value        |
-		| FirstName     | Marie        |
-		| LastName      | Johnson      |
+		| field         | value       |
+		| FirstName     | Marie       |
+		| LastName      | Johnson     |
 		| Location      | Delaware 81 |
-		| SetTravelTime | 80           |
+		| SetTravelTime | 80          |
 
 Scenario: Saving completes successfully 
 	Given I am logged in as

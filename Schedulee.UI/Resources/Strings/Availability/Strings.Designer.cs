@@ -61,7 +61,7 @@ namespace Schedulee.UI.Resources.Strings.Availability {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;re already in mid of adding new time available. Please complete the process before trying to add a new one.
+        ///   Looks up a localized string similar to You&apos;re already in mid of adding new time available. Please complete the process before trying to add a new one..
         /// </summary>
         public static string ActiveAddTimeAvailableError {
             get {

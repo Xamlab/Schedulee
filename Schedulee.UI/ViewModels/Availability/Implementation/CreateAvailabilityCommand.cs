@@ -28,14 +28,19 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             _viewModel.PropertyChanged += ViewModelOnPropertyChanged;
         }
 
-        protected override async Task<bool> ExecuteCoreAsync(object param, CancellationToken token = default(CancellationToken))
+        public override async Task ExecuteAsync(object param, CancellationToken token = default(CancellationToken))
         {
-            if(!_viewModel.IsAddingAvailableTimePeriod)
+            if (!_viewModel.IsAddingAvailableTimePeriod)
             {
                 await _dialogService.ShowNotificationAsync(Strings.NoAddTimeAvailableStarted, CommonStrings.Ok);
-                return false;
+                return;
             }
 
+            await base.ExecuteAsync(param, token);
+        }
+
+        protected override async Task<bool> ExecuteCoreAsync(object param, CancellationToken token = default(CancellationToken))
+        {
             var availability = new UserAvailablity
                                {
                                    Id = Guid.NewGuid().ToString(),

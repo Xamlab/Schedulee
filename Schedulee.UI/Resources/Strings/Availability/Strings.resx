@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActiveAddTimeAvailableError" xml:space="preserve">
-    <value>You're already in mid of adding new time available. Please complete the process before trying to add a new one</value>
+    <value>You're already in mid of adding new time available. Please complete the process before trying to add a new one.</value>
   </data>
   <data name="DaysOfWeekRequiredValidationError" xml:space="preserve">
     <value>Please select  at least one day of week before adding new time available.</value>

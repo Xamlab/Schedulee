@@ -3,6 +3,8 @@ using Schedulee.Core.Managers;
 using Schedulee.UI.Managers.Implementation;
 using Schedulee.UI.ViewModels.Authentication;
 using Schedulee.UI.ViewModels.Authentication.Implementation;
+using Schedulee.UI.ViewModels.Availability;
+using Schedulee.UI.ViewModels.Availability.Implementation;
 using Schedulee.UI.ViewModels.Reservations;
 using Schedulee.UI.ViewModels.Reservations.Implementation;
 using Schedulee.UI.ViewModels.Settings;
@@ -18,6 +20,7 @@ namespace Schedulee.UI
             container.Register<ILoginViewModel, LoginViewModel>();
             container.Register<IReservationsViewModel, ReservationsViewModel>();
             container.Register<ISettingsViewModel, SettingsViewModel>();
+            container.Register<ISetAvailabilityViewModel, SetAvailabilityViewModel>();
             return container;
         }
     }

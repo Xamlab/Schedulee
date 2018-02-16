@@ -28,7 +28,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             }
 
             _viewModel.IsAddingAvailableTimePeriod = true;
-            _viewModel.DaysOfWeek = _viewModel.DaysOfWeek ?? Enumerable.Range(0, 6).Select(day => new DayOfWeekViewModel
+            _viewModel.DaysOfWeek = _viewModel.DaysOfWeek ?? Enumerable.Range(0, 7).Select(day => new DayOfWeekViewModel
                                                                                                   {
                                                                                                       Day = day,
                                                                                                       FormattedDay = Helpers.DaysOfWeek[day]

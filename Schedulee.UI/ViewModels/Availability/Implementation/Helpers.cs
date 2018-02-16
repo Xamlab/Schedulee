@@ -54,7 +54,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
         private static string GetFormattedTimePeriods(UserAvailablity availablity)
         {
             if(availablity?.TimePeriods?.Any() != true) return "";
-            return string.Join(", ", availablity.TimePeriods.Select(period => $"{period.Start:hh:mm} - {period.End:hh:mm}"));
+            return string.Join(", ", availablity.TimePeriods.Select(period => $"{period.Start:HH:mm} - {period.End:HH:mm}"));
         }
     }
 }

@@ -176,6 +176,12 @@
       <DependentUpon>Login.feature</DependentUpon>
     </Compile>
     <Compile Include="Authentication\LoginTestSteps.cs" />
+    <Compile Include="Availability\SetAvailability.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SetAvailability.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Availability\SetAvailabilityTestSteps.cs" />
     <Compile Include="Base\BaseCollectionIntegrationTestSteps.cs" />
     <Compile Include="Base\BaseTestSteps.cs" />
     <Compile Include="Base\ItemCollectionScreen.feature.cs">
@@ -196,6 +202,7 @@
       <DependentUpon>SaveableScreen.feature</DependentUpon>
     </Compile>
     <Compile Include="Base\SaveableScreenIntegrationTestSteps.cs" />
+    <Compile Include="Extensions\Misc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservations\Reservations.feature.cs">
       <AutoGen>True</AutoGen>
@@ -227,6 +234,10 @@
     <None Include="Authentication\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Login.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Availability\SetAvailability.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SetAvailability.feature.cs</LastGenOutput>
     </None>
     <None Include="Base\ItemCollectionScreen.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
