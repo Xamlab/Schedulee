@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 using PropertyChanged;
-using Schedulee.Core.Managers;
 using Schedulee.Core.Services;
 using Schedulee.UI.Services;
 using Schedulee.UI.ViewModels.Base;

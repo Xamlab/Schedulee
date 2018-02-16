@@ -51,8 +51,6 @@ namespace Schedulee.Droid.Views.Reservations
             this.SetBinding(() => _viewModel.FormattedVat, () => _formattedVat.Text, BindingMode.OneWay);
             this.SetBinding(() => _viewModel.FormattedNetPrice, () => _formattedNetPrice.Text, BindingMode.OneWay);
             this.SetBinding(() => _viewModel.FormattedTotal, () => _formattedTotal.Text, BindingMode.OneWay);
-
-
         }
 
         public override bool NavigateUpTo(Intent upIntent)

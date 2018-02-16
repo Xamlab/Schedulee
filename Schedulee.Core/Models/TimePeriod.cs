@@ -6,7 +6,6 @@ namespace Schedulee.Core.Models
     {
         public TimePeriod()
         {
-            
         }
 
         public TimePeriod(DateTime start, DateTime end)

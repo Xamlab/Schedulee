@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Schedulee.Core.Models;
+﻿using Schedulee.Core.Models;
 using Schedulee.UI.ViewModels.Base;
 
 namespace Schedulee.UI.ViewModels.Reservations
