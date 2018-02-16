@@ -16,7 +16,7 @@ namespace Schedulee.UI.ViewModels.Base.Implementation
         protected virtual string OperationUnknownFailureMessage => Strings.OperationUnknownFailure;
         protected virtual string OperationNetworkFailureMessage => Strings.OperationNetworkFailure;
 
-        protected SaveAsyncCommand(IInternalSaveableViewModel viewModel, IDialogService dialogService)
+        protected SaveAsyncCommand(IInternalSaveableViewModel viewModel, IDialogService dialogService, bool canExecute = true) : base(canExecute)
         {
             _dialogService = dialogService;
             _viewModel = viewModel;

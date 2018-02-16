@@ -117,22 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Email" xml:space="preserve">
-    <value>Email</value>
+  <data name="ActiveAddTimeAvailableError" xml:space="preserve">
+    <value>You're already in mid of adding new time available. Please complete the process before trying to add a new one</value>
   </data>
-  <data name="InvalidEmail" xml:space="preserve">
-    <value>Please enter a valid email address</value>
+  <data name="DaysOfWeekRequiredValidationError" xml:space="preserve">
+    <value>Please select  at least one day of week before adding new time available.</value>
   </data>
-  <data name="InvalidPassword" xml:space="preserve">
-    <value>Password should contain minimum 8 characters.</value>
+  <data name="Friday" xml:space="preserve">
+    <value>Fri</value>
   </data>
-  <data name="LoggingIn" xml:space="preserve">
-    <value>Logging in...</value>
+  <data name="InvalidDayOfWeekError" xml:space="preserve">
+    <value>Please select a valid day of week and try again.</value>
   </data>
-  <data name="LoginFailed" xml:space="preserve">
-    <value>Login failed. Please make sure you've entered correct email/password and try again.</value>
+  <data name="InvalidTimePeriodError" xml:space="preserve">
+    <value>Please make sure to select valid time period and try again.</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Password</value>
+  <data name="Monday" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="NoAddTimeAvailableStarted" xml:space="preserve">
+    <value>Please start adding time available before trying to continue.</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Sat</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thu</value>
+  </data>
+  <data name="TimePeriodRequiredValidationError" xml:space="preserve">
+    <value>Please add at least one time period before adding new time available.</value>
+  </data>
+  <data name="TimePeriodsIntersectingValidationError" xml:space="preserve">
+    <value>Selected time periods are intersecting with your current availability settings. Please make sure you add non-intersecting time periods and try again.</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tue</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Wed</value>
   </data>
 </root>

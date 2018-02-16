@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Schedulee.UI.Resources.Strings.Authentication {
+namespace Schedulee.UI.Resources.Strings.Reservations {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Schedulee.UI.Resources.Strings.Authentication {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Schedulee.UI.Resources.Strings.Authentication.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Schedulee.UI.Resources.Strings.Reservations.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,11 @@ namespace Schedulee.UI.Resources.Strings.Authentication {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email.
+        ///   Looks up a localized string similar to Loading Reservations....
         /// </summary>
-        public static string Email {
+        public static string Loading {
             get {
-                return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please enter a valid email address.
-        /// </summary>
-        public static string InvalidEmail {
-            get {
-                return ResourceManager.GetString("InvalidEmail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Password should contain minimum 8 characters..
-        /// </summary>
-        public static string InvalidPassword {
-            get {
-                return ResourceManager.GetString("InvalidPassword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Logging in....
-        /// </summary>
-        public static string LoggingIn {
-            get {
-                return ResourceManager.GetString("LoggingIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Login failed. Please make sure you&apos;ve entered correct email/password and try again..
-        /// </summary>
-        public static string LoginFailed {
-            get {
-                return ResourceManager.GetString("LoginFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Password.
-        /// </summary>
-        public static string Password {
-            get {
-                return ResourceManager.GetString("Password", resourceCulture);
+                return ResourceManager.GetString("Loading", resourceCulture);
             }
         }
     }

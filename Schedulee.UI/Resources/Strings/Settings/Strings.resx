@@ -117,22 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Email" xml:space="preserve">
-    <value>Email</value>
+  <data name="FirstName" xml:space="preserve">
+    <value>FIRST NAME</value>
   </data>
-  <data name="InvalidEmail" xml:space="preserve">
-    <value>Please enter a valid email address</value>
+  <data name="LastName" xml:space="preserve">
+    <value>LAST NAME</value>
   </data>
-  <data name="InvalidPassword" xml:space="preserve">
-    <value>Password should contain minimum 8 characters.</value>
+  <data name="Location" xml:space="preserve">
+    <value>LOCATION</value>
   </data>
-  <data name="LoggingIn" xml:space="preserve">
-    <value>Logging in...</value>
+  <data name="Mins" xml:space="preserve">
+    <value>MINS</value>
   </data>
-  <data name="LoginFailed" xml:space="preserve">
-    <value>Login failed. Please make sure you've entered correct email/password and try again.</value>
+  <data name="Save" xml:space="preserve">
+    <value>SAVE</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Password</value>
+  <data name="Saving" xml:space="preserve">
+    <value>Saving...</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SetTravelTime" xml:space="preserve">
+    <value>SET TRAVEL TIME</value>
+  </data>
+  <data name="SetTravelTimeValidationError" xml:space="preserve">
+    <value>Set Travel Time should be greater than 0.</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>USERNAME</value>
   </data>
 </root>

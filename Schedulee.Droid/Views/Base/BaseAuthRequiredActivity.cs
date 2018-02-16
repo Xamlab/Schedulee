@@ -2,7 +2,6 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Support.V7.App;
 using Newtonsoft.Json;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Extensions.PubSub;
@@ -13,7 +12,7 @@ using Schedulee.Droid.Services.Implementation;
 
 namespace Schedulee.Droid.Views.Base
 {
-    public class BaseAuthRequiredActivity : AppCompatActivity
+    public class BaseAuthRequiredActivity : BaseActivity
     {
         protected ISecureSettingsManager SecureSettings { get; private set; }
         protected IAuthenticationManager AuthManager { get; private set; }

@@ -63,12 +63,15 @@ namespace Schedulee.Core.Services.Implementation
             //If we don't populate the current user information
             if(currentUser == null)
             {
+                //As we don't have create user method, we'll need to manually set user properties to some default values
                 currentUser = new Models.User
                               {
                                   Id = result.User.LocalId,
                                   Email = result.User.Email,
                                   FirstName = "John",
-                                  LastName = "Smith"
+                                  LastName = "Smith",
+                                  Location = "Kongeleveien 29, 35055 Krokstadelva",
+                                  SetTravelTime = 30
                               };
                 await _client.Child("users").Child(currentUser.Id).PutAsync(currentUser);
             }
@@ -85,19 +88,85 @@ namespace Schedulee.Core.Services.Implementation
         public async Task<IEnumerable<Reservation>> FetchReservationsAsync(CancellationToken token = default(CancellationToken))
         {
             var user = _secureSettings.GetAccount()?.User;
-            if(user == null) return null;
-            var reservations = await _client.Child("reservations").Child(user.Id).OnceAsync<List<Reservation>>();
-            return reservations?.Select(reservation => reservation.Object).First();
+            if(user == null) throw new UnauthorizedAccessException();
+            var reservations = await _client.Child("reservations").Child(user.Id).OnceAsync<Reservation>();
+            return reservations?.Select(reservation => reservation.Object).ToList();
         }
 
-        public async Task BootstrapDataAsync(Models.User user, CancellationToken token = default(CancellationToken))
+        public async Task<IEnumerable<UserAvailablity>> FetchUserAvailablities(CancellationToken token = default(CancellationToken))
+        {
+            var user = _secureSettings.GetAccount()?.User;
+            if(user == null) throw new UnauthorizedAccessException();
+            var availabilities = await _client.Child("availablities").Child(user.Id).OnceAsync<UserAvailablity>();
+            return availabilities?.Select(reservation => reservation.Object).ToList();
+        }
+
+        public async Task SaveAccountAsync(string firstName, string lastName, string location, int setTimeInterval, CancellationToken token = default(CancellationToken))
+        {
+            var user = _secureSettings.GetAccount()?.User;
+            if(user == null) throw new UnauthorizedAccessException();
+            await _client.Child("users").Child(user.Id).PutAsync(new Models.User
+                                                                 {
+                                                                     Id = user.Id,
+                                                                     Email = user.Email,
+                                                                     FirstName = firstName,
+                                                                     LastName = lastName,
+                                                                     Location = location,
+                                                                     SetTravelTime = setTimeInterval
+                                                                 });
+        }
+
+        public async Task CreateAvailabilityAsync(UserAvailablity availablity, CancellationToken token = default(CancellationToken))
+        {
+            var user = _secureSettings.GetAccount()?.User;
+            if(user == null) throw new UnauthorizedAccessException();
+            await _client.Child("availablities").Child(user.Id).PostAsync(availablity);
+        }
+
+        private async Task BootstrapDataAsync(Models.User user, CancellationToken token = default(CancellationToken))
         {
             var reservation = await _client.Child("reservations").Child(user.Id).OnceSingleAsync<Reservation>();
             if(reservation == null)
             {
                 var sampleReservations = GetSampleReservations();
-                await _client.Child("reservations").Child(user.Id).PostAsync(sampleReservations);
+                foreach(var sampleReservation in sampleReservations)
+                {
+                    await _client.Child("reservations").Child(user.Id).PostAsync(sampleReservation);
+                }
             }
+
+            var availablities = await _client.Child("availablities").Child(user.Id).OnceSingleAsync<UserAvailablity>();
+            if(availablities == null)
+            {
+                var sampleAvailablities = GetSampleAvailabilities();
+                foreach(var availablity in sampleAvailablities)
+                {
+                    await _client.Child("availablities").Child(user.Id).PostAsync(availablity);
+                }
+            }
+        }
+
+        private List<UserAvailablity> GetSampleAvailabilities()
+        {
+            return new List<UserAvailablity>
+                   {
+                       new UserAvailablity
+                       {
+                           Id = Guid.NewGuid().ToString(),
+                           DaysOfWeek = new[] {0, 6},
+                           TimePeriods = new[] {new TimePeriod(new DateTime(1, 1, 1, 9, 0, 0), new DateTime(1, 1, 1, 12, 0, 0))}
+                       },
+                       new UserAvailablity
+                       {
+                           Id = Guid.NewGuid().ToString(),
+                           DaysOfWeek = new[] {0, 2, 4},
+                           TimePeriods = new[]
+                                         {
+                                             new TimePeriod(new DateTime(1, 1, 1, 10, 15, 0), new DateTime(1, 1, 1, 13, 0, 0)),
+                                             new TimePeriod(new DateTime(1, 1, 1, 17, 30, 0), new DateTime(1, 1, 1, 22, 0, 0))
+                                         }
+                       }
+                   };
         }
 
         private List<Reservation> GetSampleReservations()

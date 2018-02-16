@@ -14,12 +14,14 @@ using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Core.Models;
 using Schedulee.Droid.Views.Base;
+using Schedulee.Droid.Views.Settings;
+using Schedulee.UI.Resources.Strings.Reservations;
 using Schedulee.UI.ViewModels.Reservations;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Schedulee.Droid.Views.Reservations
 {
-    [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar")]
     public class ReservationsActivity : BaseAuthRequiredActivity, NavigationView.IOnNavigationItemSelectedListener, View.IOnClickListener
     {
         private DrawerLayout _drawerLayout;
@@ -38,8 +40,8 @@ namespace Schedulee.Droid.Views.Reservations
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            _viewModel = ServiceLocater.Instance.Resolve<IReservationsViewModel>();
-            _viewModel.PropertyChanged += OnPropertyChanged;
+            BindingContext = _viewModel = ServiceLocater.Instance.Resolve<IReservationsViewModel>();
+            _viewModel.PropertyChanged += ViewModelOnPropertyChanged;
 
             SetContentView(Resource.Layout.activity_reservations);
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -53,10 +55,8 @@ namespace Schedulee.Droid.Views.Reservations
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
-
-            _emptyMessageText = FindViewById<TextView>(Resource.Id.reservation_content_empty_message_text);
-            this.SetBinding(() => _viewModel.SelectedDate.Reservations, () => _emptyMessageText.Visibility)
-                .ConvertSourceToTarget(reservations => reservations?.Any() == true ? ViewStates.Invisible : ViewStates.Visible);
+            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
+            LoadingMessage = Strings.Loading;
 
             _reservationsHeaderRecyclerView = FindViewById<RecyclerView>(Resource.Id.reservation_dates_recyclerView);
             _reservationsHeaderLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
@@ -65,11 +65,6 @@ namespace Schedulee.Droid.Views.Reservations
             _reservationsContentRecyclerView = FindViewById<RecyclerView>(Resource.Id.reservation_content_recyclerView);
             _reservationsContentLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Vertical, false);
             _reservationsContentRecyclerView.SetLayoutManager(_reservationsContentLayoutManager);
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
             Load();
         }
 
@@ -120,6 +115,9 @@ namespace Schedulee.Droid.Views.Reservations
                     var authManager = ServiceLocater.Instance.Resolve<IAuthenticationManager>();
                     authManager.SignOut();
                     break;
+                case Resource.Id.main_menu_settings:
+                    StartActivity(typeof(SettingsActivity));
+                    break;
             }
 
             return true;
@@ -145,19 +143,21 @@ namespace Schedulee.Droid.Views.Reservations
             _viewModel.SelectDateCommand.Execute(date);
         }
 
-        private void OnPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void ViewModelOnPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if(e.PropertyName == nameof(IReservationsViewModel.SelectedDate))
             {
-                
-                if(_viewModel.SelectedDate != null && _viewModel.SelectedDate.Reservations.Count > 0)
+                var emptyMessageText = FindViewById<TextView>(Resource.Id.reservation_content_empty_message_text);
+                var anyData = _viewModel.SelectedDate?.Reservations?.Any() == true;
+                emptyMessageText.Visibility = anyData ? ViewStates.Gone : ViewStates.Visible;
+                if (_viewModel.SelectedDate != null && anyData)
                 {
                     _reservationsContentAdapter = _viewModel.SelectedDate.Reservations.GetRecyclerAdapter(BindViewHolder, Resource.Layout.reservation_content_layout);
                     _reservationsContentRecyclerView.SetAdapter(_reservationsContentAdapter);
                 }
                 else
                 {
-                    _reservationsContentRecyclerView.RemoveAllViews();
+                    _reservationsContentRecyclerView.SetAdapter(null);
                 }
             }
         }

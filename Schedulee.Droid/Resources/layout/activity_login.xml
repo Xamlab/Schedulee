@@ -3,7 +3,9 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/background_login">
+                android:background="@drawable/background_login"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
   <Button
     android:id="@+id/login_button"
     android:text="Login"

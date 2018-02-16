@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Schedulee.UI.Resources.Strings.Authentication {
+namespace Schedulee.UI.Resources.Strings.Settings {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Schedulee.UI.Resources.Strings.Authentication {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Schedulee.UI.Resources.Strings.Authentication.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Schedulee.UI.Resources.Strings.Settings.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,92 @@ namespace Schedulee.UI.Resources.Strings.Authentication {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email.
+        ///   Looks up a localized string similar to FIRST NAME.
         /// </summary>
-        public static string Email {
+        public static string FirstName {
             get {
-                return ResourceManager.GetString("Email", resourceCulture);
+                return ResourceManager.GetString("FirstName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter a valid email address.
+        ///   Looks up a localized string similar to LAST NAME.
         /// </summary>
-        public static string InvalidEmail {
+        public static string LastName {
             get {
-                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password should contain minimum 8 characters..
+        ///   Looks up a localized string similar to LOCATION.
         /// </summary>
-        public static string InvalidPassword {
+        public static string Location {
             get {
-                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+                return ResourceManager.GetString("Location", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logging in....
+        ///   Looks up a localized string similar to MINS.
         /// </summary>
-        public static string LoggingIn {
+        public static string Mins {
             get {
-                return ResourceManager.GetString("LoggingIn", resourceCulture);
+                return ResourceManager.GetString("Mins", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login failed. Please make sure you&apos;ve entered correct email/password and try again..
+        ///   Looks up a localized string similar to SAVE.
         /// </summary>
-        public static string LoginFailed {
+        public static string Save {
             get {
-                return ResourceManager.GetString("LoginFailed", resourceCulture);
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password.
+        ///   Looks up a localized string similar to Saving....
         /// </summary>
-        public static string Password {
+        public static string Saving {
             get {
-                return ResourceManager.GetString("Password", resourceCulture);
+                return ResourceManager.GetString("Saving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SET TRAVEL TIME.
+        /// </summary>
+        public static string SetTravelTime {
+            get {
+                return ResourceManager.GetString("SetTravelTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Travel Time should be greater than 0..
+        /// </summary>
+        public static string SetTravelTimeValidationError {
+            get {
+                return ResourceManager.GetString("SetTravelTimeValidationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USERNAME.
+        /// </summary>
+        public static string Username {
+            get {
+                return ResourceManager.GetString("Username", resourceCulture);
             }
         }
     }

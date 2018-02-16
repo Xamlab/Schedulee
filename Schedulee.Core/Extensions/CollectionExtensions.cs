@@ -114,6 +114,14 @@ namespace Schedulee.Core.Extensions
             }
         }
 
+        public static void AddRangeGeneric<T>(this IList<T> items, IEnumerable<T> toInsert)
+        {
+            foreach(var item in toInsert)
+            {
+                items.Add(item);
+            }
+        }
+
         public static void InsertRange(this IList items, int index, IEnumerable toInsert)
         {
             foreach(var item in toInsert)
