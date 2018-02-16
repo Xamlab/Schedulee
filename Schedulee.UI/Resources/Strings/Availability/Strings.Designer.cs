@@ -70,6 +70,15 @@ namespace Schedulee.UI.Resources.Strings.Availability {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating availability....
+        /// </summary>
+        public static string Creating {
+            get {
+                return ResourceManager.GetString("Creating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select  at least one day of week before adding new time available..
         /// </summary>
         public static string DaysOfWeekRequiredValidationError {
@@ -102,6 +111,15 @@ namespace Schedulee.UI.Resources.Strings.Availability {
         public static string InvalidTimePeriodError {
             get {
                 return ResourceManager.GetString("InvalidTimePeriodError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        public static string Loading {
+            get {
+                return ResourceManager.GetString("Loading", resourceCulture);
             }
         }
         

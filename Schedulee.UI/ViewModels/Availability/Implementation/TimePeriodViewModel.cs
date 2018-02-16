@@ -1,8 +1,11 @@
 ﻿using System;
+using PropertyChanged;
+using Schedulee.UI.ViewModels.Base.Implementation;
 
 namespace Schedulee.UI.ViewModels.Availability.Implementation
 {
-    internal class TimePeriodViewModel : ITimePeriodViewModel
+    [AddINotifyPropertyChangedInterface]
+    internal class TimePeriodViewModel : BaseViewModel, ITimePeriodViewModel
     {
         public string FormattedTimePeriod { get; internal set; }
         public DateTime Start { get; set; }

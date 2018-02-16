@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Schedulee.Core.Extensions;
@@ -21,12 +22,13 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
         protected override async Task ExecuteCoreAsync(object param, CancellationToken token = default(CancellationToken))
         {
             var result = await _apiClient.FetchUserAvailablities(token);
-            if(result == null)
+            var items = new ObservableCollection<IAvailabilityViewModel>();
+            if(result != null)
             {
-                _viewModel.Items.Clear();
+                items.AddRangeGeneric(result.Select(Helpers.MapUserAvailabilityToAvailabilityViewModel));
             }
 
-            _viewModel.Items.AddRangeGeneric(result.Select(Helpers.MapUserAvailabilityToAvailabilityViewModel));
+            _viewModel.Items = items;
         }
     }
 }

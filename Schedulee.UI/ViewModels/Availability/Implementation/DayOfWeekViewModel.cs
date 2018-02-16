@@ -1,6 +1,10 @@
-﻿namespace Schedulee.UI.ViewModels.Availability.Implementation
+﻿using PropertyChanged;
+using Schedulee.UI.ViewModels.Base.Implementation;
+
+namespace Schedulee.UI.ViewModels.Availability.Implementation
 {
-    internal class DayOfWeekViewModel : IDayOfWeekViewModel
+    [AddINotifyPropertyChangedInterface]
+    internal class DayOfWeekViewModel : BaseViewModel, IDayOfWeekViewModel
     {
         public int Day { get; internal set; }
         public string FormattedDay { get; internal set; }

@@ -15,8 +15,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
     {
         public SetAvailabilityViewModel(IApiClient apiClient, IDialogService dialogService)
         {
-            Items = new ObservableCollection<IAvailabilityViewModel>();
-            TimePeriods = new List<ITimePeriodViewModel>();
+            TimePeriods = new ObservableCollection<ITimePeriodViewModel>();
 
             LoadCommand = new LoadUserAvailabilitiesCommand(this, apiClient);
             StaleMonitor = new SetAvailabilityStaleMonitor(this);

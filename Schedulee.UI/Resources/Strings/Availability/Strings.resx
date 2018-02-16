@@ -120,6 +120,9 @@
   <data name="ActiveAddTimeAvailableError" xml:space="preserve">
     <value>You're already in mid of adding new time available. Please complete the process before trying to add a new one.</value>
   </data>
+  <data name="Creating" xml:space="preserve">
+    <value>Creating availability...</value>
+  </data>
   <data name="DaysOfWeekRequiredValidationError" xml:space="preserve">
     <value>Please select  at least one day of week before adding new time available.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="InvalidTimePeriodError" xml:space="preserve">
     <value>Please make sure to select valid time period and try again.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
   </data>
   <data name="Monday" xml:space="preserve">
     <value>Mon</value>

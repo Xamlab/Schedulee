@@ -196,6 +196,9 @@
     <Compile Include="Services\Implementation\SecureStorageService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Authentication\LoginActivity.cs" />
+    <Compile Include="Views\Availability\AvailabilityView.cs" />
+    <Compile Include="Views\Availability\SetAvailabilityActivity.cs" />
+    <Compile Include="Views\Availability\AvailabilitiesView.cs" />
     <Compile Include="Views\Base\BaseActivity.cs" />
     <Compile Include="Views\Base\BaseAuthRequiredActivity.cs" />
     <Compile Include="Views\Main\SplashActivity.cs" />
@@ -213,6 +216,12 @@
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\activity_login.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\activity_set_availability.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\availability_item_view.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using Android.Content;
 using Android.Graphics;
+using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using PropertyChanged;
@@ -20,6 +22,28 @@ namespace Schedulee.Droid.Controls
         private bool _isExpanded;
         private readonly Context _context;
         private bool _isSeeMoreButtonAdded;
+
+        public LimitedItemsView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+        {
+        }
+
+        public LimitedItemsView(Context context, IAttributeSet attrs) : base(context, attrs)
+        {
+            _context = context;
+            Initialize(context);
+        }
+
+        public LimitedItemsView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
+        {
+            _context = context;
+            Initialize(context);
+        }
+
+        public LimitedItemsView(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes) : base(context, attrs, defStyleAttr, defStyleRes)
+        {
+            _context = context;
+            Initialize(context);
+        }
 
         public LimitedItemsView(Context context) : base(context)
         {

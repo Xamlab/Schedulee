@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Core.Models;
+using Schedulee.Droid.Views.Availability;
 using Schedulee.Droid.Views.Base;
 using Schedulee.Droid.Views.Settings;
 using Schedulee.UI.Resources.Strings.Reservations;
@@ -70,14 +71,22 @@ namespace Schedulee.Droid.Views.Reservations
             _reservationsContentRecyclerView = FindViewById<RecyclerView>(Resource.Id.reservation_content_recyclerView);
             _reservationsContentLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Vertical, false);
             _reservationsContentRecyclerView.SetLayoutManager(_reservationsContentLayoutManager);
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
             Load();
         }
 
         private async void Load()
         {
-            await _viewModel.LoadCommand.ExecuteAsync(null);
-            _reservationsHeaderAdapter = _viewModel.Items.GetRecyclerAdapter(BindHeaderViewHolder, Resource.Layout.reservation_date_layout);
-            _reservationsHeaderRecyclerView.SetAdapter(_reservationsHeaderAdapter);
+            if(!_viewModel.IsLoaded)
+            {
+                await _viewModel.LoadCommand.ExecuteAsync(null);
+                _reservationsHeaderAdapter = _viewModel.Items.GetRecyclerAdapter(BindHeaderViewHolder, Resource.Layout.reservation_date_layout);
+                _reservationsHeaderRecyclerView.SetAdapter(_reservationsHeaderAdapter);
+            }
         }
 
         private void BindHeaderViewHolder(CachingViewHolder holder, IDateViewModel viewModel, int position)
@@ -115,12 +124,15 @@ namespace Schedulee.Droid.Views.Reservations
             var id = menuItem.ItemId;
             switch(id)
             {
-                case Resource.Id.main_menu_logout:
-                    var authManager = ServiceLocater.Instance.Resolve<IAuthenticationManager>();
-                    authManager.SignOut();
+                case Resource.Id.main_menu_availability:
+                    StartActivity(typeof(SetAvailabilityActivity));
                     break;
                 case Resource.Id.main_menu_settings:
                     StartActivity(typeof(SettingsActivity));
+                    break;
+                case Resource.Id.main_menu_logout:
+                    var authManager = ServiceLocater.Instance.Resolve<IAuthenticationManager>();
+                    authManager.SignOut();
                     break;
             }
 

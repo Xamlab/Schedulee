@@ -12,23 +12,23 @@ namespace Schedulee.Droid.Controls
     [AddINotifyPropertyChangedInterface]
     public abstract class BindableLinearLayout : LinearLayout, IBindableObject
     {
-        protected BindableLinearLayout(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+        public BindableLinearLayout(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
         }
 
-        protected BindableLinearLayout(Context context) : base(context)
+        public BindableLinearLayout(Context context) : base(context)
         {
         }
 
-        protected BindableLinearLayout(Context context, IAttributeSet attrs) : base(context, attrs)
+        public BindableLinearLayout(Context context, IAttributeSet attrs) : base(context, attrs)
         {
         }
 
-        protected BindableLinearLayout(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
+        public BindableLinearLayout(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
         {
         }
 
-        protected BindableLinearLayout(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes) : base(context, attrs, defStyleAttr, defStyleRes)
+        public BindableLinearLayout(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes) : base(context, attrs, defStyleAttr, defStyleRes)
         {
         }
 
