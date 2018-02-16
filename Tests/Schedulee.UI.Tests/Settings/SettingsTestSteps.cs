@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using FizzWare.NBuilder;
 using NSubstitute;
@@ -22,6 +21,7 @@ namespace Schedulee.UI.Tests.Settings
         private MockSecureSettingsManager _settingsManager;
         private IApiClient _apiClient;
         private User _expectedUser;
+
         protected override void ConfigureServices()
         {
             base.ConfigureServices();
@@ -32,10 +32,10 @@ namespace Schedulee.UI.Tests.Settings
             Container.RegisterSingleton<ISecureSettingsManager>(_settingsManager);
 
             _apiClient = Substitute.For<IApiClient>();
-            _apiClient.SaveAccountAsync(Arg.Any<string>(), 
-                                        Arg.Any<string>(), 
-                                        Arg.Any<string>(), 
-                                        Arg.Any<int>(), 
+            _apiClient.SaveAccountAsync(Arg.Any<string>(),
+                                        Arg.Any<string>(),
+                                        Arg.Any<string>(),
+                                        Arg.Any<int>(),
                                         Arg.Any<CancellationToken>()).Returns(Task.CompletedTask);
             Container.RegisterSingleton(_apiClient);
         }
@@ -46,14 +46,14 @@ namespace Schedulee.UI.Tests.Settings
         {
             _token.User = table.CreateInstance<User>();
         }
-        
+
         [Given(@"I have navigated to settings page")]
         public void GivenIHaveNavigatedToSettingsPage()
         {
             _viewModel = Container.Resolve<ISettingsViewModel>();
             _viewModel.SetupCommand.Execute(null);
         }
-        
+
         [Then(@"I should see the user data populated correctly")]
         public void ThenIShouldSeeTheUserDataPopulatedCorrectly()
         {
@@ -101,7 +101,7 @@ namespace Schedulee.UI.Tests.Settings
         [When(@"I modify '(.*)' with '(.*)'")]
         public void WhenIModifyWith(string field, string value)
         {
-            switch (field)
+            switch(field)
             {
                 case nameof(ISettingsViewModel.FirstName):
                     _viewModel.FirstName = value;
@@ -150,6 +150,5 @@ namespace Schedulee.UI.Tests.Settings
             user.Location.ShouldBe(_expectedUser.Location);
             user.SetTravelTime.ShouldBe(_expectedUser.SetTravelTime);
         }
-
     }
 }

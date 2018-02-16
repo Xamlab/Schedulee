@@ -1,7 +1,5 @@
 ﻿using Android.App;
-using Android.Graphics;
 using Android.OS;
-using Android.Support.V7.Widget;
 using Android.Text;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
@@ -23,6 +21,7 @@ namespace Schedulee.Droid.Views.Settings
         private EntryView _locationEntry;
         private EntryView _travelTimeEntry;
         private Button _saveButton;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -33,38 +32,36 @@ namespace Schedulee.Droid.Views.Settings
 
             _usernameEntry = FindViewById<EntryView>(Resource.Id.settings_username_entry);
             _usernameEntry.BindingContext = _viewModel;
-            _usernameEntry.ValidationIds = new[] { nameof(ISettingsViewModel.Username) };
+            _usernameEntry.ValidationIds = new[] {nameof(ISettingsViewModel.Username)};
             _usernameEntry.Title = Strings.Username;
             _usernameEntry.Entry.Enabled = false;
             _usernameEntry.SetErrorTextAppearance(Resource.Style.ErrorTextStyle);
             _usernameEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
-            
 
             _firstNameEntry = FindViewById<EntryView>(Resource.Id.settings_first_name_entry);
             _firstNameEntry.BindingContext = _viewModel;
-            _firstNameEntry.ValidationIds = new[] { nameof(ISettingsViewModel.FirstName) };
+            _firstNameEntry.ValidationIds = new[] {nameof(ISettingsViewModel.FirstName)};
             _firstNameEntry.Title = Strings.FirstName;
             _firstNameEntry.SetErrorTextAppearance(Resource.Style.ErrorTextStyle);
             _firstNameEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
 
             _lastNameEntry = FindViewById<EntryView>(Resource.Id.settings_last_name_entry);
             _lastNameEntry.BindingContext = _viewModel;
-            _lastNameEntry.ValidationIds = new[] { nameof(ISettingsViewModel.LastName) };
+            _lastNameEntry.ValidationIds = new[] {nameof(ISettingsViewModel.LastName)};
             _lastNameEntry.Title = Strings.LastName;
             _lastNameEntry.SetErrorTextAppearance(Resource.Style.ErrorTextStyle);
             _lastNameEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
-            
 
             _locationEntry = FindViewById<EntryView>(Resource.Id.settings_location_entry);
             _locationEntry.BindingContext = _viewModel;
-            _locationEntry.ValidationIds = new[] { nameof(ISettingsViewModel.Location) };
+            _locationEntry.ValidationIds = new[] {nameof(ISettingsViewModel.Location)};
             _locationEntry.Title = Strings.Location;
             _locationEntry.SetErrorTextAppearance(Resource.Style.ErrorTextStyle);
             _locationEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
 
             _travelTimeEntry = FindViewById<EntryView>(Resource.Id.settings_travel_time_entry);
             _travelTimeEntry.BindingContext = _viewModel;
-            _travelTimeEntry.ValidationIds = new[] { nameof(ISettingsViewModel.SetTravelTime) };
+            _travelTimeEntry.ValidationIds = new[] {nameof(ISettingsViewModel.SetTravelTime)};
             _travelTimeEntry.Title = Strings.SetTravelTime;
             _travelTimeEntry.Entry.InputType = InputTypes.NumberVariationNormal | InputTypes.ClassNumber;
             _travelTimeEntry.SetErrorTextAppearance(Resource.Style.ErrorTextStyle);

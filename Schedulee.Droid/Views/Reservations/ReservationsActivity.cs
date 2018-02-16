@@ -6,7 +6,6 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
-using Java.IO;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Droid.Views.Base;

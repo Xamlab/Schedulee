@@ -7,7 +7,6 @@ namespace Schedulee.UI.ViewModels.Settings.Implementations
     {
         public SettingsStaleMonitor(SettingsViewModel viewModel) : base(viewModel)
         {
-            
         }
 
         public override IEnumerable<string> Properties => new[]

@@ -3,7 +3,6 @@ using PropertyChanged;
 using Schedulee.Core.Managers;
 using Schedulee.Core.Services;
 using Schedulee.UI.Services;
-using Schedulee.UI.ViewModels.Authentication;
 using Schedulee.UI.ViewModels.Base;
 using Schedulee.UI.ViewModels.Base.Implementation;
 
@@ -33,4 +32,4 @@ namespace Schedulee.UI.ViewModels.Settings.Implementations
         public string Location { get; set; }
         public int SetTravelTime { get; set; }
     }
-} 
+}
