@@ -6,16 +6,18 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
+using Java.IO;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Droid.Views.Base;
+using Schedulee.Droid.Views.Settings;
 using Schedulee.UI.Resources.Strings.Reservations;
 using Schedulee.UI.ViewModels.Reservations;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Schedulee.Droid.Views.Reservations
 {
-    [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar")]
     public class ReservationsActivity : BaseAuthRequiredActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         private DrawerLayout _drawerLayout;
@@ -41,11 +43,7 @@ namespace Schedulee.Droid.Views.Reservations
             navigationView.SetNavigationItemSelectedListener(this);
             this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.Loading;
-        }
 
-        protected override void OnResume()
-        {
-            base.OnResume();
             _viewModel.LoadCommand.Execute(null);
         }
 
@@ -57,6 +55,9 @@ namespace Schedulee.Droid.Views.Reservations
                 case Resource.Id.main_menu_logout:
                     var authManager = ServiceLocater.Instance.Resolve<IAuthenticationManager>();
                     authManager.SignOut();
+                    break;
+                case Resource.Id.main_menu_settings:
+                    StartActivity(typeof(SettingsActivity));
                     break;
             }
 

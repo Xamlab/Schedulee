@@ -1,8 +1,10 @@
-﻿using Schedulee.Core.Services;
+﻿using PropertyChanged;
+using Schedulee.Core.Services;
 using Schedulee.UI.ViewModels.Base.Implementation;
 
 namespace Schedulee.UI.ViewModels.Reservations.Implementation
 {
+    [AddINotifyPropertyChangedInterface]
     internal class ReservationsViewModel : BaseCollectionViewModel<IDateViewModel>, IReservationsViewModel
     {
         public ReservationsViewModel(IApiClient apiClient, ITimeProvider timeProvider)

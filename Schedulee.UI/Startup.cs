@@ -5,6 +5,8 @@ using Schedulee.UI.ViewModels.Authentication;
 using Schedulee.UI.ViewModels.Authentication.Implementation;
 using Schedulee.UI.ViewModels.Reservations;
 using Schedulee.UI.ViewModels.Reservations.Implementation;
+using Schedulee.UI.ViewModels.Settings;
+using Schedulee.UI.ViewModels.Settings.Implementations;
 
 namespace Schedulee.UI
 {
@@ -15,6 +17,7 @@ namespace Schedulee.UI
             container.RegisterSingleton<ISecureSettingsManager, SecureSettingsManager>();
             container.Register<ILoginViewModel, LoginViewModel>();
             container.Register<IReservationsViewModel, ReservationsViewModel>();
+            container.Register<ISettingsViewModel, SettingsViewModel>();
             return container;
         }
     }

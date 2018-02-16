@@ -18,8 +18,7 @@ using Schedulee.UI.ViewModels.Authentication;
 namespace Schedulee.Droid.Views.Authentication
 {
     [Activity(Label = "Login",
-        Theme = "@style/AppTheme.NoActionBar",
-        MainLauncher = false)]
+        Theme = "@style/AppTheme.NoActionBar")]
     public class LoginActivity : BaseActivity
     {
         private EntryView _emailEntry;

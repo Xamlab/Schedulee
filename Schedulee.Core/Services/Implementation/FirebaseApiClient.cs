@@ -100,6 +100,7 @@ namespace Schedulee.Core.Services.Implementation
             await _client.Child("users").Child(user.Id).PutAsync(new Models.User
                                                                  {
                                                                      Id = user.Id,
+                                                                     Email = user.Email,
                                                                      FirstName = firstName,
                                                                      LastName = lastName,
                                                                      Location = location,

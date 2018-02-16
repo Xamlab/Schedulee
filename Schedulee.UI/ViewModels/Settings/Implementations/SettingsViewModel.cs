@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using PropertyChanged;
 using Schedulee.Core.Managers;
 using Schedulee.Core.Services;
 using Schedulee.UI.Services;
@@ -8,6 +9,7 @@ using Schedulee.UI.ViewModels.Base.Implementation;
 
 namespace Schedulee.UI.ViewModels.Settings.Implementations
 {
+    [AddINotifyPropertyChangedInterface]
     internal class SettingsViewModel : BaseViewModel, ISettingsViewModel, IInternalSaveableViewModel
     {
         public SettingsViewModel(ISecureSettingsManager secureSettings, IApiClient apiClient, IDialogService dialogService)

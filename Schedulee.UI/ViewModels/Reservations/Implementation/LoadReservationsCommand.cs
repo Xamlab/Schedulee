@@ -52,6 +52,7 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
                                                             DayOfWeek = grouping.Date.ToString("ddd"),
                                                             Day = grouping.Date.Day.ToString()
                                                         });
+            Console.WriteLine("!!!!!!!!!!!!!!!!!RESERVATIONS LOADED!!!!!!!!!!!!!!!!!!!");
         }
     }
 }

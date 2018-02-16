@@ -61,7 +61,7 @@ namespace Schedulee.UI.Resources.Strings.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First Name.
+        ///   Looks up a localized string similar to FIRST NAME.
         /// </summary>
         public static string FirstName {
             get {
@@ -70,7 +70,7 @@ namespace Schedulee.UI.Resources.Strings.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last Name.
+        ///   Looks up a localized string similar to LAST NAME.
         /// </summary>
         public static string LastName {
             get {
@@ -79,7 +79,7 @@ namespace Schedulee.UI.Resources.Strings.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Location.
+        ///   Looks up a localized string similar to LOCATION.
         /// </summary>
         public static string Location {
             get {
@@ -88,7 +88,7 @@ namespace Schedulee.UI.Resources.Strings.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to mins.
+        ///   Looks up a localized string similar to MINS.
         /// </summary>
         public static string Mins {
             get {
@@ -97,7 +97,7 @@ namespace Schedulee.UI.Resources.Strings.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to SAVE.
         /// </summary>
         public static string Save {
             get {
@@ -124,7 +124,7 @@ namespace Schedulee.UI.Resources.Strings.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SetTravelTime.
+        ///   Looks up a localized string similar to SET TRAVEL TIME.
         /// </summary>
         public static string SetTravelTime {
             get {
@@ -142,7 +142,7 @@ namespace Schedulee.UI.Resources.Strings.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username.
+        ///   Looks up a localized string similar to USERNAME.
         /// </summary>
         public static string Username {
             get {

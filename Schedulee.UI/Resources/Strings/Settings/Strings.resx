@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FirstName" xml:space="preserve">
-    <value>First Name</value>
+    <value>FIRST NAME</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Last Name</value>
+    <value>LAST NAME</value>
   </data>
   <data name="Location" xml:space="preserve">
-    <value>Location</value>
+    <value>LOCATION</value>
   </data>
   <data name="Mins" xml:space="preserve">
-    <value>mins</value>
+    <value>MINS</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>SAVE</value>
   </data>
   <data name="Saving" xml:space="preserve">
     <value>Saving...</value>
@@ -139,12 +139,12 @@
     <value>Settings</value>
   </data>
   <data name="SetTravelTime" xml:space="preserve">
-    <value>SetTravelTime</value>
+    <value>SET TRAVEL TIME</value>
   </data>
   <data name="SetTravelTimeValidationError" xml:space="preserve">
     <value>Set Travel Time should be greater than 0.</value>
   </data>
   <data name="Username" xml:space="preserve">
-    <value>Username</value>
+    <value>USERNAME</value>
   </data>
 </root>
