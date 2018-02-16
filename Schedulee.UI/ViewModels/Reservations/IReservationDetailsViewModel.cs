@@ -6,7 +6,7 @@ namespace Schedulee.UI.ViewModels.Reservations
 {
     public interface IReservationDetailsViewModel : IViewModelRequiresSetup
     {
-        Reservation Reservation { get; }
+        Reservation Reservation { get; set; }
         string FormattedFullDate { get; }
         string FormattedClient { get; }
         string FormattedTimePeriod { get; }

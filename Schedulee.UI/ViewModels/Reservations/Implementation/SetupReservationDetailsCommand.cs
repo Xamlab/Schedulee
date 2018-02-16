@@ -22,9 +22,9 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
             _viewModel.PhoneNumber = reservation?.Client?.PhoneNumber ?? "";
             _viewModel.Location = reservation?.Client?.Location ?? "";
             double NetPrice(Reservation res) => res.End.Subtract(res.Start).TotalHours * res.RatePerHour;
-            _viewModel.FormattedNetPrice = reservation != null ? NetPrice(reservation).ToString("N2',-'") : "";
-            _viewModel.FormattedVat = reservation != null ? (NetPrice(reservation)*0.25).ToString("N2',-'") : "";
-            _viewModel.FormattedTotal = reservation != null ? (NetPrice(reservation)*1.25).ToString("N2',-'") : "";
+            _viewModel.FormattedNetPrice = reservation != null ? NetPrice(reservation).ToString("C2") : "";
+            _viewModel.FormattedVat = reservation != null ? (NetPrice(reservation)*0.25).ToString("C2") : "";
+            _viewModel.FormattedTotal = reservation != null ? (NetPrice(reservation)*1.25).ToString("C2") : "";
 
         }
     }

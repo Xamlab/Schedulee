@@ -199,6 +199,7 @@
     <Compile Include="Views\Base\BaseActivity.cs" />
     <Compile Include="Views\Base\BaseAuthRequiredActivity.cs" />
     <Compile Include="Views\Main\SplashActivity.cs" />
+    <Compile Include="Views\Reservations\ReservationDetailActivity.cs" />
     <Compile Include="Views\Reservations\ReservationsActivity.cs" />
     <Compile Include="Views\Settings\SettingsActivity.cs" />
   </ItemGroup>
@@ -554,6 +555,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\reservation_content_layout.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\reservation_detail_layout.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />

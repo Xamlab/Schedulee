@@ -12,7 +12,7 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
         }
 
         public ICommand SetupCommand { get; }
-        public Reservation Reservation { get; internal set; }
+        public Reservation Reservation { get; set; }
         public string FormattedFullDate { get; internal set; }
         public string FormattedClient { get; internal set; }
         public string FormattedTimePeriod { get; internal set; }
