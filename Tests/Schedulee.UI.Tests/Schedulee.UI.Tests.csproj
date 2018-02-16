@@ -175,7 +175,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.feature</DependentUpon>
     </Compile>
-    <Compile Include="Authentication\LoginIntegrationTestSteps.cs" />
+    <Compile Include="Authentication\LoginTestSteps.cs" />
     <Compile Include="Base\BaseCollectionIntegrationTestSteps.cs" />
     <Compile Include="Base\BaseTestSteps.cs" />
     <Compile Include="Base\ItemCollectionScreen.feature.cs">
@@ -204,6 +204,13 @@
     </Compile>
     <Compile Include="Reservations\ReservationsTestSteps.cs" />
     <Compile Include="Services\Implementation\MockDialogService.cs" />
+    <Compile Include="Settings\MockSecureSettingsManager.cs" />
+    <Compile Include="Settings\Settings.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Settings.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SettingsTestSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Schedulee.Core\Schedulee.Core.csproj">
@@ -237,6 +244,10 @@
     <None Include="Reservations\Reservations.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Reservations.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\Settings.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup />

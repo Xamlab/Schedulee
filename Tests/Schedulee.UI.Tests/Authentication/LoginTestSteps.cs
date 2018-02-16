@@ -14,7 +14,7 @@ using CommonStrings = Schedulee.UI.Resources.Strings.Common.Strings;
 namespace Schedulee.UI.Tests.Authentication
 {
     [Binding, Scope(Feature = "Login")]
-    public class LoginIntegrationTestSteps : BaseTestSteps
+    public class LoginTestSteps : BaseTestSteps
     {
         private ILoginViewModel _viewModel;
         private bool _didReturnAccountInfo;
