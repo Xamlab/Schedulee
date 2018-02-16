@@ -93,6 +93,14 @@ namespace Schedulee.Core.Services.Implementation
             return reservations?.Select(reservation => reservation.Object).First();
         }
 
+        public  async Task<IEnumerable<UserAvailablity>> FetchUserAvailablities(CancellationToken token = default(CancellationToken))
+        {
+            var user = _secureSettings.GetAccount()?.User;
+            if (user == null) return null;
+            var availabilities = await _client.Child("availablities").Child(user.Id).OnceAsync<List<UserAvailablity>>();
+            return availabilities?.Select(reservation => reservation.Object).First();
+        }
+
         public async Task SaveAccountAsync(string firstName, string lastName, string location, int setTimeInterval, CancellationToken token = default(CancellationToken))
         {
             var user = _secureSettings.GetAccount()?.User;
@@ -116,6 +124,36 @@ namespace Schedulee.Core.Services.Implementation
                 var sampleReservations = GetSampleReservations();
                 await _client.Child("reservations").Child(user.Id).PostAsync(sampleReservations);
             }
+
+            var availablities = await _client.Child("availablities").Child(user.Id).OnceSingleAsync<UserAvailablity>();
+            if(availablities == null)
+            {
+                var sampleAvailablities = GetSampleAvailabilities();
+                await _client.Child("availablities").Child(user.Id).PostAsync(sampleAvailablities);
+            }
+        }
+
+        private List<UserAvailablity> GetSampleAvailabilities()
+        {
+            return new List<UserAvailablity>
+                   {
+                       new UserAvailablity
+                       {
+                           Id = Guid.NewGuid().ToString(),
+                           DaysOfWeek = new[] {0, 6},
+                           TimePeriods = new[] {new TimePeriod(new DateTime(1, 1, 1, 9, 0, 0), new DateTime(1, 1, 1, 12, 0, 0))}
+                       },
+                       new UserAvailablity
+                       {
+                           Id = Guid.NewGuid().ToString(),
+                           DaysOfWeek = new[] {0, 2, 4},
+                           TimePeriods = new[]
+                                         {
+                                             new TimePeriod(new DateTime(1, 1, 1, 10, 15, 0), new DateTime(1, 1, 1, 13, 0, 0)),
+                                             new TimePeriod(new DateTime(1, 1, 1, 17, 30, 0), new DateTime(1, 1, 1, 22, 0, 0))
+                                         }
+                       }
+                   };
         }
 
         private List<Reservation> GetSampleReservations()
