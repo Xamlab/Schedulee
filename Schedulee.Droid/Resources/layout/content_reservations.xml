@@ -1,15 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/reservation_dates_recyclerView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_main">
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/horizontal_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reservation_dates_recyclerView" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/reservation_dates_recyclerView"
+        android:id="@+id/reservation_content_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_separator" />
+
+    <TextView
+        android:id="@+id/reservation_content_empty_message_text"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="There are no available reservations for this day"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/title"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="@+id/reservation_content_recyclerView"
+        app:layout_constraintStart_toStartOf="@+id/reservation_content_recyclerView"
+        app:layout_constraintTop_toTopOf="@+id/reservation_dates_recyclerView" />
+
 
 </android.support.constraint.ConstraintLayout>

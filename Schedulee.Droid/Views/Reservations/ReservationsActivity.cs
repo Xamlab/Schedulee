@@ -12,6 +12,7 @@ using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
+using Schedulee.Core.Models;
 using Schedulee.Droid.Views.Base;
 using Schedulee.UI.ViewModels.Reservations;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
@@ -25,14 +26,20 @@ namespace Schedulee.Droid.Views.Reservations
         private TextView _userName;
         private IReservationsViewModel _viewModel;
 
-        private RecyclerView _reservationsHeadeRecyclerView;
+        private RecyclerView _reservationsHeaderRecyclerView;
         private ObservableRecyclerAdapter<IDateViewModel, CachingViewHolder> _reservationsHeaderAdapter;
-        private LinearLayoutManager _layoutManager;
+        private LinearLayoutManager _reservationsHeaderLayoutManager;
+
+        private RecyclerView _reservationsContentRecyclerView;
+        private ObservableRecyclerAdapter<Reservation, CachingViewHolder> _reservationsContentAdapter;
+        private LinearLayoutManager _reservationsContentLayoutManager;
+        private TextView _emptyMessageText;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             _viewModel = ServiceLocater.Instance.Resolve<IReservationsViewModel>();
+            _viewModel.PropertyChanged += OnPropertyChanged;
 
             SetContentView(Resource.Layout.activity_reservations);
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -47,9 +54,17 @@ namespace Schedulee.Droid.Views.Reservations
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
 
-            _reservationsHeadeRecyclerView = FindViewById<RecyclerView>(Resource.Id.reservation_dates_recyclerView);
-            _layoutManager = new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
-            _reservationsHeadeRecyclerView.SetLayoutManager(_layoutManager);
+            _emptyMessageText = FindViewById<TextView>(Resource.Id.reservation_content_empty_message_text);
+            this.SetBinding(() => _viewModel.SelectedDate.Reservations, () => _emptyMessageText.Visibility)
+                .ConvertSourceToTarget(reservations => reservations?.Any() == true ? ViewStates.Invisible : ViewStates.Visible);
+
+            _reservationsHeaderRecyclerView = FindViewById<RecyclerView>(Resource.Id.reservation_dates_recyclerView);
+            _reservationsHeaderLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
+            _reservationsHeaderRecyclerView.SetLayoutManager(_reservationsHeaderLayoutManager);
+
+            _reservationsContentRecyclerView = FindViewById<RecyclerView>(Resource.Id.reservation_content_recyclerView);
+            _reservationsContentLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Vertical, false);
+            _reservationsContentRecyclerView.SetLayoutManager(_reservationsContentLayoutManager);
         }
 
         protected override void OnResume()
@@ -62,7 +77,8 @@ namespace Schedulee.Droid.Views.Reservations
         {
             await _viewModel.LoadCommand.ExecuteAsync(null);
             _reservationsHeaderAdapter = _viewModel.Items.GetRecyclerAdapter(BindHeaderViewHolder, Resource.Layout.reservation_date_layout);
-            _reservationsHeadeRecyclerView.SetAdapter(_reservationsHeaderAdapter);
+            _reservationsHeaderRecyclerView.SetAdapter(_reservationsHeaderAdapter);
+            
         }
 
         private void BindHeaderViewHolder(CachingViewHolder holder, IDateViewModel viewModel, int position)
@@ -127,6 +143,34 @@ namespace Schedulee.Droid.Views.Reservations
             var index = (int) view.GetTag(Resource.Integer.date_selection_key);
             var date = _viewModel.Items[index];
             _viewModel.SelectDateCommand.Execute(date);
+        }
+
+        private void OnPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == nameof(IReservationsViewModel.SelectedDate))
+            {
+                
+                if(_viewModel.SelectedDate != null && _viewModel.SelectedDate.Reservations.Count > 0)
+                {
+                    _reservationsContentAdapter = _viewModel.SelectedDate.Reservations.GetRecyclerAdapter(BindViewHolder, Resource.Layout.reservation_content_layout);
+                    _reservationsContentRecyclerView.SetAdapter(_reservationsContentAdapter);
+                }
+                else
+                {
+                    _reservationsContentRecyclerView.RemoveAllViews();
+                }
+            }
+        }
+
+        private void BindViewHolder(CachingViewHolder holder, Reservation reservation, int position)
+        {
+            var startTime = holder.FindCachedViewById<TextView>(Resource.Id.reservation_start_time_text);
+            var name = holder.FindCachedViewById<TextView>(Resource.Id.reservation_client_name_text);
+            var ratePerHour = holder.FindCachedViewById<TextView>(Resource.Id.reservation_rate_per_hour_text);
+
+            startTime.Text = reservation.Start.ToString("hh:mm");
+            name.Text = $"{reservation.Client.FirstName} {reservation.Client.LastName}";
+            ratePerHour.Text = $"{reservation.RatePerHour:C}";
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Schedulee.UI.ViewModels.Reservations
 {
     public interface IDateViewModel : INotifyPropertyChanged
     {
-        IEnumerable<Reservation> Reservations { get; }
+        IList<Reservation> Reservations { get; }
         DateTime Date { get; }
         string DayOfWeek { get; }
         string Day { get; }

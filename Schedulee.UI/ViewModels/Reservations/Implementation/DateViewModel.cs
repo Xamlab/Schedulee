@@ -9,7 +9,7 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
     [AddINotifyPropertyChangedInterface]
     public class DateViewModel : BaseViewModel, IDateViewModel
     {
-        public IEnumerable<Reservation> Reservations { get; internal set; }
+        public IList<Reservation> Reservations { get; internal set; }
         public DateTime Date { get; internal set; }
         public string DayOfWeek { get; internal set; }
         public string Day { get; internal set; }
