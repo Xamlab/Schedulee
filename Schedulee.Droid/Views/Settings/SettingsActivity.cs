@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Text;
 using Android.Widget;
@@ -6,12 +7,13 @@ using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Droid.Controls;
 using Schedulee.Droid.Views.Base;
+using Schedulee.Droid.Views.Reservations;
 using Schedulee.UI.Resources.Strings.Settings;
 using Schedulee.UI.ViewModels.Settings;
 
 namespace Schedulee.Droid.Views.Settings
 {
-    [Activity(Label = "Settings", Theme = "@style/AppTheme")]
+    [Activity(Label = "Settings", Theme = "@style/AppTheme.ActionBar", ParentActivity = typeof(ReservationsActivity))]
     public class SettingsActivity : BaseAuthRequiredActivity
     {
         private ISettingsViewModel _viewModel;
@@ -78,6 +80,12 @@ namespace Schedulee.Droid.Views.Settings
             _saveButton.SetCommand(nameof(Button.Click), _viewModel.SaveCommand);
 
             LoadingMessage = Strings.Saving;
+        }
+
+        public override bool NavigateUpTo(Intent upIntent)
+        {
+            Finish();
+            return true;
         }
     }
 }
