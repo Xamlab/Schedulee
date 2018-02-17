@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Droid.Controls;
+using Schedulee.Droid.Extensions;
 using Schedulee.UI.ViewModels.Availability;
 
 namespace Schedulee.Droid.Views.Availability
@@ -14,6 +16,7 @@ namespace Schedulee.Droid.Views.Availability
         private ImageButton _deleteButton;
         private ITimePeriodViewModel _viewModel;
         private readonly Action<ITimePeriodViewModel> _deleteAction;
+        private readonly List<Binding> _bindings = new List<Binding>();
 
         public TimePeriodView(Context context, Action<ITimePeriodViewModel> deleteAction) : base(context)
         {
@@ -35,12 +38,30 @@ namespace Schedulee.Droid.Views.Availability
             _deleteAction?.Invoke(BindingContext as ITimePeriodViewModel);
         }
 
+        protected override void OnDetachedFromWindow()
+        {
+            base.OnDetachedFromWindow();
+            _bindings.ClearBindings();
+        }
+
+        protected override void OnAttachedToWindow()
+        {
+            base.OnAttachedToWindow();
+            UpdateBindings();
+        }
+
         protected override void OnBindingContextChanged()
         {
+            UpdateBindings();
+        }
+
+        private void UpdateBindings()
+        {
+            _bindings.ClearBindings();
             if(BindingContext == null || !(BindingContext is ITimePeriodViewModel viewModel)) return;
             _viewModel = viewModel;
 
-            this.SetBinding(() => _viewModel.FormattedTimePeriod, () => _formattedPeroids.Text, BindingMode.OneTime);
+            _bindings.Add(this.SetBinding(() => _viewModel.FormattedTimePeriod, () => _formattedPeroids.Text, BindingMode.OneTime));
         }
     }
 }

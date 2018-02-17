@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
@@ -13,6 +8,7 @@ using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using PropertyChanged;
 using Schedulee.Droid.Controls;
+using Schedulee.Droid.Extensions;
 using Schedulee.UI.ViewModels.Availability;
 
 namespace Schedulee.Droid.Views.Availability
@@ -23,6 +19,7 @@ namespace Schedulee.Droid.Views.Availability
         private TextView _dayOfWeek;
         private LinearLayout _button;
         private IDayOfWeekViewModel _viewModel;
+        private readonly List<Binding> _bindings = new List<Binding>();
 
         public DayOfWeekView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
@@ -45,38 +42,39 @@ namespace Schedulee.Droid.Views.Availability
         {
         }
 
-        private bool _isSelected;
-        public bool IsSelected  
-        {
-            get
-            {
-                return _isSelected;
-            }
-            set
-            {
-                if(_isSelected != value)
-                {
-                    _isSelected = value;
-                    _button.Selected = _isSelected;
-                }
-            }
-        }
-
         private void Create(Context context)
         {
-            var inflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
+            var inflater = (LayoutInflater) context.GetSystemService(Context.LayoutInflaterService);
             var rootView = inflater.Inflate(Resource.Layout.day_of_week_button_layout, this);
             _dayOfWeek = rootView.FindViewById<TextView>(Resource.Id.day_of_week_text);
             _button = rootView.FindViewById<LinearLayout>(Resource.Id.day_of_week_button_root_layout);
         }
 
+        protected override void OnDetachedFromWindow()
+        {
+            base.OnDetachedFromWindow();
+            _bindings.ClearBindings();
+        }
+
+        protected override void OnAttachedToWindow()
+        {
+            base.OnAttachedToWindow();
+            UpdateBindings();
+        }
+
         protected override void OnBindingContextChanged()
         {
-            if (BindingContext == null || !(BindingContext is IDayOfWeekViewModel viewModel)) return;
+            UpdateBindings();
+        }
+
+        private void UpdateBindings()
+        {
+            _bindings.ClearBindings();
+            if(BindingContext == null || !(BindingContext is IDayOfWeekViewModel viewModel)) return;
             _viewModel = viewModel;
 
-            this.SetBinding(() => _viewModel.FormattedDay, () => _dayOfWeek.Text, BindingMode.OneWay);
-            this.SetBinding(() => _viewModel.IsSelected, () => IsSelected, BindingMode.OneWay);
+            _bindings.Add(this.SetBinding(() => _viewModel.FormattedDay, () => _dayOfWeek.Text, BindingMode.OneWay));
+            _bindings.Add(this.SetBinding(() => _viewModel.IsSelected, () => _button.Selected, BindingMode.OneWay));
         }
     }
 }

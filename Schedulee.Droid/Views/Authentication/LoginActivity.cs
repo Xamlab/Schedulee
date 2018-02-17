@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Models;
 using Schedulee.Droid.Controls;
+using Schedulee.Droid.Extensions;
 using Schedulee.Droid.Services.Implementation;
 using Schedulee.Droid.Views.Base;
 using Schedulee.UI.Resources.Strings.Authentication;
@@ -49,7 +50,7 @@ namespace Schedulee.Droid.Views.Authentication
             _emailEntry.Title = Strings.Email;
             _emailEntry.SetErrorTextAppearance(Resource.Style.ErrorTextStyle);
             _emailEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
-            this.SetBinding(() => _viewModel.Email, () => _emailEntry.Entry.Text, BindingMode.TwoWay);
+            this.SetBindingEx(() => _viewModel.Email, () => _emailEntry.Entry.Text, BindingMode.TwoWay);
 
             _passwordEntry = FindViewById<EntryView>(Resource.Id.login_password_entry);
             _passwordEntry.PasswordVisibilityToggleEnabled = true;
@@ -59,7 +60,7 @@ namespace Schedulee.Droid.Views.Authentication
             _passwordEntry.BindingContext = _viewModel;
             _passwordEntry.ValidationIds = new[] {nameof(ILoginViewModel.Password)};
             _passwordEntry.Title = Strings.Password;
-            this.SetBinding(() => _viewModel.Password, () => _passwordEntry.Entry.Text, BindingMode.TwoWay);
+            this.SetBindingEx(() => _viewModel.Password, () => _passwordEntry.Entry.Text, BindingMode.TwoWay);
             _passwordEntry.SetErrorTextAppearance(Resource.Style.ErrorTextStyle);
             _passwordEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
             _loginButton = FindViewById<Button>(Resource.Id.login_button);
@@ -67,8 +68,14 @@ namespace Schedulee.Droid.Views.Authentication
 
             Overlay = FindViewById<View>(Resource.Id.login_loading_overlay);
             Progress = FindViewById<ProgressBar>(Resource.Id.login_loading_progress);
-            this.SetBinding(() => _viewModel.IsSaving, () => IsLoading, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.IsSaving, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.LoggingIn;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            _viewModel.LoginCompleted -= ViewModelOnLoginCompleted;
         }
 
         public override void OnBackPressed()

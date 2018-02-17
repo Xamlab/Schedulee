@@ -162,19 +162,47 @@ namespace Schedulee.Droid.Controls
 
         private void RemoveItem(int index)
         {
+            var child = GetChildAt(index);
+            if(child.Clickable)
+            {
+                child.Click -= ViewOnClicked;
+            }
+
             RemoveChildView(index);
         }
 
         private void UpdateItems()
         {
+            Cleanup();
+
+            Create();
+        }
+
+        private void Cleanup()
+        {
             DisconnectEvents();
             _observedItems = null;
             _isExpanded = false;
             Clear();
+        }
 
+        private void Create()
+        {
             _observedItems = Items as INotifyCollectionChanged;
             ConnectEvents();
             LoadChildren();
+        }
+
+        protected override void OnDetachedFromWindow()
+        {
+            base.OnDetachedFromWindow();
+            Cleanup();
+        }
+
+        protected override void OnAttachedToWindow()
+        {
+            base.OnAttachedToWindow();
+            Create();
         }
 
         private void SeeMoreButtonClicked(object sender, EventArgs e)

@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight.Helpers;
 using Newtonsoft.Json;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Models;
+using Schedulee.Droid.Extensions;
 using Schedulee.Droid.Views.Base;
 using Schedulee.UI.ViewModels.Reservations;
 
@@ -43,14 +44,14 @@ namespace Schedulee.Droid.Views.Reservations
             _formattedNetPrice = FindViewById<TextView>(Resource.Id.net_price_text);
             _formattedTotal = FindViewById<TextView>(Resource.Id.total_text);
 
-            this.SetBinding(() => _viewModel.FormattedFullDate, () => _formattedFullDate.Text, BindingMode.OneWay);
-            this.SetBinding(() => _viewModel.FormattedClient, () => _formattedClient.Text, BindingMode.OneWay);
-            this.SetBinding(() => _viewModel.FormattedTimePeriod, () => _formattedTimePeriod.Text, BindingMode.OneWay);
-            this.SetBinding(() => _viewModel.PhoneNumber, () => _phoneNumber.Text, BindingMode.OneWay);
-            this.SetBinding(() => _viewModel.Location, () => _location.Text, BindingMode.OneWay);
-            this.SetBinding(() => _viewModel.FormattedVat, () => _formattedVat.Text, BindingMode.OneWay);
-            this.SetBinding(() => _viewModel.FormattedNetPrice, () => _formattedNetPrice.Text, BindingMode.OneWay);
-            this.SetBinding(() => _viewModel.FormattedTotal, () => _formattedTotal.Text, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.FormattedFullDate, () => _formattedFullDate.Text, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.FormattedClient, () => _formattedClient.Text, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.FormattedTimePeriod, () => _formattedTimePeriod.Text, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.PhoneNumber, () => _phoneNumber.Text, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.Location, () => _location.Text, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.FormattedVat, () => _formattedVat.Text, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.FormattedNetPrice, () => _formattedNetPrice.Text, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.FormattedTotal, () => _formattedTotal.Text, BindingMode.OneWay);
         }
 
         public override bool NavigateUpTo(Intent upIntent)
