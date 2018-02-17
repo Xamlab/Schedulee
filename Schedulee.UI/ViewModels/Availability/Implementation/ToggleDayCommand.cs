@@ -1,4 +1,5 @@
-﻿using Schedulee.UI.Resources.Strings.Availability;
+﻿using System.Linq;
+using Schedulee.UI.Resources.Strings.Availability;
 using Schedulee.UI.Services;
 using CommonStrings = Schedulee.UI.Resources.Strings.Common.Strings;
 
@@ -17,8 +18,9 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
                 await DialogService.ShowNotificationAsync(Strings.InvalidDayOfWeekError, CommonStrings.Ok);
                 return;
             }
-
+            
             dayOfWeek.IsSelected = !dayOfWeek.IsSelected;
+            ViewModel.AtLeasetOneDayOfWeekIsSelected = ViewModel.DaysOfWeek.Any(day => day.IsSelected);
         }
     }
 }
