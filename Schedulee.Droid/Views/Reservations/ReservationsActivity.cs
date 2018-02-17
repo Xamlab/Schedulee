@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Core.Models;
+using Schedulee.Droid.Extensions;
 using Schedulee.Droid.Controls;
 using Schedulee.Droid.Views.Availability;
 using Schedulee.Droid.Views.Base;
@@ -76,7 +77,7 @@ namespace Schedulee.Droid.Views.Reservations
 
             Overlay = FindViewById<View>(Resource.Id.reservations_loading_overlay);
             Progress = FindViewById<ProgressBar>(Resource.Id.reservations_loading_progress);
-            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.Loading;
         }
 
@@ -99,6 +100,7 @@ namespace Schedulee.Droid.Views.Reservations
 
         private void BindHeaderViewHolder(CachingViewHolder holder, IDateViewModel viewModel, int position)
         {
+            
             var dayOfWeek = holder.FindCachedViewById<TextView>(Resource.Id.day_of_week_text);
             var day = holder.FindCachedViewById<TextView>(Resource.Id.day_text);
             var reservationExistIdicator = holder.FindCachedViewById<View>(Resource.Id.reservation_indicator);

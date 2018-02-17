@@ -4,7 +4,7 @@ using Schedulee.UI.ViewModels.Base;
 
 namespace Schedulee.UI.ViewModels.Availability
 {
-    public interface ISetAvailabilityViewModel : ISaveableViewModel, ICollectionViewModel<IAvailabilityViewModel>
+    public interface ISetAvailabilityViewModel : ISaveableViewModel, ICollectionViewModel<IAvailabilityViewModel>, IViewModelRequiresSetup
     {
         IList<IDayOfWeekViewModel> DaysOfWeek { get; }
         IList<ITimePeriodViewModel> TimePeriods { get; }
@@ -17,5 +17,6 @@ namespace Schedulee.UI.ViewModels.Availability
         bool IsAddingAvailableTimePeriod { get; }
         event EventHandler DidBeginAddingTimePeriod;
         event EventHandler DidCancelAddingTimePeriod;
+        event EventHandler DidCreateTimeAvailability;
     }
 }

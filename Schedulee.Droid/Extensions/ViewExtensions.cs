@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using Android.Content;
 using Android.Graphics;
 using Android.Util;
 using Android.Views;
 using Android.Views.Animations;
+using GalaSoft.MvvmLight.Helpers;
+using Schedulee.Droid.Views.Base;
 
 namespace Schedulee.Droid.Extensions
 {
@@ -55,6 +59,22 @@ namespace Schedulee.Droid.Extensions
             var fadeOutAnimation = AnimationUtils.LoadAnimation(context, Resource.Animation.overlay_fade_out_animation);
             overlay.StartAnimation(fadeOutAnimation);
             overlay.Visibility = ViewStates.Invisible;
+        }
+
+        public static void ClearBindings(this IEnumerable<Binding> bindings)
+        {
+            if(bindings == null) return;
+            foreach(var binding in bindings)
+            {
+                binding.Detach();
+            }
+        }
+
+        public static Binding<TSource, TTarget> SetBindingEx<TSource, TTarget>(this BaseActivity source, Expression<Func<TSource>> sourcePropertyExpression, Expression<Func<TTarget>> targetPropertyExpression = null, BindingMode mode = BindingMode.Default, TSource fallbackValue = default(TSource), TSource targetNullValue = default(TSource))
+        {
+            var binding = new Binding<TSource, TTarget>(source, sourcePropertyExpression, null, targetPropertyExpression, mode, fallbackValue, targetNullValue);
+            source.Bindings.Add(binding);
+            return binding;
         }
     }
 }

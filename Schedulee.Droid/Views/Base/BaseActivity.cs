@@ -1,8 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using GalaSoft.MvvmLight.Helpers;
 using PropertyChanged;
 using Schedulee.Droid.Extensions;
 
@@ -19,6 +21,7 @@ namespace Schedulee.Droid.Views.Base
         protected ProgressBar Progress { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public List<Binding> Bindings { get; } = new List<Binding>();
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -37,15 +40,19 @@ namespace Schedulee.Droid.Views.Base
                 {
                     this.ShowOverlay(Overlay);
                     Progress.Visibility = ViewStates.Visible;
-                    Window.SetFlags(WindowManagerFlags.NotTouchable, WindowManagerFlags.NotTouchable);
                 }
                 else
                 {
                     this.HideOverlay(Overlay);
                     Progress.Visibility = ViewStates.Invisible;
-                    Window.ClearFlags(WindowManagerFlags.NotTouchable);
                 }
             }
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Bindings.Clear();
         }
     }
 }

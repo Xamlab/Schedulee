@@ -8,6 +8,7 @@ using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Droid.Controls;
+using Schedulee.Droid.Extensions;
 using Schedulee.Droid.Views.Base;
 using Schedulee.Droid.Views.Reservations;
 using Schedulee.UI.Resources.Strings.Settings;
@@ -78,12 +79,12 @@ namespace Schedulee.Droid.Views.Settings
             Overlay = FindViewById<View>(Resource.Id.settings_loading_overlay);
             Progress = FindViewById<ProgressBar>(Resource.Id.settings_loading_progress);
 
-            this.SetBinding(() => _viewModel.Username, () => _usernameEntry.Entry.Text, BindingMode.OneWay);
-            this.SetBinding(() => _viewModel.FirstName, () => _firstNameEntry.Entry.Text, BindingMode.TwoWay);
-            this.SetBinding(() => _viewModel.LastName, () => _lastNameEntry.Entry.Text, BindingMode.TwoWay);
-            this.SetBinding(() => _viewModel.Location, () => _locationEntry.Entry.Text, BindingMode.TwoWay);
-            this.SetBinding(() => _viewModel.SetTravelTime, () => _travelTimeEntry.Entry.Text, BindingMode.TwoWay);
-            this.SetBinding(() => _viewModel.IsSaving, () => IsLoading, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.Username, () => _usernameEntry.Entry.Text, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.FirstName, () => _firstNameEntry.Entry.Text, BindingMode.TwoWay);
+            this.SetBindingEx(() => _viewModel.LastName, () => _lastNameEntry.Entry.Text, BindingMode.TwoWay);
+            this.SetBindingEx(() => _viewModel.Location, () => _locationEntry.Entry.Text, BindingMode.TwoWay);
+            this.SetBindingEx(() => _viewModel.SetTravelTime, () => _travelTimeEntry.Entry.Text, BindingMode.TwoWay);
+            this.SetBindingEx(() => _viewModel.IsSaving, () => IsLoading, BindingMode.OneWay);
             _saveButton.SetCommand(nameof(Button.Click), _viewModel.SaveCommand);
 
             LoadingMessage = Strings.Saving;

@@ -1,27 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/day_of_week_button_root_layout"
-  android:orientation="vertical"
-  android:background="@drawable/button_shape_background"
-  android:layout_weight="1"
-  android:layout_width="0dp"
-  android:layout_height="wrap_content">
-  <TextView
-    android:id="@+id/day_of_week_text"
-    android:layout_width="wrap_content"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/day_of_week_button_root_layout"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="15dp"
-    android:layout_marginBottom="10dp"
-    android:textSize="14dp"
-    android:textColor="@drawable/button_text_color"
-    android:layout_gravity="center"
-    android:text="Mon"/>
-  <ImageView
-    android:id="@+id/imageView"
-    android:layout_width="18dp"
-    android:layout_height="13dp"
-    android:layout_marginBottom="15dp"
-    android:layout_gravity="center"
-    android:src="@drawable/check_mark_background"/>
+    android:layout_weight="1"
+    android:background="@drawable/button_shape_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/day_of_week_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Mon"
+        android:textColor="@drawable/button_text_color"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="18dp"
+        android:layout_height="13dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/check_mark_background" />
 </LinearLayout>

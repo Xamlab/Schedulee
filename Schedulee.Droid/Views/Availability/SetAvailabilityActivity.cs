@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Acr.UserDialogs;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -39,6 +38,7 @@ namespace Schedulee.Droid.Views.Availability
         private TextView _addTimePeriodButton;
         private TextView _cancelButton;
         private TimePeriod _newPeriod;
+        private Button _saveButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -46,6 +46,8 @@ namespace Schedulee.Droid.Views.Availability
 
             // Create your application here
             BindingContext = _viewModel = ServiceLocater.Instance.Resolve<ISetAvailabilityViewModel>();
+            _viewModel.SetupCommand.Execute(null);
+
             _dialogService = ServiceLocater.Instance.Resolve<IDialogService>();
             SetContentView(Resource.Layout.activity_set_availability);
 
@@ -55,35 +57,49 @@ namespace Schedulee.Droid.Views.Availability
 
             _availabilities = FindViewById<AvailabilitiesView>(Resource.Id.set_availability_availabilities_view);
             _availabilities.BindingContext = _viewModel;
-            this.SetBinding(() => _viewModel.Items, () => _availabilities.Items, BindingMode.OneWay)
+            this.SetBindingEx(() => _viewModel.Items, () => _availabilities.Items, BindingMode.OneWay)
                 .ConvertSourceToTarget(list => list as IEnumerable<IAvailabilityViewModel>);
 
             _daysOfWeek = FindViewById<DaysOfWeekView>(Resource.Id.set_availability_days_of_week_view);
             _daysOfWeek.BindingContext = _viewModel;
-            this.SetBinding(() => _viewModel.DaysOfWeek, () => _daysOfWeek.Items, BindingMode.OneWay)
+            this.SetBindingEx(() => _viewModel.DaysOfWeek, () => _daysOfWeek.Items, BindingMode.OneWay)
                 .ConvertSourceToTarget(list => list as IEnumerable<IDayOfWeekViewModel>);
             _daysOfWeek.ItemClicked += DaysOfWeekOnItemClicked;
 
             _addTimeAvailableButton = FindViewById<Button>(Resource.Id.set_availability_add_time_available_button);
             _addTimeAvailableButton.SetCommand(nameof(Button.Click), _viewModel.AddTimeAvailableCommand);
             _viewModel.DidBeginAddingTimePeriod += OnDidBeginAddingTimePeriod;
-            _viewModel.DidCancelAddingTimePeriod += OnDidCancelAddingTimePeriod;
+            _viewModel.DidCancelAddingTimePeriod += OnDidCancelOrCreateAvailability;
+            _viewModel.DidCreateTimeAvailability += OnDidCancelOrCreateAvailability;
 
             Overlay = FindViewById<View>(Resource.Id.set_availability_loading_overlay);
             Progress = FindViewById<ProgressBar>(Resource.Id.set_availability_loading_progress);
-            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
+            this.SetBindingEx(() => _viewModel.InProgress, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.Loading;
 
-            _addTimePeriodButton = FindViewById<TextView>(Resource.Id.add_time_period_button);
+            _addTimePeriodButton = FindViewById<TextView>(Resource.Id.set_availability_add_time_period_button);
             _addTimePeriodButton.Click += AddTimePeriodButtonOnClick;
 
             _cancelButton = FindViewById<TextView>(Resource.Id.set_availability_cancel_button);
             _cancelButton.SetCommand(nameof(Button.Click), _viewModel.CancelCommand);
 
+            _saveButton = FindViewById<Button>(Resource.Id.set_availability_save_button);
+            _saveButton.SetCommand(nameof(Button.Click), _viewModel.SaveCommand);
+
             _timePeriods = FindViewById<TimePeriodsView>(Resource.Id.set_availability_time_periods_view);
             _timePeriods.BindingContext = _viewModel;
-            this.SetBinding(() => _viewModel.TimePeriods, () => _timePeriods.Items, BindingMode.OneWay)
+            this.SetBindingEx(() => _viewModel.TimePeriods, () => _timePeriods.Items, BindingMode.OneWay)
                 .ConvertSourceToTarget(list => list as IEnumerable<ITimePeriodViewModel>);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            _daysOfWeek.ItemClicked -= DaysOfWeekOnItemClicked;
+            _viewModel.DidBeginAddingTimePeriod -= OnDidBeginAddingTimePeriod;
+            _viewModel.DidCancelAddingTimePeriod -= OnDidCancelOrCreateAvailability;
+            _viewModel.DidCreateTimeAvailability -= OnDidCancelOrCreateAvailability;
+            _addTimePeriodButton.Click -= AddTimePeriodButtonOnClick;
         }
 
         protected override void OnResume()
@@ -106,7 +122,7 @@ namespace Schedulee.Droid.Views.Availability
             return true;
         }
 
-        private void DaysOfWeekOnItemClicked(object sender, EventArgs eventArgs)
+        private void DaysOfWeekOnItemClicked(object sender, EventArgs args)
         {
             _viewModel.ToggleDayCommand.Execute(sender);
         }
@@ -116,7 +132,7 @@ namespace Schedulee.Droid.Views.Availability
             ShowAddTimeAvailableView();
         }
 
-        private void OnDidCancelAddingTimePeriod(object sender, EventArgs eventArgs)
+        private void OnDidCancelOrCreateAvailability(object sender, EventArgs eventArgs)
         {
             HideAddTimeAvailableView();
         }
@@ -138,18 +154,11 @@ namespace Schedulee.Droid.Views.Availability
             _addAvailabilityView.Visibility = ViewStates.Invisible;
         }
 
-        private async void Button_Click(object sender, EventArgs e)
-        {
-            await UserDialogs.Instance.AlertAsync("Start Time", "", "OK");
-            var hour = DateTime.Now.Date.Hour;
-            var min = DateTime.Now.Date.Minute;
-            var startTimePickingDialog = new TimePickerDialog(this, OnStartTimePicked, hour, min, false);
-            startTimePickingDialog.Show();
-        }
-
         private async void AddTimePeriodButtonOnClick(object sender, EventArgs eventArgs)
         {
             if(!_viewModel.AddTimePeriodCommand.CanExecute(null)) return;
+            _viewModel.AddTimePeriodCommand.Execute(new TimePeriod(DateTime.Now, DateTime.Now.AddHours(1)));
+            return;
             var shouldContinue = await _dialogService.ShowConfirmationDialogAsync(Strings.TimePeriod,
                                                                                   Strings.PickStartTime,
                                                                                   CommonStrings.Ok, CommonStrings.Cancel);
@@ -167,11 +176,12 @@ namespace Schedulee.Droid.Views.Availability
             var shouldContinue = await _dialogService.ShowConfirmationDialogAsync(Strings.TimePeriod,
                                                                                   Strings.PickEndTime,
                                                                                   CommonStrings.Ok, CommonStrings.Cancel);
-            if (!shouldContinue)
+            if(!shouldContinue)
             {
                 _newPeriod = null;
                 return;
             }
+
             var hour = DateTime.Now.Date.Hour;
             var min = DateTime.Now.Date.Minute;
             var endTimePickingDialog = new TimePickerDialog(this, OnEndTimePicked, hour, min, false);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.Content;
 using Android.Runtime;
 using Android.Util;
@@ -6,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Droid.Controls;
+using Schedulee.Droid.Extensions;
 using Schedulee.UI.ViewModels.Availability;
 
 namespace Schedulee.Droid.Views.Availability
@@ -15,6 +17,7 @@ namespace Schedulee.Droid.Views.Availability
         private TextView _formattedDaysOfWeek;
         private TextView _formattedPeroids;
         private IAvailabilityViewModel _viewModel;
+        private readonly List<Binding> _bindings = new List<Binding>();
 
         public AvailabilityView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
@@ -45,13 +48,31 @@ namespace Schedulee.Droid.Views.Availability
             _formattedPeroids = rootView.FindViewById<TextView>(Resource.Id.availability_formatted_periods_text);
         }
 
+        protected override void OnDetachedFromWindow()
+        {
+            base.OnDetachedFromWindow();
+            _bindings.ClearBindings();
+        }
+
+        protected override void OnAttachedToWindow()
+        {
+            base.OnAttachedToWindow();
+            UpdateBindings();
+        }
+
         protected override void OnBindingContextChanged()
         {
+            UpdateBindings();
+        }
+
+        private void UpdateBindings()
+        {
+            _bindings.ClearBindings();
             if(BindingContext == null || !(BindingContext is IAvailabilityViewModel viewModel)) return;
             _viewModel = viewModel;
 
-            this.SetBinding(() => _viewModel.FormattedDaysOfWeek, () => _formattedDaysOfWeek.Text, BindingMode.OneTime);
-            this.SetBinding(() => _viewModel.FormattedTimePeriods, () => _formattedPeroids.Text, BindingMode.OneTime);
+            _bindings.Add(this.SetBinding(() => _viewModel.FormattedDaysOfWeek, () => _formattedDaysOfWeek.Text, BindingMode.OneTime));
+            _bindings.Add(this.SetBinding(() => _viewModel.FormattedTimePeriods, () => _formattedPeroids.Text, BindingMode.OneTime));
         }
     }
 }

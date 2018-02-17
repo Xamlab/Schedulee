@@ -9,25 +9,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+	    <TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_margin="15dp"
+		    android:text="TIME AVAILABLE"
+		    android:textColor="@color/title"
+		    android:textSize="15sp"/>
         <ScrollView
             android:id="@+id/set_availability_root_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1">
 
-            <LinearLayout
+            <schedulee.droid.views.availability.AvailabilitiesView
+                android:id="@+id/set_availability_availabilities_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_margin="10dp" />
 
-                <schedulee.droid.views.availability.AvailabilitiesView
-                    android:id="@+id/set_availability_availabilities_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp" />
-
-            </LinearLayout>
         </ScrollView>
 
         <Button
@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.5"
+        android:clickable="false"
         android:background="@color/transparent_overlay_color"
         android:orientation="vertical"
         android:visibility="invisible" />
@@ -65,7 +66,7 @@
             android:layout_marginTop="10dp"
             android:text="NEW TIME AVAILABLE"
             android:textColor="@color/title"
-            android:textSize="13dp"
+            android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,7 +80,7 @@
             android:clickable="true"
             android:text="CANCEL"
             android:textColor="@drawable/cancel_button_text_color"
-            android:textSize="13dp"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,7 +100,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:clipChildren="true"
-            app:layout_constraintBottom_toTopOf="@+id/add_time_period_button"
+            app:layout_constraintBottom_toTopOf="@+id/set_availability_add_time_period_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,22 +110,22 @@
                 android:id="@+id/set_availability_time_periods_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" />
 
         </ScrollView>
 
-        <ImageView
+        <View
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/separator"
-            app:layout_constraintBottom_toTopOf="@+id/add_time_period_button"
+            app:layout_constraintBottom_toTopOf="@+id/set_availability_add_time_period_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/add_time_period_button"
+            android:id="@+id/set_availability_add_time_period_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/deselected_button_color"
@@ -132,13 +133,13 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="+ Add Time Period"
             android:textColor="@drawable/time_period_button_text_color"
-            android:textSize="17dp"
-            app:layout_constraintBottom_toTopOf="@+id/availability_details_save_button"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/set_availability_save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/availability_details_save_button"
+            android:id="@+id/set_availability_save_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/save_button_background"
@@ -156,6 +157,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.5"
+        android:clickable="false"
         android:background="@color/transparent_overlay_color"
         android:orientation="vertical"
         android:visibility="invisible" />

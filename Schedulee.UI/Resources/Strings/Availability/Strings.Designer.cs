@@ -169,6 +169,15 @@ namespace Schedulee.UI.Resources.Strings.Availability {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start time is greater than end time. Please try again..
+        /// </summary>
+        public static string StartTimeGreaterEndTime {
+            get {
+                return ResourceManager.GetString("StartTimeGreaterEndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sun.
         /// </summary>
         public static string Sunday {
