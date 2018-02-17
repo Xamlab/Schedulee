@@ -37,13 +37,11 @@ namespace Schedulee.Droid.Views.Base
                 {
                     this.ShowOverlay(Overlay);
                     Progress.Visibility = ViewStates.Visible;
-                    Window.SetFlags(WindowManagerFlags.NotTouchable, WindowManagerFlags.NotTouchable);
                 }
                 else
                 {
                     this.HideOverlay(Overlay);
-                    Progress.Visibility = ViewStates.Invisible;
-                    Window.ClearFlags(WindowManagerFlags.NotTouchable);
+                    Progress.Visibility = ViewStates.Gone;
                 }
             }
         }

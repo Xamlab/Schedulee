@@ -50,6 +50,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             await _apiClient.CreateAvailabilityAsync(availability, token);
             _viewModel.Items.Add(Helpers.MapUserAvailabilityToAvailabilityViewModel(availability));
             Helpers.EndAddingAvailableTimePeriod(_viewModel);
+            _viewModel.InvokeDidSaveTimeAvailability();
             return true;
         }
 

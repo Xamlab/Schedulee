@@ -652,9 +652,6 @@
     <AndroidResource Include="Resources\drawable\cancel_button_text_color.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\set_availability_details_layout.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\time_period_item_view.xml">
       <SubType>Designer</SubType>
     </AndroidResource>

@@ -264,7 +264,7 @@ namespace Schedulee.Droid.Controls
         {
             if(!(GetChildAt(0) is LinearLayout root)) return;
 
-            if(!_isExpanded && root.ChildCount >= Limit)
+            if(Limit < 0 || !_isExpanded && root.ChildCount >= Limit)
             {
                 //If the limit is not enabled, or it's enabled and we're trying to insert item that is not passing the limit
                 if(Limit < 0 || args.NewStartingIndex < Limit)
@@ -314,8 +314,7 @@ namespace Schedulee.Droid.Controls
         private void LoadAfterRemove(NotifyCollectionChangedEventArgs args)
         {
             var count = Items?.Count() ?? 0;
-            if(!(count > 0)) return;
-            if(!_isExpanded)
+            if(Limit >= 0 && !_isExpanded)
             {
                 if(args.OldStartingIndex <= Limit)
                 {
@@ -337,7 +336,7 @@ namespace Schedulee.Droid.Controls
         private void LoadAfterReplace(NotifyCollectionChangedEventArgs args)
         {
             if(args.NewItems[0] == args.OldItems[0]) return;
-            if(_isExpanded || args.NewStartingIndex < Limit)
+            if(Limit <= 0 || _isExpanded || args.NewStartingIndex < Limit)
             {
                 RemoveItem(args.OldStartingIndex);
                 AddItem((T) args.NewItems[0], args.NewStartingIndex);

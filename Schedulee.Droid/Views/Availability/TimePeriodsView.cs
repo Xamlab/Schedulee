@@ -44,9 +44,15 @@ namespace Schedulee.Droid.Views.Availability
         {
             Root.Orientation = Orientation.Vertical;
             Root.LayoutParameters = new LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
-            Itemtemplate = new DataTemplate(ctx => new TimePeriodView(ctx));
+            Itemtemplate = new DataTemplate(ctx => new TimePeriodView(ctx, Delete));
             ItemClickable = true;
         }
 
+        private void Delete(ITimePeriodViewModel timePeriod)
+        {
+            if(BindingContext == null || !(BindingContext is ISetAvailabilityViewModel viewModel)) return;
+
+            viewModel.DeleteTimePeriodCommand.Execute(timePeriod);
+        }
     }
 }

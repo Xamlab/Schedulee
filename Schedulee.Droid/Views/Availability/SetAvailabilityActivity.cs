@@ -39,6 +39,7 @@ namespace Schedulee.Droid.Views.Availability
         private TextView _addTimePeriodButton;
         private TextView _cancelButton;
         private TimePeriod _newPeriod;
+        private Button _saveButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -46,6 +47,8 @@ namespace Schedulee.Droid.Views.Availability
 
             // Create your application here
             BindingContext = _viewModel = ServiceLocater.Instance.Resolve<ISetAvailabilityViewModel>();
+            _viewModel.SetupCommand.Execute(null);
+
             _dialogService = ServiceLocater.Instance.Resolve<IDialogService>();
             SetContentView(Resource.Layout.activity_set_availability);
 
@@ -67,18 +70,22 @@ namespace Schedulee.Droid.Views.Availability
             _addTimeAvailableButton = FindViewById<Button>(Resource.Id.set_availability_add_time_available_button);
             _addTimeAvailableButton.SetCommand(nameof(Button.Click), _viewModel.AddTimeAvailableCommand);
             _viewModel.DidBeginAddingTimePeriod += OnDidBeginAddingTimePeriod;
-            _viewModel.DidCancelAddingTimePeriod += OnDidCancelAddingTimePeriod;
+            _viewModel.DidCancelAddingTimePeriod += OnDidCancelOrCreateAvailability;
+            _viewModel.DidCreateTimeAvailability += OnDidCancelOrCreateAvailability;
 
             Overlay = FindViewById<View>(Resource.Id.set_availability_loading_overlay);
             Progress = FindViewById<ProgressBar>(Resource.Id.set_availability_loading_progress);
-            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
+            this.SetBinding(() => _viewModel.InProgress, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.Loading;
 
-            _addTimePeriodButton = FindViewById<TextView>(Resource.Id.add_time_period_button);
+            _addTimePeriodButton = FindViewById<TextView>(Resource.Id.set_availability_add_time_period_button);
             _addTimePeriodButton.Click += AddTimePeriodButtonOnClick;
 
             _cancelButton = FindViewById<TextView>(Resource.Id.set_availability_cancel_button);
             _cancelButton.SetCommand(nameof(Button.Click), _viewModel.CancelCommand);
+
+            _saveButton = FindViewById<Button>(Resource.Id.set_availability_save_button);
+            _saveButton.SetCommand(nameof(Button.Click), _viewModel.SaveCommand);
 
             _timePeriods = FindViewById<TimePeriodsView>(Resource.Id.set_availability_time_periods_view);
             _timePeriods.BindingContext = _viewModel;
@@ -116,7 +123,7 @@ namespace Schedulee.Droid.Views.Availability
             ShowAddTimeAvailableView();
         }
 
-        private void OnDidCancelAddingTimePeriod(object sender, EventArgs eventArgs)
+        private void OnDidCancelOrCreateAvailability(object sender, EventArgs eventArgs)
         {
             HideAddTimeAvailableView();
         }

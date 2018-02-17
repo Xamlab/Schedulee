@@ -1,7 +1,5 @@
 ﻿using System;
 using Android.Content;
-using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
@@ -13,27 +11,14 @@ namespace Schedulee.Droid.Views.Availability
     public class TimePeriodView : BindableLinearLayout
     {
         private TextView _formattedPeroids;
+        private ImageButton _deleteButton;
         private ITimePeriodViewModel _viewModel;
-        
-        public TimePeriodView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
-        {
-        }
+        private readonly Action<ITimePeriodViewModel> _deleteAction;
 
-        public TimePeriodView(Context context) : base(context)
+        public TimePeriodView(Context context, Action<ITimePeriodViewModel> deleteAction) : base(context)
         {
+            _deleteAction = deleteAction;
             Create(context);
-        }
-
-        public TimePeriodView(Context context, IAttributeSet attrs) : base(context, attrs)
-        {
-        }
-
-        public TimePeriodView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
-        {
-        }
-
-        public TimePeriodView(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes) : base(context, attrs, defStyleAttr, defStyleRes)
-        {
         }
 
         private void Create(Context context)
@@ -41,6 +26,13 @@ namespace Schedulee.Droid.Views.Availability
             var inflater = (LayoutInflater) context.GetSystemService(Context.LayoutInflaterService);
             var rootView = inflater.Inflate(Resource.Layout.time_period_item_view, this);
             _formattedPeroids = rootView.FindViewById<TextView>(Resource.Id.time_period_formatted_periods_text);
+            _deleteButton = rootView.FindViewById<ImageButton>(Resource.Id.delete_time_period_button);
+            _deleteButton.Click += DeleteButtonOnClick;
+        }
+
+        private void DeleteButtonOnClick(object sender, EventArgs eventArgs)
+        {
+            _deleteAction?.Invoke(BindingContext as ITimePeriodViewModel);
         }
 
         protected override void OnBindingContextChanged()

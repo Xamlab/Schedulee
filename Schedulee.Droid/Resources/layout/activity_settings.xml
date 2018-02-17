@@ -96,9 +96,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.5"
+        android:clickable="false"
         android:background="@color/transparent_overlay_color"
         android:orientation="vertical"
-        android:visibility="invisible" />
+        android:visibility="gone" />
 
     <ProgressBar
         android:id="@+id/settings_loading_progress"
