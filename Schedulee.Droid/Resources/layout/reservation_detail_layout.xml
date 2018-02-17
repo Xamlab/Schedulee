@@ -39,7 +39,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="CLIENT"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_divider" />
 
@@ -51,7 +51,7 @@
             android:layout_marginTop="8dp"
             android:text="FormattedClient"
             android:textColor="@color/title"
-            android:textSize="17dp"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/formatted_client_title" />
 
@@ -72,7 +72,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="WORKING TIME"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_divider1" />
 
@@ -84,7 +84,7 @@
             android:layout_marginTop="8dp"
             android:text="FormattedTimePeriod"
             android:textColor="@color/title"
-            android:textSize="17dp"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/formatted_time_period_title" />
 
@@ -105,7 +105,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="MOBILE"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_divider2" />
 
@@ -117,7 +117,7 @@
             android:layout_marginTop="8dp"
             android:text="PhoneNumber"
             android:textColor="@color/title"
-            android:textSize="17dp"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_number_title" />
 
@@ -129,7 +129,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:text="WORKING LOCATION"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_number_text" />
 
@@ -142,7 +142,7 @@
             android:layout_marginTop="8dp"
             android:text="Location"
             android:textColor="@color/title"
-            android:textSize="17dp"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/location_title" />
 

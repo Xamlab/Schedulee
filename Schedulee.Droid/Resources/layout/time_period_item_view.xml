@@ -16,7 +16,7 @@
 	    android:textColor="@color/title"
         android:text="9:00 - 12:00"
         android:layout_gravity="start|center_vertical"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
 
     <ImageButton
         android:id="@+id/delete_time_period_button"

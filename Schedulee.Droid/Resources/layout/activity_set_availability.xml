@@ -66,7 +66,7 @@
             android:layout_marginTop="10dp"
             android:text="NEW TIME AVAILABLE"
             android:textColor="@color/title"
-            android:textSize="13dp"
+            android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,7 +80,7 @@
             android:clickable="true"
             android:text="CANCEL"
             android:textColor="@drawable/cancel_button_text_color"
-            android:textSize="13dp"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -133,7 +133,7 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="+ Add Time Period"
             android:textColor="@drawable/time_period_button_text_color"
-            android:textSize="17dp"
+            android:textSize="17sp"
             app:layout_constraintBottom_toTopOf="@+id/set_availability_save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

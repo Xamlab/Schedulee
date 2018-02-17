@@ -44,7 +44,7 @@
         android:layout_marginRight="10dp"
         android:text="There are no available reservations for this day"
         android:textColor="@color/title"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/reservation_content_recyclerView"
