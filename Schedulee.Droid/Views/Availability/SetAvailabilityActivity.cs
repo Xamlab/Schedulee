@@ -167,11 +167,12 @@ namespace Schedulee.Droid.Views.Availability
             var shouldContinue = await _dialogService.ShowConfirmationDialogAsync(Strings.TimePeriod,
                                                                                   Strings.PickEndTime,
                                                                                   CommonStrings.Ok, CommonStrings.Cancel);
-            if (!shouldContinue)
+            if(!shouldContinue)
             {
                 _newPeriod = null;
                 return;
             }
+
             var hour = DateTime.Now.Date.Hour;
             var min = DateTime.Now.Date.Minute;
             var endTimePickingDialog = new TimePickerDialog(this, OnEndTimePicked, hour, min, false);

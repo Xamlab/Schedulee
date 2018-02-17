@@ -153,6 +153,9 @@
   <data name="Saturday" xml:space="preserve">
     <value>Sat</value>
   </data>
+  <data name="StartTimeGreaterEndTime" xml:space="preserve">
+    <value>Start time is greater than end time. Please try again.</value>
+  </data>
   <data name="Sunday" xml:space="preserve">
     <value>Sun</value>
   </data>

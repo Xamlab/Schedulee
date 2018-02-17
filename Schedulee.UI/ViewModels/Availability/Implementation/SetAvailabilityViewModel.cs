@@ -23,7 +23,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             AddTimeAvailableCommand = new AddTimeAvailableCommand(this, dialogService);
             AddTimePeriodCommand = new AddTimePeriodCommand(this, timeProvider, dialogService);
             DeleteTimePeriodCommand = new DeleteTimePeriodCommand(this, dialogService);
-            ToggleDayCommand = new ToggleDayCommand(this, dialogService);
+            ToggleDayCommand = new ToggleDayCommand(this, timeProvider, dialogService);
             CancelCommand = new CancelCommand(this, dialogService);
             SaveCommand = new CreateAvailabilityCommand(this, apiClient, dialogService);
         }
@@ -39,14 +39,14 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
         public IAsyncCommand SaveCommand { get; }
         public IViewModelValidator Validator { get; }
         public IStaleMonitor StaleMonitor { get; }
-
+        
         public IList<IDayOfWeekViewModel> DaysOfWeek { get; internal set; }
         public IList<ITimePeriodViewModel> TimePeriods { get; }
         public bool IsAddingAvailableTimePeriod { get; internal set; }
         public bool IsSaving { get; set; }
         public bool DidSave { get; set; }
         public string SavingFailureMessage { get; set; }
-        internal bool AtLeasetOneDayOfWeekIsSelected { get; set; }
+        internal bool AtLeastOneDayOfWeekIsSelected { get; set; }
         public event EventHandler DidBeginAddingTimePeriod;
         public event EventHandler DidCancelAddingTimePeriod;
 
