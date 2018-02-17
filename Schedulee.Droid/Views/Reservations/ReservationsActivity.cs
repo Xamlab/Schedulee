@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Core.Managers;
 using Schedulee.Core.Models;
+using Schedulee.Droid.Controls;
 using Schedulee.Droid.Views.Availability;
 using Schedulee.Droid.Views.Base;
 using Schedulee.Droid.Views.Settings;
@@ -93,6 +94,7 @@ namespace Schedulee.Droid.Views.Reservations
                 _reservationsHeaderAdapter = _viewModel.Items.GetRecyclerAdapter(BindHeaderViewHolder, Resource.Layout.reservation_date_layout);
                 _reservationsHeaderRecyclerView.SetAdapter(_reservationsHeaderAdapter);
             }
+            
         }
 
         private void BindHeaderViewHolder(CachingViewHolder holder, IDateViewModel viewModel, int position)
