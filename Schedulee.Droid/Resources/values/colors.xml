@@ -13,5 +13,6 @@
   <color name="separator">#B2B2B2</color>
   <color name="selected_button_color">#87C735</color>
   <color name="deselected_button_color">#F1F1F1</color>
+  <color name="transparent_overlay_color">#B2B2B2</color>
 </resources>
 
