@@ -175,7 +175,9 @@ namespace Schedulee.Droid.Controls
         {
             Cleanup();
 
-            Create();
+            _observedItems = Items as INotifyCollectionChanged;
+            ConnectEvents();
+            LoadChildren();
         }
 
         private void Cleanup()
@@ -184,13 +186,6 @@ namespace Schedulee.Droid.Controls
             _observedItems = null;
             _isExpanded = false;
             Clear();
-        }
-
-        private void Create()
-        {
-            _observedItems = Items as INotifyCollectionChanged;
-            ConnectEvents();
-            LoadChildren();
         }
 
         protected override void OnDetachedFromWindow()
@@ -202,7 +197,7 @@ namespace Schedulee.Droid.Controls
         protected override void OnAttachedToWindow()
         {
             base.OnAttachedToWindow();
-            Create();
+            UpdateItems();
         }
 
         private void SeeMoreButtonClicked(object sender, EventArgs e)
@@ -292,14 +287,13 @@ namespace Schedulee.Droid.Controls
         {
             if(!(GetChildAt(0) is LinearLayout root)) return;
 
-            if(Limit < 0 || !_isExpanded && root.ChildCount >= Limit)
+            if(Limit >= 0 && !_isExpanded && root.ChildCount >= Limit)
             {
-                //If the limit is not enabled, or it's enabled and we're trying to insert item that is not passing the limit
-                if(Limit < 0 || args.NewStartingIndex < Limit)
+                if(args.NewStartingIndex < Limit)
                 {
                     //If limit is enabled, and current item is being inserted at the position of last visible item
                     //then we need to remove the last visible item and insert the new one instead of it.
-                    if(Limit > 0 && root.ChildCount >= Limit)
+                    if(root.ChildCount >= Limit)
                     {
                         RemoveItem(args.NewStartingIndex);
                     }
