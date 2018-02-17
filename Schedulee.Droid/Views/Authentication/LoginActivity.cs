@@ -33,10 +33,6 @@ namespace Schedulee.Droid.Views.Authentication
         {
             base.OnCreate(savedInstanceState);
 
-            RequestWindowFeature(WindowFeatures.NoTitle);
-            Window.SetFlags(WindowManagerFlags.Fullscreen,
-                            WindowManagerFlags.Fullscreen);
-
             SetContentView(Resource.Layout.activity_login);
             BindingContext = _viewModel = ServiceLocater.Instance.Resolve<ILoginViewModel>();
             _viewModel.LoginCompleted += ViewModelOnLoginCompleted;
@@ -70,6 +66,19 @@ namespace Schedulee.Droid.Views.Authentication
             Progress = FindViewById<ProgressBar>(Resource.Id.login_loading_progress);
             this.SetBindingEx(() => _viewModel.IsSaving, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.LoggingIn;
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            Window.SetFlags(WindowManagerFlags.Fullscreen,
+                            WindowManagerFlags.Fullscreen);
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            Window.ClearFlags(WindowManagerFlags.Fullscreen);
         }
 
         protected override void OnDestroy()

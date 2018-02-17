@@ -52,6 +52,10 @@ namespace Schedulee.UI.ViewModels.Reservations.Implementation
                                                             DayOfWeek = grouping.Date.ToString("ddd"),
                                                             Day = grouping.Date.Day.ToString()
                                                         }).ToList<IDateViewModel>();
+            if(_viewModel.Items?.Any() == true)
+            {
+                _viewModel.SelectDateCommand.Execute(_viewModel.Items.First());
+            }
         }
     }
 }
