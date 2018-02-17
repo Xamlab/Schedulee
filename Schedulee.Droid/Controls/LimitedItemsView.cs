@@ -266,9 +266,12 @@ namespace Schedulee.Droid.Controls
 
             if(!_isExpanded && root.ChildCount >= Limit)
             {
-                if(args.NewStartingIndex < Limit)
+                //If the limit is not enabled, or it's enabled and we're trying to insert item that is not passing the limit
+                if(Limit < 0 || args.NewStartingIndex < Limit)
                 {
-                    if(root.ChildCount >= Limit)
+                    //If limit is enabled, and current item is being inserted at the position of last visible item
+                    //then we need to remove the last visible item and insert the new one instead of it.
+                    if(Limit > 0 && root.ChildCount >= Limit)
                     {
                         RemoveItem(args.NewStartingIndex);
                     }

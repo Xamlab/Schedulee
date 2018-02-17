@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Core.DI.Implementation;
 using Schedulee.Droid.Views.Base;
@@ -17,7 +18,9 @@ namespace Schedulee.Droid.Views.Availability
     {
         private ISetAvailabilityViewModel _viewModel;
         private AvailabilitiesView _availabilities;
+        private TimePeriodsView _timePeriods;
         private DaysOfWeekView _daysOfWeek;
+        private TextView _addTimePeriod;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,6 +28,7 @@ namespace Schedulee.Droid.Views.Availability
 
             // Create your application here
             BindingContext = _viewModel = ServiceLocater.Instance.Resolve<ISetAvailabilityViewModel>();
+
             SetContentView(Resource.Layout.activity_set_availability);
 
             _availabilities = FindViewById<AvailabilitiesView>(Resource.Id.set_availability_availabilities_view);
@@ -38,8 +42,16 @@ namespace Schedulee.Droid.Views.Availability
                 .ConvertSourceToTarget(list => list as IEnumerable<IDayOfWeekViewModel>);
             _daysOfWeek.ItemClicked += DaysOfWeekOnItemClicked;
 
+            _addTimePeriod = FindViewById<TextView>(Resource.Id.add_time_period_button);
+            _addTimePeriod.SetCommand(nameof(TextView.Click), _viewModel.AddTimePeriodCommand);
+
             this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.Loading;
+
+            _timePeriods = FindViewById<TimePeriodsView>(Resource.Id.set_availability_time_periods_view);
+            _timePeriods.BindingContext = _viewModel;
+            this.SetBinding(() => _viewModel.TimePeriods, () => _timePeriods.Items, BindingMode.OneWay)
+                .ConvertSourceToTarget(list => list as IEnumerable<ITimePeriodViewModel>);
         }
 
         protected override void OnResume()

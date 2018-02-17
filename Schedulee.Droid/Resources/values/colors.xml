@@ -13,5 +13,10 @@
   <color name="separator">#B2B2B2</color>
   <color name="selected_button_color">#87C735</color>
   <color name="deselected_button_color">#F1F1F1</color>
+  <color name="cancel_button_text_color_normal">#FD6588</color>
+  <color name="cancel_button_text_color_pressed">#FAB9C7</color>
+  <color name="button_text_pressed_color">#828288</color>
+  <color name="save_button_normal_color">#87c735</color>
+  <color name="save_button_pressed_color">#acec5b</color>
 </resources>
 
