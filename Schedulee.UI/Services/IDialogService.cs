@@ -8,5 +8,6 @@ namespace Schedulee.UI.Services
         Task<bool> ShowConfirmationDialogAsync(string message, string confirmText, string cancelText);
         Task<bool> ShowConfirmationDialogAsync(string title, string message, string confirmText, string cancelText);
         Task<string> ShowOptionsAsync(string title, string cancel, string destruction, params string[] options);
+        void ShowToast(string text);
     }
 }

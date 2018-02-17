@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "486636286141",
+    "firebase_url": "https://schedulee-1c0ce.firebaseio.com",
+    "project_id": "schedulee-1c0ce",
+    "storage_bucket": "schedulee-1c0ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486636286141:android:6b936d715639b514",
+        "android_client_info": {
+          "package_name": "com.xamlab.schedulee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486636286141-ih04s67k0ns3v01pdvmlfidd7jlhc7ll.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xamlab.schedulee",
+            "certificate_hash": "cae3e89bf8d03966e63f5f8bb0d589cae4a66cbc"
+          }
+        },
+        {
+          "client_id": "486636286141-20leum4jqvkm1p5vk2ko0k7ukrndjbcl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI-lQnl6-8Fuo7EFueIdWHb97yJ9Qou7w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486636286141-20leum4jqvkm1p5vk2ko0k7ukrndjbcl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

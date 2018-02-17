@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Acr.UserDialogs;
+using Android.Widget;
 using Plugin.CurrentActivity;
 using Schedulee.Droid.Controls;
 using Schedulee.UI.Services;
@@ -31,6 +32,12 @@ namespace Schedulee.Droid.Services.Implementation
         public Task<string> ShowOptionsAsync(string title, string cancel, string destruction, params string[] options)
         {
             return UserDialogs.Instance.ActionSheetAsync(title, cancel, destruction, buttons:options);
+        }
+
+        public void ShowToast(string text)
+        {
+            var toast = Toast.MakeText(CrossCurrentActivity.Current.Activity, text, ToastLength.Long);
+            toast.Show();
         }
     }
 }
