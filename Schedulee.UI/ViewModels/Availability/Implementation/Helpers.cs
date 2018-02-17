@@ -60,19 +60,19 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             var timeRanges = new TimePeriodCollection();
 
             var startOfWeek = StartOfWeek(timeProvider.DateTimeNow.Date, DayOfWeek.Monday);
-            foreach (var availability in viewModel.Items)
+            foreach(var availability in viewModel.Items)
             {
-                foreach (var dayOfWeek in availability.Availablity.DaysOfWeek)
+                foreach(var dayOfWeek in availability.Availablity.DaysOfWeek)
                 {
                     var timePeriods = availability.Availablity.TimePeriods;
                     AddTimePeriods(timePeriods, startOfWeek, timeRanges, dayOfWeek);
                 }
             }
 
-            foreach (var day in viewModel.DaysOfWeek.Where(day => day.IsSelected))
+            foreach(var day in viewModel.DaysOfWeek.Where(day => day.IsSelected))
             {
                 var timePeriods = viewModel.TimePeriods.Select(model => new TimePeriod(model.Start, model.End)).ToList();
-                if (newPeriod != null)
+                if(newPeriod != null)
                     timePeriods.Add(newPeriod);
                 AddTimePeriods(timePeriods, startOfWeek, timeRanges, day.Day);
             }
@@ -80,7 +80,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             var periodIntersector = new TimePeriodIntersector<TimeRange>();
             var intersectedPeriods = periodIntersector.IntersectPeriods(timeRanges);
             var isIntersecting = intersectedPeriods.Any();
-            if (isIntersecting)
+            if(isIntersecting)
             {
                 await dialogService.ShowNotificationAsync(Strings.TimePeriodsIntersectingValidationError, CommonStrings.Ok);
             }
@@ -102,7 +102,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
 
         private static void AddTimePeriods(IEnumerable<TimePeriod> timePeriods, DateTime startOfWeek, TimePeriodCollection timeRanges, int dayOfWeek)
         {
-            foreach (var timePeriod in timePeriods)
+            foreach(var timePeriod in timePeriods)
             {
                 var startDate = new DateTime(startOfWeek.Year, startOfWeek.Month, startOfWeek.Day + dayOfWeek,
                                              timePeriod.Start.Hour, timePeriod.Start.Minute, timePeriod.Start.Second);
