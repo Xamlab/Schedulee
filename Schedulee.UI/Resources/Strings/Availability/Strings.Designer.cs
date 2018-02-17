@@ -142,6 +142,24 @@ namespace Schedulee.UI.Resources.Strings.Availability {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pick the end time..
+        /// </summary>
+        public static string PickEndTime {
+            get {
+                return ResourceManager.GetString("PickEndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick the start time..
+        /// </summary>
+        public static string PickStartTime {
+            get {
+                return ResourceManager.GetString("PickStartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sat.
         /// </summary>
         public static string Saturday {
@@ -165,6 +183,15 @@ namespace Schedulee.UI.Resources.Strings.Availability {
         public static string Thursday {
             get {
                 return ResourceManager.GetString("Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Period.
+        /// </summary>
+        public static string TimePeriod {
+            get {
+                return ResourceManager.GetString("TimePeriod", resourceCulture);
             }
         }
         

@@ -144,6 +144,12 @@
   <data name="NoAddTimeAvailableStarted" xml:space="preserve">
     <value>Please start adding time available before trying to continue.</value>
   </data>
+  <data name="PickEndTime" xml:space="preserve">
+    <value>Pick the end time.</value>
+  </data>
+  <data name="PickStartTime" xml:space="preserve">
+    <value>Pick the start time.</value>
+  </data>
   <data name="Saturday" xml:space="preserve">
     <value>Sat</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="Thursday" xml:space="preserve">
     <value>Thu</value>
+  </data>
+  <data name="TimePeriod" xml:space="preserve">
+    <value>Time Period</value>
   </data>
   <data name="TimePeriodRequiredValidationError" xml:space="preserve">
     <value>Please add at least one time period before adding new time available.</value>
