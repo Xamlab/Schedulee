@@ -13,8 +13,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="100dp"
         android:src="@drawable/schedulee" />
 
@@ -24,8 +24,8 @@
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="30dp"
         android:background="@color/button"
         android:text="Login"
@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/login_button"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="0dp" />
 
     <schedulee.droid.controls.EntryView
@@ -47,8 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/login_password_entry"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp" />
 
     <View
