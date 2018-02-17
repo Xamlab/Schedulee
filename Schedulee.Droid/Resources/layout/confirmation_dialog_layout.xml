@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reservation_date_layout_linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F8F8F8"
+    android:orientation="vertical"
+    android:weightSum="2">
+
+    <TextView
+        android:id="@+id/confirmation_dialog_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="ARE YOU SURE YOU WANT LOG OUT?"
+        android:textColor="#88888A" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/confirmation_dialog_ok_button"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/user_dialog_button_background"
+            android:text="No"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/confirmation_dialog_cancel_button"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginLeft="1dp"
+            android:background="@drawable/user_dialog_button_background"
+            android:text="Yes"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>
