@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Threading.Tasks;
 using Schedulee.UI.Resources.Strings.Common;
 using Schedulee.UI.Services;
 
@@ -10,15 +11,21 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
         {
         }
 
-        protected override async void ExecuteCore(object parameter)
+        protected override async Task ExecuteCoreAsync(object parameter)
         {
-            var shouldDiscard = await DialogService.ShowConfirmationDialogAsync(Strings.DiscardConfirmation, Strings.Yes, Strings.No);
-            if(!shouldDiscard) return;
+            if(ViewModel.StaleMonitor.IsStale)
+            {
+                var shouldDiscard = await DialogService.ShowConfirmationDialogAsync(Strings.DiscardConfirmation, Strings.Yes, Strings.No);
+                if(!shouldDiscard) return;
+            }
+
             Helpers.EndAddingAvailableTimePeriod(ViewModel);
+            ViewModel.InvokeDidCancelAddingTimePeriod();
         }
 
-        private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs args)
+        protected override void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
+            base.ViewModelOnPropertyChanged(sender, args);
             if(args.PropertyName == nameof(SetAvailabilityViewModel.IsAddingAvailableTimePeriod))
             {
                 SetCanExecute(ViewModel.IsAddingAvailableTimePeriod);

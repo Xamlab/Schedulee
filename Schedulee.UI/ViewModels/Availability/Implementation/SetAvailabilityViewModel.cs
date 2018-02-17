@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using PropertyChanged;
 using Schedulee.Core.Services;
 using Schedulee.UI.Services;
@@ -31,21 +31,33 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
         [DependsOn(nameof(IsSaving), nameof(IsLoading))]
         public bool InProgress => IsSaving || IsLoading;
 
-        public ICommand AddTimeAvailableCommand { get; }
-        public ICommand AddTimePeriodCommand { get; }
-        public ICommand DeleteTimePeriodCommand { get; }
-        public ICommand ToggleDayCommand { get; }
-        public ICommand CancelCommand { get; }
+        public IAsyncCommand AddTimeAvailableCommand { get; }
+        public IAsyncCommand AddTimePeriodCommand { get; }
+        public IAsyncCommand DeleteTimePeriodCommand { get; }
+        public IAsyncCommand ToggleDayCommand { get; }
+        public IAsyncCommand CancelCommand { get; }
         public IAsyncCommand SaveCommand { get; }
         public IViewModelValidator Validator { get; }
         public IStaleMonitor StaleMonitor { get; }
 
         public IList<IDayOfWeekViewModel> DaysOfWeek { get; internal set; }
         public IList<ITimePeriodViewModel> TimePeriods { get; }
-        internal bool IsAddingAvailableTimePeriod { get; set; }
+        public bool IsAddingAvailableTimePeriod { get; internal set; }
         public bool IsSaving { get; set; }
         public bool DidSave { get; set; }
         public string SavingFailureMessage { get; set; }
         internal bool AtLeasetOneDayOfWeekIsSelected { get; set; }
+        public event EventHandler DidBeginAddingTimePeriod;
+        public event EventHandler DidCancelAddingTimePeriod;
+
+        internal void InvokeDidBeginAddingTimePeriod()
+        {
+            DidBeginAddingTimePeriod?.Invoke(this, EventArgs.Empty);
+        }
+
+        internal void InvokeDidCancelAddingTimePeriod()
+        {
+            DidCancelAddingTimePeriod?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

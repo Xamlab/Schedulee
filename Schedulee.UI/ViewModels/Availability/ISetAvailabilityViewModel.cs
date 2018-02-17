@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System;
+using System.Collections.Generic;
 using Schedulee.UI.ViewModels.Base;
 
 namespace Schedulee.UI.ViewModels.Availability
@@ -9,10 +9,13 @@ namespace Schedulee.UI.ViewModels.Availability
         IList<IDayOfWeekViewModel> DaysOfWeek { get; }
         IList<ITimePeriodViewModel> TimePeriods { get; }
         bool InProgress { get; }
-        ICommand AddTimeAvailableCommand { get; }
-        ICommand AddTimePeriodCommand { get; }
-        ICommand DeleteTimePeriodCommand { get; }
-        ICommand ToggleDayCommand { get; }
-        ICommand CancelCommand { get; }
+        IAsyncCommand AddTimeAvailableCommand { get; }
+        IAsyncCommand AddTimePeriodCommand { get; }
+        IAsyncCommand DeleteTimePeriodCommand { get; }
+        IAsyncCommand ToggleDayCommand { get; }
+        IAsyncCommand CancelCommand { get; }
+        bool IsAddingAvailableTimePeriod { get; }
+        event EventHandler DidBeginAddingTimePeriod;
+        event EventHandler DidCancelAddingTimePeriod;
     }
 }

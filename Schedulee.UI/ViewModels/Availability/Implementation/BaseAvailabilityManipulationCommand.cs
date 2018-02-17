@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Threading;
+using System.Threading.Tasks;
 using Schedulee.UI.Resources.Strings.Availability;
 using Schedulee.UI.Services;
 using Schedulee.UI.ViewModels.Base.Implementation;
@@ -6,12 +8,12 @@ using CommonStrings = Schedulee.UI.Resources.Strings.Common.Strings;
 
 namespace Schedulee.UI.ViewModels.Availability.Implementation
 {
-    internal class BaseAvailabilityManipulationCommand : Command
+    internal abstract class BaseAvailabilityManipulationCommand : AsyncCommand
     {
         protected SetAvailabilityViewModel ViewModel { get; }
         protected IDialogService DialogService { get; }
 
-        public BaseAvailabilityManipulationCommand(SetAvailabilityViewModel viewModel, IDialogService dialogService, bool canExecute = true)
+        protected BaseAvailabilityManipulationCommand(SetAvailabilityViewModel viewModel, IDialogService dialogService, bool canExecute = true)
             : base(canExecute && viewModel.IsAddingAvailableTimePeriod)
         {
             DialogService = dialogService;
@@ -19,7 +21,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
         }
 
-        public override async void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter, CancellationToken token = default(CancellationToken))
         {
             if(!ViewModel.IsAddingAvailableTimePeriod)
             {
@@ -27,12 +29,10 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
                 return;
             }
 
-            ExecuteCore(parameter);
+            await ExecuteCoreAsync(parameter);
         }
 
-        protected virtual void ExecuteCore(object parameter)
-        {
-        }
+        protected abstract Task ExecuteCoreAsync(object parameter);
 
         protected virtual void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs args)
         {

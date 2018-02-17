@@ -1,4 +1,10 @@
-﻿using Schedulee.Core.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
+using Itenso.TimePeriod;
+using Schedulee.Core.Models;
 using Schedulee.Core.Services;
 using Schedulee.UI.Resources.Strings.Availability;
 using Schedulee.UI.Services;
@@ -10,13 +16,13 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
     {
         private readonly ITimeProvider _timeProvider;
 
-        public AddTimePeriodCommand(SetAvailabilityViewModel viewModel, ITimeProvider timeProvider, IDialogService dialogService) 
+        public AddTimePeriodCommand(SetAvailabilityViewModel viewModel, ITimeProvider timeProvider, IDialogService dialogService)
             : base(viewModel, dialogService, viewModel.AtLeasetOneDayOfWeekIsSelected)
         {
             _timeProvider = timeProvider;
         }
 
-        protected override async void ExecuteCore(object parameter)
+        protected override async Task ExecuteCoreAsync(object parameter)
         {
             //if(parameter == null || !(parameter is TimePeriod timePeriod))
             //{
@@ -25,11 +31,6 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             //}
             var now = DateTime.Now;
             var timePeriod = new TimePeriod(now, now.AddHours(2));
-            if(parameter == null || !(parameter is TimePeriod timePeriod))
-            {
-                await DialogService.ShowNotificationAsync(Strings.InvalidTimePeriodError, CommonStrings.Ok);
-                return;
-            }
 
             if(await CheckIntersection(timePeriod)) return;
 
@@ -54,6 +55,7 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
         {
             return base.UpdateCanExecute() && ViewModel.AtLeasetOneDayOfWeekIsSelected;
         }
+
         private async Task<bool> CheckIntersection(TimePeriod newPeriod)
         {
             var timeRanges = new TimePeriodCollection();
@@ -103,6 +105,5 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
             return dt.AddDays(-1 * diff).Date;
         }
-
     }
 }

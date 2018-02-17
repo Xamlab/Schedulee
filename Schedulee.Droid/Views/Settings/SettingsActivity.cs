@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Text;
 using Android.Views;
@@ -14,7 +15,10 @@ using Schedulee.UI.ViewModels.Settings;
 
 namespace Schedulee.Droid.Views.Settings
 {
-    [Activity(Label = "Settings", Theme = "@style/AppTheme.ActionBar", ParentActivity = typeof(ReservationsActivity))]
+    [Activity(Label = "Settings",
+        Theme = "@style/AppTheme.ActionBar",
+        ParentActivity = typeof(ReservationsActivity),
+        ScreenOrientation = ScreenOrientation.Portrait)]
     public class SettingsActivity : BaseAuthRequiredActivity
     {
         private ISettingsViewModel _viewModel;

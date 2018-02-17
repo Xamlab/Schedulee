@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
@@ -24,7 +25,9 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Schedulee.Droid.Views.Reservations
 {
-    [Activity(Label = "Reservations", Theme = "@style/AppTheme.NoActionBar")]
+    [Activity(Label = "Reservations",
+        Theme = "@style/AppTheme.NoActionBar",
+        ScreenOrientation = ScreenOrientation.Portrait)]
     public class ReservationsActivity : BaseAuthRequiredActivity,
                                         NavigationView.IOnNavigationItemSelectedListener,
                                         View.IOnClickListener

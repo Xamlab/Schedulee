@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
+using Android.Support.Constraints;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
@@ -16,7 +18,10 @@ using Schedulee.UI.ViewModels.Availability;
 
 namespace Schedulee.Droid.Views.Availability
 {
-    [Activity(Label = "Set Availability", Theme = "@style/AppTheme.ActionBar", ParentActivity = typeof(ReservationsActivity))]
+    [Activity(Label = "Set Availability",
+        Theme = "@style/AppTheme.ActionBar",
+        ParentActivity = typeof(ReservationsActivity),
+        ScreenOrientation = ScreenOrientation.Portrait)]
     public class SetAvailabilityActivity : BaseAuthRequiredActivity
     {
         private ISetAvailabilityViewModel _viewModel;
@@ -25,8 +30,9 @@ namespace Schedulee.Droid.Views.Availability
         private DaysOfWeekView _daysOfWeek;
         private Button _addTimeAvailableButton;
         private View _overlay;
-        private LinearLayout _addAvailabilityView;
-        private TextView _addTimePeriod;
+        private ConstraintLayout _addAvailabilityView;
+        private TextView _addTimePeriodButton;
+        private TextView _cancelButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,13 +40,11 @@ namespace Schedulee.Droid.Views.Availability
 
             // Create your application here
             BindingContext = _viewModel = ServiceLocater.Instance.Resolve<ISetAvailabilityViewModel>();
-
             SetContentView(Resource.Layout.activity_set_availability);
 
             _overlay = FindViewById<View>(Resource.Id.set_availability_overlay);
             _overlay.Clickable = true;
-            _overlay.Click += OverlayOnClick;
-            _addAvailabilityView = FindViewById<LinearLayout>(Resource.Id.set_availability_add_availability_view);
+            _addAvailabilityView = FindViewById<ConstraintLayout>(Resource.Id.set_availability_add_availability_view);
 
             _availabilities = FindViewById<AvailabilitiesView>(Resource.Id.set_availability_availabilities_view);
             _availabilities.BindingContext = _viewModel;
@@ -54,25 +58,25 @@ namespace Schedulee.Droid.Views.Availability
             _daysOfWeek.ItemClicked += DaysOfWeekOnItemClicked;
 
             _addTimeAvailableButton = FindViewById<Button>(Resource.Id.set_availability_add_time_available_button);
-            _addTimeAvailableButton.Click += AddTimeAvailableButtonOnClick;
+            _addTimeAvailableButton.SetCommand(nameof(Button.Click), _viewModel.AddTimeAvailableCommand);
+            _viewModel.DidBeginAddingTimePeriod += OnDidBeginAddingTimePeriod;
+            _viewModel.DidCancelAddingTimePeriod += OnDidCancelAddingTimePeriod;
 
             Overlay = FindViewById<View>(Resource.Id.set_availability_loading_overlay);
             Progress = FindViewById<ProgressBar>(Resource.Id.set_availability_loading_progress);
-            this.SetBinding(() => _viewModel.InProgress, () => IsLoading, BindingMode.OneWay);
+            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.Loading;
 
-            _addTimePeriod = FindViewById<TextView>(Resource.Id.add_time_period_button);
-            _addTimePeriod.SetCommand(nameof(TextView.Click), _viewModel.AddTimePeriodCommand);
+            _addTimePeriodButton = FindViewById<TextView>(Resource.Id.add_time_period_button);
+            _addTimePeriodButton.SetCommand(nameof(TextView.Click), _viewModel.AddTimePeriodCommand);
+
+            _cancelButton = FindViewById<TextView>(Resource.Id.set_availability_cancel_button);
+            _cancelButton.SetCommand(nameof(Button.Click), _viewModel.CancelCommand);
 
             _timePeriods = FindViewById<TimePeriodsView>(Resource.Id.set_availability_time_periods_view);
             _timePeriods.BindingContext = _viewModel;
             this.SetBinding(() => _viewModel.TimePeriods, () => _timePeriods.Items, BindingMode.OneWay)
                 .ConvertSourceToTarget(list => list as IEnumerable<ITimePeriodViewModel>);
-        }
-
-        private void OverlayOnClick(object sender, EventArgs eventArgs)
-        {
-            HideAddTimeAvailableView();
         }
 
         protected override void OnResume()
@@ -86,7 +90,6 @@ namespace Schedulee.Droid.Views.Availability
             if(!_viewModel.IsLoaded)
             {
                 await _viewModel.LoadCommand.ExecuteAsync(null);
-                _viewModel.AddTimeAvailableCommand.Execute(null);
             }
         }
 
@@ -101,9 +104,14 @@ namespace Schedulee.Droid.Views.Availability
             _viewModel.ToggleDayCommand.Execute(sender);
         }
 
-        private void AddTimeAvailableButtonOnClick(object sender, EventArgs eventArgs)
+        private void OnDidBeginAddingTimePeriod(object sender, EventArgs eventArgs)
         {
             ShowAddTimeAvailableView();
+        }
+
+        private void OnDidCancelAddingTimePeriod(object sender, EventArgs eventArgs)
+        {
+            HideAddTimeAvailableView();
         }
 
         private void ShowAddTimeAvailableView()

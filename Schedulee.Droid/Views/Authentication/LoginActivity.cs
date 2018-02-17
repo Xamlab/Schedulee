@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Text;
@@ -18,7 +19,8 @@ using Schedulee.UI.ViewModels.Authentication;
 namespace Schedulee.Droid.Views.Authentication
 {
     [Activity(Label = "Login",
-        Theme = "@style/AppTheme.NoActionBar")]
+        Theme = "@style/AppTheme.NoActionBar",
+        ScreenOrientation = ScreenOrientation.Portrait)]
     public class LoginActivity : BaseActivity
     {
         private EntryView _emailEntry;
