@@ -61,8 +61,6 @@ namespace Schedulee.Droid.Views.Reservations
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
-            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
-            LoadingMessage = Strings.Loading;
 
             _reservationsHeaderRecyclerView = FindViewById<RecyclerView>(Resource.Id.reservation_dates_recyclerView);
             _reservationsHeaderLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
@@ -71,6 +69,11 @@ namespace Schedulee.Droid.Views.Reservations
             _reservationsContentRecyclerView = FindViewById<RecyclerView>(Resource.Id.reservation_content_recyclerView);
             _reservationsContentLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Vertical, false);
             _reservationsContentRecyclerView.SetLayoutManager(_reservationsContentLayoutManager);
+
+            Overlay = FindViewById<View>(Resource.Id.reservations_loading_overlay);
+            Progress = FindViewById<ProgressBar>(Resource.Id.reservations_loading_progress);
+            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
+            LoadingMessage = Strings.Loading;
         }
 
         protected override void OnResume()

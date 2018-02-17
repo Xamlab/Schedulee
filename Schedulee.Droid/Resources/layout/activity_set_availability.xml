@@ -1,24 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-	<ScrollView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
-		<LinearLayout
-			android:orientation="vertical"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
-			<schedulee.droid.views.availability.AvailabilitiesView
-				android:id="@+id/set_availability_availabilities_view"
-				android:layout_margin="10dp"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"/>
-		  <schedulee.droid.views.availability.DaysOfWeekView
-				android:id="@+id/set_availability_days_of_week_view"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"/>
-		</LinearLayout>
-	</ScrollView>
-</LinearLayout>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/set_availability_root_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <schedulee.droid.views.availability.AvailabilitiesView
+                    android:id="@+id/set_availability_availabilities_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+
+                <schedulee.droid.views.availability.DaysOfWeekView
+                    android:id="@+id/set_availability_days_of_week_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/set_availability_add_time_available_button"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/selected_button_color"
+            android:text="Add Time Available"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/set_availability_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@color/transparent_overlay_color"
+        android:orientation="vertical"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:id="@+id/set_availability_add_availability_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/button"
+        android:orientation="vertical"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/set_availability_loading_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@color/transparent_overlay_color"
+        android:orientation="vertical"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        android:id="@+id/set_availability_loading_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+</RelativeLayout>

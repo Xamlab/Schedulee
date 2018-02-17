@@ -11,8 +11,8 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
         protected SetAvailabilityViewModel ViewModel { get; }
         protected IDialogService DialogService { get; }
 
-        public BaseAvailabilityManipulationCommand(SetAvailabilityViewModel viewModel, IDialogService dialogService)
-            : base(viewModel.IsAddingAvailableTimePeriod)
+        public BaseAvailabilityManipulationCommand(SetAvailabilityViewModel viewModel, IDialogService dialogService, bool canExecute = true)
+            : base(canExecute && viewModel.IsAddingAvailableTimePeriod)
         {
             DialogService = dialogService;
             ViewModel = viewModel;
@@ -34,12 +34,18 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
         {
         }
 
-        private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs args)
+        protected virtual void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
             if(args.PropertyName == nameof(SetAvailabilityViewModel.IsAddingAvailableTimePeriod))
             {
-                SetCanExecute(ViewModel.IsAddingAvailableTimePeriod);
+                UpdateCanExecute();
             }
+        }
+
+        protected virtual bool UpdateCanExecute()
+        {
+            SetCanExecute(ViewModel.IsAddingAvailableTimePeriod);
+            return ViewModel.IsAddingAvailableTimePeriod;
         }
     }
 }

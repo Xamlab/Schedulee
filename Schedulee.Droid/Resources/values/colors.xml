@@ -18,5 +18,6 @@
   <color name="button_text_pressed_color">#828288</color>
   <color name="save_button_normal_color">#87c735</color>
   <color name="save_button_pressed_color">#acec5b</color>
+  <color name="transparent_overlay_color">#B2B2B2</color>
 </resources>
 

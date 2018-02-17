@@ -1,67 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/reservation_date_layout_linear_layout"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp">
 
 
-  <ImageView
-      android:id="@+id/reservation_content_clock_image"
-      android:layout_width="20dp"
-      android:layout_height="20dp"
-      android:layout_marginBottom="10dp"
-      android:layout_marginLeft="20dp"
-      android:layout_marginTop="10dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/rounded_clock" />
+    <ImageView
+        android:id="@+id/reservation_content_clock_image"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rounded_clock" />
 
-  <TextView
-      android:id="@+id/reservation_start_time_text"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="5dp"
-      android:text="9:00"
-      app:layout_constraintBottom_toBottomOf="@+id/reservation_content_clock_image"
-      app:layout_constraintStart_toEndOf="@+id/reservation_content_clock_image"
-      app:layout_constraintTop_toTopOf="@+id/reservation_content_clock_image" />
+    <TextView
+        android:id="@+id/reservation_start_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="9:00"
+        app:layout_constraintBottom_toBottomOf="@+id/reservation_content_clock_image"
+        app:layout_constraintStart_toEndOf="@+id/reservation_content_clock_image"
+        app:layout_constraintTop_toTopOf="@+id/reservation_content_clock_image" />
 
-  <TextView
-      android:id="@+id/reservation_client_name_text"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="40dp"
-      android:layout_marginBottom="10dp"
-      android:text="John Smith"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/reservation_start_time_text" />
+    <TextView
+        android:id="@+id/reservation_client_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="40dp"
+        android:text="John Smith"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reservation_start_time_text" />
 
-  <ImageView
-      android:id="@+id/reservation_rate_image"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="10dp"
-      android:layout_marginRight="5dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toStartOf="@+id/reservation_rate_per_hour_text"
-      app:srcCompat="@drawable/money" />
+    <ImageView
+        android:id="@+id/reservation_rate_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/reservation_rate_per_hour_text"
+        app:srcCompat="@drawable/money" />
 
-  <TextView
-      android:id="@+id/reservation_rate_per_hour_text"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="10dp"
-      android:layout_marginBottom="10dp"
-      android:layout_marginEnd="20dp"
-      android:text="TextView"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent" />
+    <TextView
+        android:id="@+id/reservation_rate_per_hour_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

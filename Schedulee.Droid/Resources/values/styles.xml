@@ -13,6 +13,10 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
+
+	<style name="WhiteAccent" parent="ThemeOverlay.AppCompat.Light">
+		<item name="colorAccent">@color/white</item>
+	</style>
   
   <style name="AppTheme.ActionBar">
     <item name="windowActionBar">true</item>

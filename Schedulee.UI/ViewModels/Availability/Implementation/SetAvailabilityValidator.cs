@@ -12,8 +12,6 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             RuleFor(viewModel => viewModel.DaysOfWeek).Must(days => days?.Any(day => day.IsSelected) == true)
                                                       .WithMessage(Strings.DaysOfWeekRequiredValidationError);
             RuleFor(viewModel => viewModel.TimePeriods).NotEmpty().WithMessage(Strings.TimePeriodRequiredValidationError);
-            RuleFor(viewModel => viewModel.IsIntersecting).Must(isIntersecting => isIntersecting == false)
-                                                          .WithMessage(Strings.TimePeriodsIntersectingValidationError);
         }
     }
 }

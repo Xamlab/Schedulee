@@ -3,6 +3,7 @@ using Android.Content;
 using Android.Graphics;
 using Android.Util;
 using Android.Views;
+using Android.Views.Animations;
 
 namespace Schedulee.Droid.Extensions
 {
@@ -40,6 +41,20 @@ namespace Schedulee.Droid.Extensions
             var metrics = resources.DisplayMetrics;
             float dp = px / ((float) metrics.DensityDpi / (int) DisplayMetricsDensity.Default);
             return dp;
+        }
+
+        public static void ShowOverlay(this Context context, View overlay)
+        {
+            overlay.Visibility = ViewStates.Visible;
+            var fadeInOverlay = AnimationUtils.LoadAnimation(context, Resource.Animation.overlay_fade_in_animation);
+            overlay.StartAnimation(fadeInOverlay);
+        }
+
+        public static void HideOverlay(this Context context, View overlay)
+        {
+            var fadeOutAnimation = AnimationUtils.LoadAnimation(context, Resource.Animation.overlay_fade_out_animation);
+            overlay.StartAnimation(fadeOutAnimation);
+            overlay.Visibility = ViewStates.Invisible;
         }
     }
 }

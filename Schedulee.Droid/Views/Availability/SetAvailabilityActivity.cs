@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Views;
+using Android.Views.Animations;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Core.DI.Implementation;
+using Schedulee.Droid.Extensions;
 using Schedulee.Droid.Views.Base;
 using Schedulee.Droid.Views.Reservations;
 using Schedulee.UI.Resources.Strings.Availability;
@@ -20,6 +23,9 @@ namespace Schedulee.Droid.Views.Availability
         private AvailabilitiesView _availabilities;
         private TimePeriodsView _timePeriods;
         private DaysOfWeekView _daysOfWeek;
+        private Button _addTimeAvailableButton;
+        private View _overlay;
+        private LinearLayout _addAvailabilityView;
         private TextView _addTimePeriod;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -30,6 +36,11 @@ namespace Schedulee.Droid.Views.Availability
             BindingContext = _viewModel = ServiceLocater.Instance.Resolve<ISetAvailabilityViewModel>();
 
             SetContentView(Resource.Layout.activity_set_availability);
+
+            _overlay = FindViewById<View>(Resource.Id.set_availability_overlay);
+            _overlay.Clickable = true;
+            _overlay.Click += OverlayOnClick;
+            _addAvailabilityView = FindViewById<LinearLayout>(Resource.Id.set_availability_add_availability_view);
 
             _availabilities = FindViewById<AvailabilitiesView>(Resource.Id.set_availability_availabilities_view);
             _availabilities.BindingContext = _viewModel;
@@ -42,16 +53,26 @@ namespace Schedulee.Droid.Views.Availability
                 .ConvertSourceToTarget(list => list as IEnumerable<IDayOfWeekViewModel>);
             _daysOfWeek.ItemClicked += DaysOfWeekOnItemClicked;
 
+            _addTimeAvailableButton = FindViewById<Button>(Resource.Id.set_availability_add_time_available_button);
+            _addTimeAvailableButton.Click += AddTimeAvailableButtonOnClick;
+
+            Overlay = FindViewById<View>(Resource.Id.set_availability_loading_overlay);
+            Progress = FindViewById<ProgressBar>(Resource.Id.set_availability_loading_progress);
+            this.SetBinding(() => _viewModel.InProgress, () => IsLoading, BindingMode.OneWay);
+            LoadingMessage = Strings.Loading;
+
             _addTimePeriod = FindViewById<TextView>(Resource.Id.add_time_period_button);
             _addTimePeriod.SetCommand(nameof(TextView.Click), _viewModel.AddTimePeriodCommand);
-
-            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
-            LoadingMessage = Strings.Loading;
 
             _timePeriods = FindViewById<TimePeriodsView>(Resource.Id.set_availability_time_periods_view);
             _timePeriods.BindingContext = _viewModel;
             this.SetBinding(() => _viewModel.TimePeriods, () => _timePeriods.Items, BindingMode.OneWay)
                 .ConvertSourceToTarget(list => list as IEnumerable<ITimePeriodViewModel>);
+        }
+
+        private void OverlayOnClick(object sender, EventArgs eventArgs)
+        {
+            HideAddTimeAvailableView();
         }
 
         protected override void OnResume()
@@ -78,6 +99,28 @@ namespace Schedulee.Droid.Views.Availability
         private void DaysOfWeekOnItemClicked(object sender, EventArgs eventArgs)
         {
             _viewModel.ToggleDayCommand.Execute(sender);
+        }
+
+        private void AddTimeAvailableButtonOnClick(object sender, EventArgs eventArgs)
+        {
+            ShowAddTimeAvailableView();
+        }
+
+        private void ShowAddTimeAvailableView()
+        {
+            this.ShowOverlay(_overlay);
+            _addAvailabilityView.Visibility = ViewStates.Visible;
+            var slideInAddAnimationView = AnimationUtils.LoadAnimation(this, Resource.Animation.set_availability_add_availability_slide_in_animation);
+            _addAvailabilityView.StartAnimation(slideInAddAnimationView);
+        }
+
+        private void HideAddTimeAvailableView()
+        {
+            this.HideOverlay(_overlay);
+            var slideInAddAnimationView = AnimationUtils.LoadAnimation(this, Resource.Animation.set_availability_add_availability_slide_out_animation);
+            _addAvailabilityView.StartAnimation(slideInAddAnimationView);
+            _overlay.Visibility = ViewStates.Invisible;
+            _addAvailabilityView.Visibility = ViewStates.Invisible;
         }
     }
 }

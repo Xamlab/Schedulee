@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Acr.UserDialogs;
 using Android.Support.V7.App;
+using Android.Views;
+using Android.Widget;
 using PropertyChanged;
+using Schedulee.Droid.Extensions;
 
 namespace Schedulee.Droid.Views.Base
 {
@@ -13,6 +15,9 @@ namespace Schedulee.Droid.Views.Base
         public bool IsLoading { get; set; }
         public string LoadingMessage { get; set; }
 
+        protected View Overlay { get; set; }
+        protected ProgressBar Progress { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -20,13 +25,25 @@ namespace Schedulee.Droid.Views.Base
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             if(propertyName == nameof(IsLoading))
             {
+                UpdateLoadingView();
+            }
+        }
+
+        protected virtual void UpdateLoadingView()
+        {
+            if(Overlay != null && Progress != null)
+            {
                 if(IsLoading)
                 {
-                    UserDialogs.Instance.ShowLoading(LoadingMessage);
+                    this.ShowOverlay(Overlay);
+                    Progress.Visibility = ViewStates.Visible;
+                    Window.SetFlags(WindowManagerFlags.NotTouchable, WindowManagerFlags.NotTouchable);
                 }
                 else
                 {
-                    UserDialogs.Instance.HideLoading();
+                    this.HideOverlay(Overlay);
+                    Progress.Visibility = ViewStates.Invisible;
+                    Window.ClearFlags(WindowManagerFlags.NotTouchable);
                 }
             }
         }
