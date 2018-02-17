@@ -7,5 +7,6 @@ namespace Schedulee.UI.ViewModels.Reservations
     {
         ICommand SelectDateCommand { get; }
         IDateViewModel SelectedDate { get; }
+        IAsyncCommand LogOutCommand { get; }
     }
 }

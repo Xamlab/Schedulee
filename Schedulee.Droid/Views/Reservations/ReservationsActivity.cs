@@ -14,10 +14,8 @@ using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Newtonsoft.Json;
 using Schedulee.Core.DI.Implementation;
-using Schedulee.Core.Managers;
 using Schedulee.Core.Models;
 using Schedulee.Droid.Extensions;
-using Schedulee.Droid.Controls;
 using Schedulee.Droid.Views.Availability;
 using Schedulee.Droid.Views.Base;
 using Schedulee.Droid.Views.Settings;
@@ -95,12 +93,10 @@ namespace Schedulee.Droid.Views.Reservations
                 _reservationsHeaderAdapter = _viewModel.Items.GetRecyclerAdapter(BindHeaderViewHolder, Resource.Layout.reservation_date_layout);
                 _reservationsHeaderRecyclerView.SetAdapter(_reservationsHeaderAdapter);
             }
-            
         }
 
         private void BindHeaderViewHolder(CachingViewHolder holder, IDateViewModel viewModel, int position)
         {
-            
             var dayOfWeek = holder.FindCachedViewById<TextView>(Resource.Id.day_of_week_text);
             var day = holder.FindCachedViewById<TextView>(Resource.Id.day_text);
             var reservationExistIdicator = holder.FindCachedViewById<View>(Resource.Id.reservation_indicator);
@@ -141,8 +137,7 @@ namespace Schedulee.Droid.Views.Reservations
                     StartActivity(typeof(SettingsActivity));
                     break;
                 case Resource.Id.main_menu_logout:
-                    var authManager = ServiceLocater.Instance.Resolve<IAuthenticationManager>();
-                    authManager.SignOut();
+                    _viewModel.LogOutCommand.Execute(null);
                     break;
             }
 

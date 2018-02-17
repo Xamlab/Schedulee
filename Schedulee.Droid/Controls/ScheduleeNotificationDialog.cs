@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -11,8 +12,13 @@ namespace Schedulee.Droid.Controls
     public class ScheduleeNotificationDialog : Dialog, View.IOnClickListener
     {
         private Button _okButton;
-        private TextView _title;
-        private TextView _message;
+        private TextView _titleTextView;
+        private TextView _messageTextView;
+
+        private TaskCompletionSource<bool> _showTask;
+        private string _title;
+        private string _message;
+        private string _dismissText;
 
         protected ScheduleeNotificationDialog(Context context, bool cancelable, EventHandler cancelHandler) : base(context, cancelable, cancelHandler)
         {
@@ -34,6 +40,17 @@ namespace Schedulee.Droid.Controls
         {
         }
 
+        public Task ShowAsync(string title, string message, string dismissText)
+        {
+            _title = title;
+            _dismissText = dismissText;
+            _message = message;
+            _showTask = new TaskCompletionSource<bool>();
+
+            Show();
+            return _showTask.Task;
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -41,9 +58,27 @@ namespace Schedulee.Droid.Controls
             RequestWindowFeature((int) WindowFeatures.NoTitle);
             SetContentView(Resource.Layout.notification_dialog_layout);
             _okButton = FindViewById<Button>(Resource.Id.notification_dialog_ok_button);
-            _title = FindViewById<TextView>(Resource.Id.notification_dialog_title_text);
-            _message = FindViewById<TextView>(Resource.Id.notification_dialog_title_text);
-            CreateDialog();
+            _titleTextView = FindViewById<TextView>(Resource.Id.notification_dialog_title_text);
+            _messageTextView = FindViewById<TextView>(Resource.Id.notification_dialog_message_text);
+            if(!string.IsNullOrEmpty(_title))
+            {
+                _titleTextView.Text = _title;
+            }
+            else
+            {
+                _titleTextView.Visibility = ViewStates.Gone;
+            }
+
+            if(!string.IsNullOrEmpty(_message))
+            {
+                _messageTextView.Text = _message;
+            }
+            else
+            {
+                _messageTextView.Visibility = ViewStates.Gone;
+            }
+
+            _okButton.Text = !string.IsNullOrEmpty(_dismissText) ? _dismissText : "OK";
 
             _okButton.SetOnClickListener(this);
             SetCancelable(false);
@@ -51,20 +86,20 @@ namespace Schedulee.Droid.Controls
 
         public void OnClick(View view)
         {
-            OnAccept();
-        }
-
-        
-        protected virtual void OnAccept()
-        {
             Dismiss();
         }
 
-        protected virtual void CreateDialog(string title = "title", string message = "message", string confirmText = "yes")
+        public override void Dismiss()
         {
-            _title.Text = title;
+            base.Dismiss();
+            _showTask?.TrySetResult(true);
+        }
+
+        protected virtual void CreateDialog(string title, string message, string confirmText)
+        {
+            _titleTextView.Text = title;
             _okButton.Text = confirmText;
-            _message.Text = message;
+            _messageTextView.Text = message;
         }
     }
 }

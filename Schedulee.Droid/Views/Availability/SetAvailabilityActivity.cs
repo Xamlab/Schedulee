@@ -157,8 +157,7 @@ namespace Schedulee.Droid.Views.Availability
         private async void AddTimePeriodButtonOnClick(object sender, EventArgs eventArgs)
         {
             if(!_viewModel.AddTimePeriodCommand.CanExecute(null)) return;
-            _viewModel.AddTimePeriodCommand.Execute(new TimePeriod(DateTime.Now, DateTime.Now.AddHours(1)));
-            return;
+
             var shouldContinue = await _dialogService.ShowConfirmationDialogAsync(Strings.TimePeriod,
                                                                                   Strings.PickStartTime,
                                                                                   CommonStrings.Ok, CommonStrings.Cancel);

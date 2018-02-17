@@ -68,5 +68,23 @@ namespace Schedulee.UI.Resources.Strings.Reservations {
                 return ResourceManager.GetString("Loading", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ARE YOU SURE YOU WANT TO LOG OUT?.
+        /// </summary>
+        public static string LogOutConfirmation {
+            get {
+                return ResourceManager.GetString("LogOutConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log out failed, please try again..
+        /// </summary>
+        public static string LogOutFailure {
+            get {
+                return ResourceManager.GetString("LogOutFailure", resourceCulture);
+            }
+        }
     }
 }

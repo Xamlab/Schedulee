@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
@@ -12,27 +12,29 @@ namespace Schedulee.Droid.Controls
     {
         private Button _okButton;
         private Button _cancelButton;
-        private TextView _title;
-        private TextView _message;
+        private TextView _titleTextView;
+        private TextView _messageTextView;
 
-        protected ScheduleeConfirmationDialog(Context context, bool cancelable, EventHandler cancelHandler) : base(context, cancelable, cancelHandler)
+        private TaskCompletionSource<bool> _showTask;
+        private string _title;
+        private string _message;
+        private string _dismissText;
+        private string _confirmText;
+
+        public ScheduleeConfirmationDialog(Context context) : base(context, false, (EventHandler) null)
         {
         }
 
-        protected ScheduleeConfirmationDialog(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+        public Task<bool> ShowAsync(string title, string message, string dismissText, string confirmText)
         {
-        }
+            _title = title;
+            _message = message;
+            _dismissText = dismissText;
+            _confirmText = confirmText;
+            _showTask = new TaskCompletionSource<bool>();
 
-        public ScheduleeConfirmationDialog(Context context) : base(context)
-        {
-        }
-
-        protected ScheduleeConfirmationDialog(Context context, bool cancelable, IDialogInterfaceOnCancelListener cancelListener) : base(context, cancelable, cancelListener)
-        {
-        }
-
-        public ScheduleeConfirmationDialog(Context context, int themeResId) : base(context, themeResId)
-        {
+            Show();
+            return _showTask.Task;
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -43,9 +45,28 @@ namespace Schedulee.Droid.Controls
             SetContentView(Resource.Layout.confirmation_dialog_layout);
             _okButton = FindViewById<Button>(Resource.Id.confirmation_dialog_ok_button);
             _cancelButton = FindViewById<Button>(Resource.Id.confirmation_dialog_cancel_button);
-            _title = FindViewById<TextView>(Resource.Id.confirmation_dialog_title_text);
-            _message = FindViewById<TextView>(Resource.Id.confirmation_dialog_message_text);
-            CreateDialog();
+            _titleTextView = FindViewById<TextView>(Resource.Id.confirmation_dialog_title_text);
+            _messageTextView = FindViewById<TextView>(Resource.Id.confirmation_dialog_message_text);
+            if(!string.IsNullOrEmpty(_title))
+            {
+                _titleTextView.Text = _title;
+            }
+            else
+            {
+                _titleTextView.Visibility = ViewStates.Gone;
+            }
+
+            if(!string.IsNullOrEmpty(_message))
+            {
+                _messageTextView.Text = _message;
+            }
+            else
+            {
+                _messageTextView.Visibility = ViewStates.Gone;
+            }
+
+            _okButton.Text = !string.IsNullOrEmpty(_confirmText) ? _confirmText : "OK";
+            _cancelButton.Text = !string.IsNullOrEmpty(_dismissText) ? _dismissText : "CANCEL";
 
             _okButton.SetOnClickListener(this);
             _cancelButton.SetOnClickListener(this);
@@ -68,19 +89,13 @@ namespace Schedulee.Droid.Controls
         protected virtual void OnCancel()
         {
             Dismiss();
+            _showTask?.TrySetResult(false);
         }
 
         protected virtual void OnAccept()
         {
             Dismiss();
-        }
-
-        protected virtual void CreateDialog(string title = "title", string message = "message", string confirmText = "yes", string cancelText = "no")
-        {
-            _title.Text = title;
-            _okButton.Text = confirmText;
-            _cancelButton.Text = cancelText;
-            _message.Text = message;
+            _showTask?.TrySetResult(true);
         }
     }
 }
