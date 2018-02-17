@@ -8,6 +8,7 @@ using Android.Views.Animations;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Core.DI.Implementation;
+using Schedulee.Droid.Extensions;
 using Schedulee.Droid.Views.Base;
 using Schedulee.Droid.Views.Reservations;
 using Schedulee.UI.Resources.Strings.Availability;
@@ -22,7 +23,7 @@ namespace Schedulee.Droid.Views.Availability
         private AvailabilitiesView _availabilities;
         private DaysOfWeekView _daysOfWeek;
         private Button _addTimeAvailableButton;
-        private LinearLayout _overlay;
+        private View _overlay;
         private LinearLayout _addAvailabilityView;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -33,7 +34,7 @@ namespace Schedulee.Droid.Views.Availability
             BindingContext = _viewModel = ServiceLocater.Instance.Resolve<ISetAvailabilityViewModel>();
             SetContentView(Resource.Layout.activity_set_availability);
 
-            _overlay = FindViewById<LinearLayout>(Resource.Id.set_availability_overlay);
+            _overlay = FindViewById<View>(Resource.Id.set_availability_overlay);
             _overlay.Clickable = true;
             _overlay.Click += OverlayOnClick;
             _addAvailabilityView = FindViewById<LinearLayout>(Resource.Id.set_availability_add_availability_view);
@@ -52,7 +53,9 @@ namespace Schedulee.Droid.Views.Availability
             _addTimeAvailableButton = FindViewById<Button>(Resource.Id.set_availability_add_time_available_button);
             _addTimeAvailableButton.Click += AddTimeAvailableButtonOnClick;
 
-            this.SetBinding(() => _viewModel.IsLoading, () => IsLoading, BindingMode.OneWay);
+            Overlay = FindViewById<View>(Resource.Id.set_availability_loading_overlay);
+            Progress = FindViewById<ProgressBar>(Resource.Id.set_availability_loading_progress);
+            this.SetBinding(() => _viewModel.InProgress, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.Loading;
         }
 
@@ -94,19 +97,16 @@ namespace Schedulee.Droid.Views.Availability
 
         private void ShowAddTimeAvailableView()
         {
-            _overlay.Visibility = ViewStates.Visible;
+            this.ShowOverlay(_overlay);
             _addAvailabilityView.Visibility = ViewStates.Visible;
-            var fadeInOverlay = AnimationUtils.LoadAnimation(this, Resource.Animation.set_availability_overlay_fade_in_animation);
             var slideInAddAnimationView = AnimationUtils.LoadAnimation(this, Resource.Animation.set_availability_add_availability_slide_in_animation);
-            _overlay.StartAnimation(fadeInOverlay);
             _addAvailabilityView.StartAnimation(slideInAddAnimationView);
         }
 
         private void HideAddTimeAvailableView()
         {
-            var fadeInOverlay = AnimationUtils.LoadAnimation(this, Resource.Animation.set_availability_overlay_fade_out_animation);
+            this.HideOverlay(_overlay);
             var slideInAddAnimationView = AnimationUtils.LoadAnimation(this, Resource.Animation.set_availability_add_availability_slide_out_animation);
-            _overlay.StartAnimation(fadeInOverlay);
             _addAvailabilityView.StartAnimation(slideInAddAnimationView);
             _overlay.Visibility = ViewStates.Invisible;
             _addAvailabilityView.Visibility = ViewStates.Invisible;

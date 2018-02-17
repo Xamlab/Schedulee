@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_margin="5dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
+
     <TextView
         android:id="@+id/availability_formatted_days_of_week_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-	    android:textColor="@color/subTitle"
         android:text="Test"
+        android:textColor="@color/subTitle"
         android:textSize="12dp" />
 
     <TextView
         android:id="@+id/availability_formatted_periods_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-	    android:textColor="@color/title"
         android:text="Test"
+        android:textColor="@color/title"
         android:textSize="16dp" />
 </LinearLayout>

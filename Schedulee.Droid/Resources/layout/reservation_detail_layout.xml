@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/reservation_detail_layout"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp">
+
     <android.support.constraint.ConstraintLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/formatted_full_date_text"
@@ -30,7 +30,7 @@
             android:background="@color/separator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formatted_full_date_text"/>
+            app:layout_constraintTop_toBottomOf="@+id/formatted_full_date_text" />
 
         <TextView
             android:id="@+id/formatted_client_title"
@@ -38,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:textSize="15dp"
             android:text="CLIENT"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_divider" />
 
@@ -49,9 +49,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="8dp"
-            android:textSize="17dp"
-            android:textColor="@color/title"
             android:text="FormattedClient"
+            android:textColor="@color/title"
+            android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/formatted_client_title" />
 
@@ -63,16 +63,16 @@
             android:background="@color/separator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formatted_client_text"/>
+            app:layout_constraintTop_toBottomOf="@+id/formatted_client_text" />
 
         <TextView
             android:id="@+id/formatted_time_period_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
-            android:textSize="15dp"
+            android:layout_marginTop="10dp"
             android:text="WORKING TIME"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_divider1" />
 
@@ -82,9 +82,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="8dp"
-            android:textSize="17dp"
-            android:textColor="@color/title"
             android:text="FormattedTimePeriod"
+            android:textColor="@color/title"
+            android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/formatted_time_period_title" />
 
@@ -104,8 +104,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:textSize="15dp"
             android:text="MOBILE"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_divider2" />
 
@@ -115,9 +115,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="8dp"
-            android:textSize="17dp"
-            android:textColor="@color/title"
             android:text="PhoneNumber"
+            android:textColor="@color/title"
+            android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_number_title" />
 
@@ -127,9 +127,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="10dp"
-            android:textSize="15dp"
             android:layout_marginTop="20dp"
             android:text="WORKING LOCATION"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_number_text" />
 
@@ -140,9 +140,9 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="8dp"
-            android:textSize="17dp"
-            android:textColor="@color/title"
             android:text="Location"
+            android:textColor="@color/title"
+            android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/location_title" />
 
@@ -150,8 +150,8 @@
             android:id="@+id/total_price_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
             android:text="YOU WILL BE PAID:"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/location_text" />
@@ -171,8 +171,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
-            android:textColor="@color/title"
             android:text="TextView"
+            android:textColor="@color/title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/net_price_title" />
 

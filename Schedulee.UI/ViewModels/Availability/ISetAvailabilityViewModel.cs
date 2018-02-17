@@ -9,6 +9,7 @@ namespace Schedulee.UI.ViewModels.Availability
         IList<IDayOfWeekViewModel> DaysOfWeek { get; }
         IList<ITimePeriodViewModel> TimePeriods { get; }
         bool IsIntersecting { get; }
+        bool InProgress { get; }
         ICommand AddTimeAvailableCommand { get; }
         ICommand AddTimePeriodCommand { get; }
         ICommand DeleteTimePeriodCommand { get; }

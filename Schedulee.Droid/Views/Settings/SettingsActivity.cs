@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Text;
+using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Schedulee.Core.DI.Implementation;
@@ -70,6 +71,8 @@ namespace Schedulee.Droid.Views.Settings
             _travelTimeEntry.SetHintTextAppearance(Resource.Style.HintTextStyle);
 
             _saveButton = FindViewById<Button>(Resource.Id.settings_save_button);
+            Overlay = FindViewById<View>(Resource.Id.settings_loading_overlay);
+            Progress = FindViewById<ProgressBar>(Resource.Id.settings_loading_progress);
 
             this.SetBinding(() => _viewModel.Username, () => _usernameEntry.Entry.Text, BindingMode.OneWay);
             this.SetBinding(() => _viewModel.FirstName, () => _firstNameEntry.Entry.Text, BindingMode.TwoWay);

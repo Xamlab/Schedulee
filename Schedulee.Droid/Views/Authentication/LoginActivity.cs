@@ -63,6 +63,8 @@ namespace Schedulee.Droid.Views.Authentication
             _loginButton = FindViewById<Button>(Resource.Id.login_button);
             _loginButton.SetCommand(nameof(Button.Click), _viewModel.SaveCommand);
 
+            Overlay = FindViewById<View>(Resource.Id.login_loading_overlay);
+            Progress = FindViewById<ProgressBar>(Resource.Id.login_loading_progress);
             this.SetBinding(() => _viewModel.IsSaving, () => IsLoading, BindingMode.OneWay);
             LoadingMessage = Strings.LoggingIn;
         }

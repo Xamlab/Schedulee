@@ -28,6 +28,9 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
             SaveCommand = new CreateAvailabilityCommand(this, apiClient, dialogService);
         }
 
+        [DependsOn(nameof(IsSaving), nameof(IsLoading))]
+        public bool InProgress => IsSaving || IsLoading;
+
         public ICommand AddTimeAvailableCommand { get; }
         public ICommand AddTimePeriodCommand { get; }
         public ICommand DeleteTimePeriodCommand { get; }

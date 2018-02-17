@@ -1,49 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/background_login"
-                android:focusable="true"
-                android:focusableInTouchMode="true">
-	<ImageView
-        android:src="@drawable/schedulee"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="100dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_login"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"/>
-  <Button
-    android:id="@+id/login_button"
-    android:text="Login"
-    android:textColor="@color/white"
-    android:background="@color/button"
-    android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginBottom="40dp"
-    android:layout_marginTop="30dp"
-    android:layout_alignParentBottom="true"/>
-  <schedulee.droid.controls.EntryView
-    android:id="@+id/login_password_entry"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginBottom="10dp"
-    android:layout_marginTop="0dp"
-    android:layout_above="@id/login_button"/>
-  <schedulee.droid.controls.EntryView
-    android:id="@+id/login_email_entry"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_above="@id/login_password_entry"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/schedulee" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/button"
+        android:text="Login"
+        android:textColor="@color/white" />
+
+    <schedulee.droid.controls.EntryView
+        android:id="@+id/login_password_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/login_button"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="0dp" />
+
+    <schedulee.droid.controls.EntryView
+        android:id="@+id/login_email_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/login_password_entry"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp" />
+
+    <View
+        android:id="@+id/login_loading_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@color/transparent_overlay_color"
+        android:orientation="vertical"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        android:id="@+id/login_loading_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:theme="@style/WhiteAccent"
+        android:visibility="invisible" />
 </RelativeLayout>
