@@ -44,7 +44,7 @@ namespace Schedulee.Droid.Views.Base
                 else
                 {
                     this.HideOverlay(Overlay);
-                    Progress.Visibility = ViewStates.Gone;
+                    Progress.Visibility = ViewStates.Invisible;
                 }
             }
         }

@@ -98,6 +98,7 @@ namespace Schedulee.Droid.Views.Reservations
 
         private void BindHeaderViewHolder(CachingViewHolder holder, IDateViewModel viewModel, int position)
         {
+            
             var dayOfWeek = holder.FindCachedViewById<TextView>(Resource.Id.day_of_week_text);
             var day = holder.FindCachedViewById<TextView>(Resource.Id.day_text);
             var reservationExistIdicator = holder.FindCachedViewById<View>(Resource.Id.reservation_indicator);

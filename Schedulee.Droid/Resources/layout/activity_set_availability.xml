@@ -15,25 +15,19 @@
 		    android:layout_margin="15dp"
 		    android:text="TIME AVAILABLE"
 		    android:textColor="@color/title"
-		    android:textSize="15dp"/>
+		    android:textSize="15sp"/>
         <ScrollView
             android:id="@+id/set_availability_root_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1">
 
-            <LinearLayout
+            <schedulee.droid.views.availability.AvailabilitiesView
+                android:id="@+id/set_availability_availabilities_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_margin="10dp" />
 
-                <schedulee.droid.views.availability.AvailabilitiesView
-                    android:id="@+id/set_availability_availabilities_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp" />
-
-            </LinearLayout>
         </ScrollView>
 
         <Button
@@ -53,7 +47,7 @@
         android:clickable="false"
         android:background="@color/transparent_overlay_color"
         android:orientation="vertical"
-        android:visibility="gone" />
+        android:visibility="invisible" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/set_availability_add_availability_view"
@@ -121,10 +115,10 @@
 
         </ScrollView>
 
-        <ImageView
+        <View
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/separator"
             app:layout_constraintBottom_toTopOf="@+id/set_availability_add_time_period_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -166,7 +160,7 @@
         android:clickable="false"
         android:background="@color/transparent_overlay_color"
         android:orientation="vertical"
-        android:visibility="gone" />
+        android:visibility="invisible" />
 
     <ProgressBar
         android:id="@+id/set_availability_loading_progress"

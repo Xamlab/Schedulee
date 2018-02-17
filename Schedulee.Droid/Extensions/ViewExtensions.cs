@@ -58,7 +58,7 @@ namespace Schedulee.Droid.Extensions
         {
             var fadeOutAnimation = AnimationUtils.LoadAnimation(context, Resource.Animation.overlay_fade_out_animation);
             overlay.StartAnimation(fadeOutAnimation);
-            overlay.Visibility = ViewStates.Gone;
+            overlay.Visibility = ViewStates.Invisible;
         }
 
         public static void ClearBindings(this IEnumerable<Binding> bindings)
