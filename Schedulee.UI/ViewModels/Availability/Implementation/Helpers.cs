@@ -104,10 +104,8 @@ namespace Schedulee.UI.ViewModels.Availability.Implementation
         {
             foreach(var timePeriod in timePeriods)
             {
-                var startDate = new DateTime(startOfWeek.Year, startOfWeek.Month, startOfWeek.Day + dayOfWeek,
-                                             timePeriod.Start.Hour, timePeriod.Start.Minute, timePeriod.Start.Second);
-                var endDate = new DateTime(startOfWeek.Year, startOfWeek.Month, startOfWeek.Day + dayOfWeek,
-                                           timePeriod.End.Hour, timePeriod.End.Minute, timePeriod.End.Second);
+                var startDate = startOfWeek.Add(new TimeSpan(dayOfWeek, timePeriod.Start.Hour, timePeriod.Start.Minute, timePeriod.Start.Second));
+                var endDate = startOfWeek.Add(new TimeSpan(dayOfWeek, timePeriod.End.Hour, timePeriod.End.Minute, timePeriod.End.Second));
                 timeRanges.Add(new TimeRange(startDate, endDate, true));
             }
         }
